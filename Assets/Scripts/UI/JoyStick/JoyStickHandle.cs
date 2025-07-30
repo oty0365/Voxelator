@@ -34,7 +34,7 @@ public class JoyStickHandle : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
         var dir = ((Vector2)transform.position - _originJoyTransform).normalized;
         moveDirInputer?.Invoke(dir);
-
+       
     }
 
     public void OnPointerUp(PointerEventData eventData)
