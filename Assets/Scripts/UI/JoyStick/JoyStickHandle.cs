@@ -1,46 +1,55 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class JoyStickHandle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     public Action<Vector2> moveDirInputer;
+    public Action<Vector2> rotationInputer;
     [SerializeField] float range;
     [SerializeField] bool isDraging;
-    private Vector2 _originJoyTransform;
-
+    [SerializeField] RectTransform originJoyTransform;
+    private RectTransform _joyTransfrom;
+    private Image _originJoyImage;
     private void Start()
     {
-        _originJoyTransform = transform.position;
+        _joyTransfrom = GetComponent<RectTransform>();
+        _originJoyImage = originJoyTransform.gameObject.GetComponent<Image>();
         moveDirInputer += PlayerInput.Instance.OnMove;
+        rotationInputer += PlayerInput.Instance.OnRotate;
+        _originJoyImage.enabled = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         isDraging = true;
+        _originJoyImage.enabled = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if(isDraging)
         {
-            transform.position = eventData.pointerCurrentRaycast.worldPosition;
+            _joyTransfrom.position = eventData.pointerCurrentRaycast.worldPosition;
         }
-        if (Vector2.Distance(_originJoyTransform, transform.position) > range)
+        if (Vector2.Distance(originJoyTransform.position, _joyTransfrom.position) > range)
         {
             OnPointerUp(null);
             return;
         }
 
-        var dir = ((Vector2)transform.position - _originJoyTransform).normalized;
+        var dir = (_joyTransfrom.position - originJoyTransform.position).normalized;
         moveDirInputer?.Invoke(dir);
+        rotationInputer?.Invoke(dir);
        
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        _originJoyImage.enabled = false;
         moveDirInputer?.Invoke(Vector2.zero);
-        transform.position = _originJoyTransform;
+        _joyTransfrom.position = originJoyTransform.position;
         isDraging = false;
     }
 }

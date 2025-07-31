@@ -12,6 +12,9 @@ public class PlayerInput : HalfSingleMono<PlayerInput>
     public void OnMove(Vector2 dir)
     {
         playerMove.SetDir(dir);
+    }
+    public void OnRotate(Vector2 dir)
+    {
         playerMove.SetRotaion(dir);
     }
 }
