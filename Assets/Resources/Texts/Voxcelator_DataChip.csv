@@ -1,0 +1,12 @@
+﻿Key,Type,Priority,Ko,En
+RuneDescriptionPannel,1,1,무형의 데이터칩을 입수했다.. \n어떤 모습일까?,Ethereal Datachip secured... \nIts appearance is shrouded in mystery.
+AttackRuneName,1,1,힘의 데이터칩,Datachip Of Force
+AttackRuneDesc,1,1,힘을 <color=red>{0}</color>올린다.,Increase ATK by <color=red>{0}</color>.
+DeffenceRuneName,1,1,강인의 데이터칩,Datachip Of Citadel
+DeffenceRuneDesc,1,1,방어력을 <color=blue>{0}</color>올린다.,Increase DEF by <color=blue>{0}</color>.
+SpeedRuneName,1,1,민첩의 데이터칩,Datachip Of Agility
+SpeedRuneDesc,1,1,이동속도를 <color=yellow>{0}</color>올린다.,Increase MoveSpeed by <color=yellow>{0}</color>.
+HpRuneName,1,1,생명의 데이터칩,Datachip Of Life
+HpRuneDesc,1,1,생명력을 <color=green>{0}</color>올린다.,Increase HP by <color=green>{0}</color>
+FullRuneName,1,1,초회복의 데이터칩,Datachip Of FullHp
+FullRnumeDesc,1,1,Hp를 최대치로 회복한다.,Set your Hp to Full.

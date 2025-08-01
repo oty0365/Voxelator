@@ -5,8 +5,7 @@ public class AugmentData : ScriptableObject
 {
     public string augmentName;
     public Sprite augmentSprite;
-    [TextArea]
     public string augmentDescription;
-    public GameObject augmentPrefab;
+    public GameObject augmentBehavior;
     
 }

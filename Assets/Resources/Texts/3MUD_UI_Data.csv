@@ -1,0 +1,24 @@
+﻿Key,Type,Priority,Ko,En
+YouDied,1,1,힘이 다했습니다,You have fallen.
+DieMsg-1,2,1,당신의 아이템이 들판에 흩어졌습니다…,Your belongings lie scattered across the field...
+DieMsg-2,3,1,검을 쥔 손끝에 아직 온기가 남아 있습니다,The warmth of your blade still lingers...
+DieMsg-3,3,1,???:눈을 뜨세요 용사님!,Your vision fades... and a familiar voice calls...
+DieMsg-4,3,1,누가 그랬던것 같은데.. 세상은 잔혹하다고\n 그런데.. 난 아름답진 않은 것 같더라;;,The world is cruel... but to me{COMMA} it's never been beautiful.
+DieMsg-5,3,1,영웅은 죽지 않아!!,"A hero never truly dies!"
+DieMsg-6,3,1,잠시 숨을 고르자. 아직 끝난 게 아니야,Catch your breath. This is not the end.
+DieMsg-7,3,1,영혼이 부서진 뒤, 다시 깨어납니다,Your soul reforms... and rises once more.
+DieMsg-8,3,1,"전설의 용사"라며?,They called you a *legendary hero*?
+DieMsg-9,3,1,그건 피해야지{COMMA} 진짜…,You were supposed to roll{COMMA} not *tank* it.
+DieMsg-10,3,1,심지어 튜토리얼인데…,It was... the tutorial...
+DieMsg-11,3,1,NPC도 널 무시할 듯,Even the NPCs will talk behind your back.
+DieMsg-12,3,1,너의 엘릭서... 그냥 버려질 운명,Your elixir? Spilled and wasted. Like your potential.
+DieMsg-13,3,1,자네{COMMA} 점프와 슬라이드 버튼은 있는가?,Thy dodge key... didst thou forget it?
+DieMsg-14,3,1,카메라 탓 하지 마라,Do not blame the sacred camera angle.
+DieMsg-15,3,1,이건 어쩔 수 없었다고 합리화 중…,Convincing thyself: “It was unwinnable.”
+PressToRespawn,3,1,<모험 종료>,<End Your Journy>
+ObtainedGold,1,1,획득한 골드,Golds You Cosumed
+RunAmount,1,1,모험한 거리,Distance Adventured
+AttackTmp,1,1,근력,ATK
+DeffendTmp,1,1,강건,DEF
+SpeedTmp,1,1,기량,DEX
+WillTmp,1,1,의지,WIP

@@ -8,11 +8,16 @@ public class AugmentManager : HalfSingleMono<AugmentManager>
     [SerializeField] AugmentDatas augmentDatas;
     private List<AugmentData> _augmentList = new();
 
-    public void Start()
+    private void Start()
     {
         _augmentList = new List<AugmentData>(augmentDatas.datas);
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            AugmentSelection();
+        }
+    }
     public void AugmentSelection()
     {
         setUi?.Invoke(GetRandomAugments());

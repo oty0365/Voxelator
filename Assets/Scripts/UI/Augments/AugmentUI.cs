@@ -30,34 +30,18 @@ public class AugmentUI : MonoBehaviour
         augmentDatas = datas;
         for (var i = 0; i < augmentSet.Length; i++)
         {
-            augmentSet[i].augName.text = datas[i].augmentName;
+            augmentSet[i].augName.text = Scripter.Instance.Translation(datas[i].augmentName);
             augmentSet[i].augImage.sprite = datas[i].augmentSprite;
-            augmentSet[i].augDesc.text = datas[i].augmentDescription;
+            augmentSet[i].augDesc.text = Scripter.Instance.TranslationWithVariable(datas[i].augmentDescription, Extracter.Instance.CollectAugmentsAsString(datas[i].augmentBehavior));
         }
         augmentPanel.SetActive(true);
     }
 
     public void AugmentSelection(int index)
     {
-        StartCoroutine(CardMoveFlow(index));
-    }
-    private IEnumerator CardMoveFlow(int index)
-    {
-        var card = augmentSet[index].augDesc.transform.parent.gameObject;
-        var rectTransform = card.GetComponent<RectTransform>();
-        var origin = rectTransform.transform.position;
-        card.GetComponent<CardUI>().isSelected = true;
-        while (Vector2.Distance(Vector2.zero, rectTransform.transform.position) > 0.1f)
-        {
-            rectTransform.transform.position = Vector3.Lerp(rectTransform.transform.position, center.transform.position, 5 * Time.deltaTime);
-            yield return null;
-        }
-        yield return new WaitForSeconds(1.1f);
-        card.SetActive(false);
-        card.GetComponent<CardUI>().isSelected = false;
-        rectTransform.transform.position = origin;
-        ObjectPooler.Instance.Get(augmentDatas[index].augmentPrefab, center.transform.position, new Vector3(0, 0, 0));
+        ObjectPooler.Instance.Get(augmentDatas[index].augmentBehavior.gameObject,center.transform.position,Vector2.zero);
         Time.timeScale = 1;
         augmentPanel.SetActive(false);
+
     }
 }
