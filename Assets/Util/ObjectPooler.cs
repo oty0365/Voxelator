@@ -14,6 +14,8 @@ public enum PoolObjectType
     PlayerHitParticle,
     SFXObject,
     SpeedUpAugment,
+    ExpUpAugment,
+
 }
 
 public class ObjectPooler : HalfSingleMono<ObjectPooler>

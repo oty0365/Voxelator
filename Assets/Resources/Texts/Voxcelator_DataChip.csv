@@ -5,8 +5,16 @@ AttackRuneDesc,1,1,힘을 <color=red>{0}</color>올린다.,Increase ATK by <colo
 DeffenceRuneName,1,1,강인의 데이터칩,Datachip Of Citadel
 DeffenceRuneDesc,1,1,방어력을 <color=blue>{0}</color>올린다.,Increase DEF by <color=blue>{0}</color>.
 SpeedRuneName,1,1,민첩의 데이터칩,Datachip Of Agility
-SpeedRuneDesc,1,1,이동속도를 <color=yellow>{0}</color>올린다.,Increase MoveSpeed by <color=yellow>{0}</color>.
+SpeedRuneDesc,1,1,이동속도를 {0}올린다.,Increase MoveSpeed by {0}.
 HpRuneName,1,1,생명의 데이터칩,Datachip Of Life
 HpRuneDesc,1,1,생명력을 <color=green>{0}</color>올린다.,Increase HP by <color=green>{0}</color>
 FullRuneName,1,1,초회복의 데이터칩,Datachip Of FullHp
 FullRnumeDesc,1,1,Hp를 최대치로 회복한다.,Set your Hp to Full.
+RunesOfExpName,1,1,기억들의 데이터칩,Datachip Of Memories
+RunesOfExpDesc,1,1,모두를 추억하며 <color=yellow>{0}</color>경험치를 얻는다.,Remembering everybody then get <color=yellow>{0}</color>EXP.
+SnakeRuneName,1,1,열차:바이퍼,T.R.A.I.N:VIPER
+SnakeRuneDesc,1,1,자신의 몸 맨 끝에 접촉 시 {0}의 데미지를 주는 바이퍼콘테이너 하나를 생성한다.,Creates a Viper Container at the tip of its body \n dealing {0} damage on contact.
+MagnetRuneName,1,1,전자기장 폭풍,Magnetic Rush
+MagnetRuneDesc,1,1,필드에 존재하는 모든 경험치를 흡수한다.,Absorbs all EXP on Feild.
+VampireRuneName,1,1,흡혈마,Vampire
+VampireRuneDesc,1,1,적 처치 시 플레이어의 최대체력의 <color=green>{0}</color>%를 회복한다.,Drains <color=green>{0}</color>% of your FullHP while enemy slained.

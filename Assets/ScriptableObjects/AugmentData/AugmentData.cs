@@ -7,5 +7,5 @@ public class AugmentData : ScriptableObject
     public Sprite augmentSprite;
     public string augmentDescription;
     public GameObject augmentBehavior;
-    
+    public AugmentState augmentState;
 }

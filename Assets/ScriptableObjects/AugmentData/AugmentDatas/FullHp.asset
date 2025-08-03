@@ -16,3 +16,4 @@ MonoBehaviour:
   augmentSprite: {fileID: 21300000, guid: 6c9e950568365b7479b6f1ef4849bf4a, type: 3}
   augmentDescription: FullRnumeDesc
   augmentBehavior: {fileID: 1655010702381805457, guid: 204aefcd2fe40b3429d39d2ed23f18b6, type: 3}
+  augmentState: 4

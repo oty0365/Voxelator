@@ -183,7 +183,7 @@ public class PlayerStatus : HalfSingleMono<PlayerStatus>
         
             PlayerMaxExp = CalculateExpRequirement(PlayerLevel);
         
-            //AugmentManager.Instance.AugmentSelection();
+            
         }
     
         OnExp?.Invoke(_playerExp);
