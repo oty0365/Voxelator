@@ -39,7 +39,16 @@ public class AugmentUI : MonoBehaviour
             augmentSet[i].augmentFrame.gameObject.SetActive(true);
             augmentSet[i].augName.text = Scripter.Instance.Translation(datas[i].augmentName);
             augmentSet[i].augImage.sprite = datas[i].augmentSprite;
-            augmentSet[i].augDesc.text = Scripter.Instance.TranslationWithVariable(datas[i].augmentDescription, Extracter.Instance.CollectAugmentsAsString(datas[i].augmentBehavior));
+            var text = "";
+            if (datas[i].augmentBehavior.TryGetComponent<AugmentDescriptionKeyDatas>(out var comp))
+            {
+                text = Scripter.Instance.TranslationWithVariable(datas[i].augmentDescription, Extracter.Instance.CollectAugmentsAsString(comp.augmentTextTargets));
+            }
+            else
+            {
+                text = Scripter.Instance.TranslationWithVariable(datas[i].augmentDescription, Extracter.Instance.CollectAugmentAsString(datas[i].augmentBehavior));
+            }
+            augmentSet[i].augDesc.text = text;
         }
         
         augmentPanel.SetActive(true);

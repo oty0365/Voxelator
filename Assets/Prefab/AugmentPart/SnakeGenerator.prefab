@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8377655965410576300}
   - component: {fileID: 4502359349655231897}
   - component: {fileID: 4087579739875129089}
+  - component: {fileID: 8613428628931999687}
   m_Layer: 0
   m_Name: SnakeGenerator
   m_TagString: Untagged
@@ -59,4 +60,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snakeBody: {fileID: 1699320058777840731, guid: fb631702c10e62243915ce71f3f1db07, type: 3}
-  damage: 10
+--- !u!114 &8613428628931999687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3162992338501655723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa06036731173b48b13e1b7f2f41eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  augmentTextTargets:
+  - {fileID: 3162992338501655723}
+  - {fileID: 1699320058777840731, guid: fb631702c10e62243915ce71f3f1db07, type: 3}

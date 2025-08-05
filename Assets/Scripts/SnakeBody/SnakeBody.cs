@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SnakeBody : MonoBehaviour,IPoolingObject
 {
-    public float damage;
+    [TextableAugment]public float damage;
     [SerializeField] private SpriteRenderer sr;
     public GameObject target;
     public float speed;
