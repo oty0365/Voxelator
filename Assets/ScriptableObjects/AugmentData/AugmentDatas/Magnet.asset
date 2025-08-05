@@ -15,5 +15,5 @@ MonoBehaviour:
   augmentName: MagnetRuneName
   augmentSprite: {fileID: -266846400, guid: 9d23facc1caf4e04da566412f80986e3, type: 3}
   augmentDescription: MagnetRuneDesc
-  augmentBehavior: {fileID: 936427599004537510, guid: a4eeccdf0190e144baab46bf8e746613, type: 3}
+  augmentBehavior: {fileID: 5880953117848739262, guid: 25cd162cd9b003b48aa29d084ffb4df6, type: 3}
   augmentState: 4

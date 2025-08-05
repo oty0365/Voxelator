@@ -11,6 +11,7 @@ public class CardUI : MonoBehaviour,IPointerDownHandler
         if (!isSelected)
         {
             augmentUI.AugmentSelection(index);
+            isSelected = true;
         }
     }
 }

@@ -15,6 +15,10 @@ public enum PoolObjectType
     SFXObject,
     SpeedUpAugment,
     ExpUpAugment,
+    SnakeGenerator,
+    Snake,
+    MangnetAugment,
+    DashMasterAugment
 
 }
 

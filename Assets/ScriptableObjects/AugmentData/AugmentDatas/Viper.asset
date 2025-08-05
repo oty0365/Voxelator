@@ -15,5 +15,5 @@ MonoBehaviour:
   augmentName: SnakeRuneName
   augmentSprite: {fileID: 932924046, guid: 9d23facc1caf4e04da566412f80986e3, type: 3}
   augmentDescription: SnakeRuneDesc
-  augmentBehavior: {fileID: 936427599004537510, guid: a4eeccdf0190e144baab46bf8e746613, type: 3}
+  augmentBehavior: {fileID: 3162992338501655723, guid: 37eef804d30754b45b1b07792ad6fce7, type: 3}
   augmentState: 2

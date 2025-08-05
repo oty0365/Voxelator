@@ -35,11 +35,13 @@ public class AugmentUI : MonoBehaviour
         {
             augmentSet[i].augmentFrame.transform.localScale = new Vector2(1, 1);
             augmentSet[i].augmentFrame.color = SetColor(datas[i].augmentState);
+            augmentSet[i].augmentFrame.GetComponent<CardUI>().isSelected = false;
             augmentSet[i].augmentFrame.gameObject.SetActive(true);
             augmentSet[i].augName.text = Scripter.Instance.Translation(datas[i].augmentName);
             augmentSet[i].augImage.sprite = datas[i].augmentSprite;
             augmentSet[i].augDesc.text = Scripter.Instance.TranslationWithVariable(datas[i].augmentDescription, Extracter.Instance.CollectAugmentsAsString(datas[i].augmentBehavior));
         }
+        
         augmentPanel.SetActive(true);
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AGData
   m_EditorClassIdentifier: 
   playerMaxHp: 60
-  playerMoveSpeed: 5
+  playerMoveSpeed: 2
   playerAtk: 0
   playerDef: 0
   playerMaxExp: 50
