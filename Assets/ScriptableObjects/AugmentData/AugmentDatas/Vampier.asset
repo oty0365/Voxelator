@@ -17,3 +17,4 @@ MonoBehaviour:
   augmentDescription: VampireRuneDesc
   augmentBehavior: {fileID: 936427599004537510, guid: a4eeccdf0190e144baab46bf8e746613, type: 3}
   augmentState: 4
+  maxAugmentedCount: 1

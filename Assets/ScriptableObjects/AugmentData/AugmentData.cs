@@ -8,4 +8,5 @@ public class AugmentData : ScriptableObject
     public string augmentDescription;
     public GameObject augmentBehavior;
     public AugmentState augmentState;
+    public int maxAugmentedCount;
 }

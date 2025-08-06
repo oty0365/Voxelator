@@ -17,3 +17,4 @@ MonoBehaviour:
   augmentDescription: SnakeRuneDesc
   augmentBehavior: {fileID: 3162992338501655723, guid: 37eef804d30754b45b1b07792ad6fce7, type: 3}
   augmentState: 2
+  maxAugmentedCount: 7

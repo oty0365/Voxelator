@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78642130b4ca9dd43a77be04b67829cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyData: {fileID: 11400000, guid: 3e0c4c30077620146aad6dbcb566e604, type: 2}
   cooldown: 1
 --- !u!114 &3619168445762013898
 MonoBehaviour:

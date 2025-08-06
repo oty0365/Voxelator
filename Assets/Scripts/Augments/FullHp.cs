@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class FullHp : MonoBehaviour,IAugment,IPoolingObject
+public class FullHp : AAugment,IPoolingObject
 {
-    public void Execute()
+    public override void Execute()
     {
         PlayerStatus.Instance.SetHp(PlayerStatus.Instance.PlayerMaxHp);
         ObjectPooler.Instance.Return(gameObject);

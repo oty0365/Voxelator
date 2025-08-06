@@ -17,3 +17,4 @@ MonoBehaviour:
   augmentDescription: DeffenceRuneDesc
   augmentBehavior: {fileID: 8684333368043560036, guid: a2a848fe90702124faf97c09a4b20923, type: 3}
   augmentState: 1
+  maxAugmentedCount: 1

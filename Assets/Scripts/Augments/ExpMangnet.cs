@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class ExpMangnet : MonoBehaviour,IAugment,IPoolingObject
+public class ExpMangnet : AAugment,IPoolingObject
 {
-    [SerializeField] private AugmentData thisData;
-    public void Execute()
+    public override void Execute()
     {
         ExpGiver.magnetToPlayer = true;
-        AugmentManager.Instance.RemoveData(thisData);
+        UpLoad();
         ObjectPooler.Instance.Return(gameObject);
     }
 

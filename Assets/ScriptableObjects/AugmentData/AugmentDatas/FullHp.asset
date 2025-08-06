@@ -17,3 +17,4 @@ MonoBehaviour:
   augmentDescription: FullRnumeDesc
   augmentBehavior: {fileID: 1655010702381805457, guid: 204aefcd2fe40b3429d39d2ed23f18b6, type: 3}
   augmentState: 4
+  maxAugmentedCount: 1

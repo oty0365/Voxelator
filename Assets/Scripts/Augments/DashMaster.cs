@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class DashMaster : MonoBehaviour,IAugment,IPoolingObject
+public class DashMaster : AAugment,IPoolingObject
 {
     [TextableAugment, SerializeField] private float cooldown;
-    public void Execute()
+    public override void Execute()
     {
         PlayerController.Instance.playerMovementData.runtimePlayerMovementData.maxDashCount++;
+        UpLoad();
         ObjectPooler.Instance.Return(gameObject);
     }
 

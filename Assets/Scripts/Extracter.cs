@@ -7,8 +7,8 @@ public class Extracter : HalfSingleMono<Extracter>
 {
     public string[] CollectAugmentAsString(GameObject target)
     {
-        var augmentComponents = target.GetComponents<MonoBehaviour>()
-            .Where(comp => comp is IAugment);
+        var augmentComponents = target.GetComponents<MonoBehaviour>();
+
 
         var allAugmentStrings = new List<string>();
 
@@ -38,14 +38,14 @@ public class Extracter : HalfSingleMono<Extracter>
     }
 
 
-    public string[] CollectAugmentsAsString(GameObject[] targets)
+  public string[] CollectAugmentsAsString(GameObject[] targets)
     {
         var allAugmentStrings = new List<string>();
-
+        
         foreach (var target in targets)
         {
             var augmentComponents = target.GetComponents<MonoBehaviour>();
-
+                
             foreach (var component in augmentComponents)
             {
                 var allFields = component.GetType()
@@ -62,7 +62,7 @@ public class Extracter : HalfSingleMono<Extracter>
                 allAugmentStrings.AddRange(fieldStrings);
             }
         }
-
+        
         return allAugmentStrings.ToArray();
     }
 

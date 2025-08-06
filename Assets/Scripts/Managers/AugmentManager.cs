@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public class AugmentStatus
+{
+    public int currentCount;
+    public int maxCount;
+}
+
 [Flags]
 public enum AugmentState
 {
@@ -18,12 +24,23 @@ public class AugmentManager : HalfSingleMono<AugmentManager>
     public event Action<AugmentData[]> setUi;
     [SerializeField] AugmentDatas augmentDatas;
     private List<AugmentData> _augmentList = new();
+    private Dictionary<AugmentData, AugmentStatus> _augmentDict = new();
     public int augmentedTime;
 
     private void Start()
     {
         _augmentList = new List<AugmentData>(augmentDatas.datas);
         StartCoroutine(CheckAugmentedTime());
+        foreach(var i in _augmentList)
+        {
+            if (!_augmentDict.ContainsKey(i))
+            {
+                var a = new AugmentStatus();
+                a.currentCount = 0;
+                a.maxCount = i.maxAugmentedCount;
+                _augmentDict.Add(i,a);
+            }
+        }
     }
 
     private void Update()
@@ -38,6 +55,25 @@ public class AugmentManager : HalfSingleMono<AugmentManager>
     {
         setUi?.Invoke(GetRandomAugments(targetStates));
         Time.timeScale = 0;
+    }
+
+    public void ConsumedAugment(AugmentData key)
+    {
+        if (_augmentDict.ContainsKey(key))
+        {
+            if (_augmentDict[key].currentCount + 1 >= _augmentDict[key].maxCount)
+            {
+                if (_augmentList.Contains(key))
+                {
+                    _augmentList.Remove(key);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            _augmentDict[key].currentCount++;
+        }
     }
 
     private IEnumerator CheckAugmentedTime()

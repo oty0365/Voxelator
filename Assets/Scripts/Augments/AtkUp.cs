@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class AtkUp : MonoBehaviour,IAugment,IPoolingObject
+public class AtkUp : AAugment,IPoolingObject
 {
     [SerializeField,TextableAugment] private float amount;
-    public void Execute()
+    public override void Execute()
     {
         PlayerStatus.Instance.SetAtk(PlayerStatus.Instance.PlayerAtk+amount);
         ObjectPooler.Instance.Return(gameObject);

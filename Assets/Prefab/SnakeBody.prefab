@@ -105,7 +105,7 @@ MonoBehaviour:
   damage: 10
   sr: {fileID: 5251685462335751593}
   target: {fileID: 0}
-  speed: 5
+  speed: 25
   rotationSpeed: 1000
 --- !u!50 &6840912954778922543
 Rigidbody2D:

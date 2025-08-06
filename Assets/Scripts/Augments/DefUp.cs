@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class DefUp : MonoBehaviour,IAugment,IPoolingObject
+public class DefUp : AAugment,IPoolingObject
 {
     [SerializeField, TextableAugment] private float amount;
-    public void Execute()
+    public override void Execute()
     {
         PlayerStatus.Instance.SetDef(PlayerStatus.Instance.PlayerDef+amount);
         ObjectPooler.Instance.Return(gameObject);

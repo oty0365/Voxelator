@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class SnakeGenerator : MonoBehaviour,IAugment,IPoolingObject
+public class SnakeGenerator : AAugment,IPoolingObject
 {
     [SerializeField] GameObject snakeBody;
-    public void Execute()
+    public override void Execute()
     {
         ObjectPooler.Instance.Get(snakeBody, PlayerStatus.Instance.gameObject.transform.position, new Vector3(0, 0, 0));
+        UpLoad();
         ObjectPooler.Instance.Return(gameObject);
     }
 

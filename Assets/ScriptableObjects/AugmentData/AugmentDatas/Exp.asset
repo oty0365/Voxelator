@@ -17,3 +17,4 @@ MonoBehaviour:
   augmentDescription: RunesOfExpDesc
   augmentBehavior: {fileID: 592833666227171419, guid: 470041790cb1a214292eaa170fe4cbba, type: 3}
   augmentState: 4
+  maxAugmentedCount: 1

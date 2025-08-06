@@ -17,3 +17,4 @@ MonoBehaviour:
   augmentDescription: MagnetRuneDesc
   augmentBehavior: {fileID: 5880953117848739262, guid: 25cd162cd9b003b48aa29d084ffb4df6, type: 3}
   augmentState: 4
+  maxAugmentedCount: 1

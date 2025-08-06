@@ -17,3 +17,4 @@ MonoBehaviour:
   augmentDescription: DashRuneDesc
   augmentBehavior: {fileID: 8954172608273962981, guid: 0792cd78cb259d641ac08d739f63d027, type: 3}
   augmentState: 4
+  maxAugmentedCount: 3

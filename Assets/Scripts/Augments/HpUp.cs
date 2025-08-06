@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class HpUp : MonoBehaviour,IAugment,IPoolingObject
+public class HpUp : AAugment,IPoolingObject
 {
     [SerializeField, TextableAugment] private float amount;
-    public void Execute()
+    public override void Execute()
     {
         PlayerStatus.Instance.SetMaxHp(PlayerStatus.Instance.PlayerMaxHp+amount);
         PlayerStatus.Instance.SetHp(PlayerStatus.Instance.PlayerHp+amount);

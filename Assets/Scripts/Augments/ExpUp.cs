@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ExpUp : MonoBehaviour,IAugment,IPoolingObject
+public class ExpUp : AAugment,IPoolingObject
 {
     [SerializeField,TextableAugment] private int amount;
-    public void Execute()
+    public override void Execute()
     {
         PlayerStatus.Instance.SetExp(PlayerStatus.Instance.PlayerExp+amount);
         ObjectPooler.Instance.Return(gameObject);
