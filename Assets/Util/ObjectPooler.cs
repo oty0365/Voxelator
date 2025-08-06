@@ -18,7 +18,9 @@ public enum PoolObjectType
     SnakeGenerator,
     Snake,
     MangnetAugment,
-    DashMasterAugment
+    DashMasterAugment,
+    HealingDroneAugment,
+    HealingDrone,
 
 }
 

@@ -46,12 +46,13 @@ public class Scripter : SingleMono<Scripter>
     {
         if (string.IsNullOrEmpty(text) || values == null || values.Length == 0 || !scripts.ContainsKey(text))
             return scripts[text].currentText;
+        var replacedText = scripts[text].currentText;
         for (int i = 0; i < values.Length; i++)
         {
             string placeholder = $"{{{i}}}";
-            text = scripts[text].currentText.Replace(placeholder, values[i]);
+            replacedText = replacedText.Replace(placeholder, values[i]);
         }
-        return text;
+        return replacedText;
     }
 
     public void LoadAllCsv()

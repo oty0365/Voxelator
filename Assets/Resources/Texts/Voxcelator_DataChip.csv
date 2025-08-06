@@ -23,6 +23,6 @@ DashRuneDesc,1,1,화면에 지정한 방향으로 돌진한다. 쿨타임은 {0}
 ThorneyCloathRuneName,1,1,가시 갑옷,Thorney Armor
 ThorneyCloathRuneDesc,1,1,적에게 피해를 받을 시 피해의 {0}%를 반사하는 가시 갑옷을 두른다.,Equips a thorn armor that reflects {0}% of incoming damage back to the attacker.
 HealingDroneRuneName,1,1,치유 드론,Healing Drone
-HealingDroneRuneDesc,1,1,{0}초간 {1}초당 {2}의 체력을 회복 시켜주는 치유 드론을 배치한다.,Deploys a healing drone for {0} seconds. \n every {1} seconds{COMMA} it will restore {2} HP.
+HealingDroneRuneDesc,1,1,{0}초당 {1}의 체력을 회복 시켜주는 치유 드론을 배치한다.,Deploys a healing drone. \n every {0} seconds{COMMA} it will restore {1} HP.
 ReapersMarkRuneName,1,1,사신의 지목,Reaper's sMark
 ReapersMarkRuneDesc,1,1,가장 가까운 적에게 지목의 갈고리를 발사한다\n 발사한 갈고리가 적과 접촉할 시 {0}의 피해를 가하고 적의 체력이{1}% 이하일 시 적을 처형한다.,Launches a Marking Hook toward the nearest enemy.\nif it hits{COMMA} deals {0} damage and executes targets with less than {1}% HP.
