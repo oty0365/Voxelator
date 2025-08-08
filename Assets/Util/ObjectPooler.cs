@@ -6,33 +6,28 @@ public enum PoolObjectType
 {
     HpUpAugment,
     FullHpAugment,
-    MoveSpeedUpAugment,
-    MoreBulletAugment,
-    ShiledAugment,
-    ExecuteAugment,
-    KnifeAugment,
-    BoomAugment,
-    CloseDealEnemyMove,
-    CloseTankEnemyMove,
-    RangedEnemyMove,
-    DashEnemyMove,
-    BulletObject,
     AtkUpAugment,
     DefUpAugment,
     OarAugment,
     HitParticle,
     ExpGiver,
-    FlyingBoom,
     PlayerHitParticle,
-    FlyingEnemyBoom,
     SFXObject,
     SpeedUpAugment,
+    ExpUpAugment,
+    SnakeGenerator,
+    Snake,
+    MangnetAugment,
+    DashMasterAugment,
+    HealingDroneAugment,
+    HealingDrone,
+
 }
 
 public class ObjectPooler : HalfSingleMono<ObjectPooler>
 {
     [FormerlySerializedAs("retruningParentObj")] [SerializeField] private GameObject returningParentObj;
-    public GameObject currentReturningParentObj;
+    private GameObject _currentReturningParentObj;
     private Dictionary<PoolObjectType, Queue<GameObject>> objectPoolList;
     private Dictionary<GameObject, IPoolingObject> componentCache;
 
@@ -96,7 +91,7 @@ public class ObjectPooler : HalfSingleMono<ObjectPooler>
             obj.SetActive(true);
         }
 
-        obj.transform.SetParent(currentReturningParentObj.transform, worldPositionStays: false);
+        obj.transform.SetParent(_currentReturningParentObj.transform, worldPositionStays: false);
         obj.SetActive(true);
         poolObj.OnBirth();
         
@@ -129,7 +124,7 @@ public class ObjectPooler : HalfSingleMono<ObjectPooler>
             obj.SetActive(true);
         }
 
-        obj.transform.SetParent(currentReturningParentObj.transform, worldPositionStays: false);
+        obj.transform.SetParent(_currentReturningParentObj.transform, worldPositionStays: false);
         poolObj.OnBirth();
         
         return obj;
@@ -173,16 +168,16 @@ public class ObjectPooler : HalfSingleMono<ObjectPooler>
         componentCache[obj] = poolObj;
         poolObj.OnDeathInit();
         obj.SetActive(false);
-        obj.transform.SetParent(currentReturningParentObj.transform, worldPositionStays: false);
+        obj.transform.SetParent(_currentReturningParentObj.transform, worldPositionStays: false);
         objectPoolList[key].Enqueue(obj);
     }
 
     private void InitPoolList()
     {
-        if (currentReturningParentObj != null)
-            Destroy(currentReturningParentObj);
+        if (_currentReturningParentObj != null)
+            Destroy(_currentReturningParentObj);
         
-        currentReturningParentObj = Instantiate(returningParentObj);
+        _currentReturningParentObj = Instantiate(returningParentObj);
         objectPoolList = new Dictionary<PoolObjectType, Queue<GameObject>>();
         componentCache = new Dictionary<GameObject, IPoolingObject>();
     }

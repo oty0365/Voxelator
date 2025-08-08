@@ -1,0 +1,28 @@
+﻿Key,Type,Priority,Ko,En
+RuneDescriptionPannel,1,1,무형의 데이터칩을 입수했다.. \n어떤 모습일까?,Ethereal Datachip secured... \nIts appearance is shrouded in mystery.
+AttackRuneName,1,1,힘의 데이터칩,Datachip Of Force
+AttackRuneDesc,1,1,힘을 <color=red>{0}</color>올린다.,Increase ATK by <color=red>{0}</color>.
+DeffenceRuneName,1,1,강인의 데이터칩,Datachip Of Citadel
+DeffenceRuneDesc,1,1,방어력을 <color=blue>{0}</color>올린다.,Increase DEF by <color=blue>{0}</color>.
+SpeedRuneName,1,1,민첩의 데이터칩,Datachip Of Agility
+SpeedRuneDesc,1,1,이동속도를 {0}올린다.,Increase MoveSpeed by {0}.
+HpRuneName,1,1,생명의 데이터칩,Datachip Of Life
+HpRuneDesc,1,1,생명력을 <color=green>{0}</color>올린다.,Increase HP by <color=green>{0}</color>
+FullRuneName,1,1,초회복의 데이터칩,Datachip Of FullHp
+FullRnumeDesc,1,1,Hp를 최대치로 회복한다.,Set your Hp to Full.
+RunesOfExpName,1,1,기억들의 데이터칩,Datachip Of Memories
+RunesOfExpDesc,1,1,모두를 추억하며 <color=yellow>{0}</color>경험치를 얻는다.,Remembering everybody then get <color=yellow>{0}</color>EXP.
+SnakeRuneName,1,1,열차:바이퍼,T.R.A.I.N:VIPER
+SnakeRuneDesc,1,1,자신의 몸 맨 끝에 접촉 시 {0}의 데미지를 주는 바이퍼콘테이너 하나를 생성한다.,Creates a Viper Container at the tip of its body \n dealing {0} damage on contact.
+MagnetRuneName,1,1,전자기장 폭풍,Magnetic Rush
+MagnetRuneDesc,1,1,필드에 존재하는 경험치를 자동으로 흡수한다.,Absorbs automaticaly EXP on Feild.
+VampireRuneName,1,1,흡혈마,Vampire
+VampireRuneDesc,1,1,적 처치 시 플레이어의 최대체력의 <color=green>{0}</color>%를 회복한다.,Drains <color=green>{0}</color>% of your FullHP while enemy slained.
+DashRuneName,1,1,대쉬마스터,Dash Master
+DashRuneDesc,1,1,화면에 지정한 방향으로 돌진한다. 쿨타임은 {0}초이다.,Launches a dash in the chosen screen direction \n with a cooldown of {0} seconds.
+ThorneyCloathRuneName,1,1,가시 갑옷,Thorney Armor
+ThorneyCloathRuneDesc,1,1,적에게 피해를 받을 시 피해의 {0}%를 반사하는 가시 갑옷을 두른다.,Equips a thorn armor that reflects {0}% of incoming damage back to the attacker.
+HealingDroneRuneName,1,1,치유 드론,Healing Drone
+HealingDroneRuneDesc,1,1,{0}초당 {1}의 체력을 회복 시켜주는 치유 드론을 배치한다.,Deploys a healing drone. \n every {0} seconds{COMMA} it will restore {1} HP.
+ReapersMarkRuneName,1,1,사신의 지목,Reaper's sMark
+ReapersMarkRuneDesc,1,1,가장 가까운 적에게 지목의 갈고리를 발사한다\n 발사한 갈고리가 적과 접촉할 시 {0}의 피해를 가하고 적의 체력이{1}% 이하일 시 적을 처형한다.,Launches a Marking Hook toward the nearest enemy.\nif it hits{COMMA} deals {0} damage and executes targets with less than {1}% HP.

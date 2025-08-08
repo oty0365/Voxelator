@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ea3175b6b068c469a188fe50335a57, type: 3}
+  m_Name: HpUp
+  m_EditorClassIdentifier: 
+  augmentName: HpRuneName
+  augmentSprite: {fileID: 134467466, guid: 99e97430e7217704c8d9a6466ce0e049, type: 3}
+  augmentDescription: HpRuneDesc
+  augmentBehavior: {fileID: 936427599004537510, guid: a4eeccdf0190e144baab46bf8e746613, type: 3}
+  augmentState: 1
+  maxAugmentedCount: 1
