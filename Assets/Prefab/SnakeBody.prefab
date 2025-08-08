@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7796c8d0ac781348a1a24e7d1f4fc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  augmentedDatasSO: {fileID: 11400000, guid: db1e3c0237b821549ae8e048bbd80647, type: 2}
   sr: {fileID: 5251685462335751593}
   target: {fileID: 0}
   speed: 25

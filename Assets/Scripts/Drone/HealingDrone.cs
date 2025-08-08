@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class HealingDrone : MonoBehaviour,IPoolingObject
 {
-    [TextableAugment, SerializeField] private float cooldown;
-    [TextableAugment, SerializeField] private float amount;
+    [SerializeField] AugmentedDatasSO augmentedDatasSO;
     [SerializeField] private float height;
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody2D rb2D;
@@ -41,8 +40,8 @@ public class HealingDrone : MonoBehaviour,IPoolingObject
     {
         while (true)
         {
-            PlayerStatus.Instance.SetHp(PlayerStatus.Instance.PlayerHp + amount);
-            yield return new WaitForSeconds(cooldown);
+            PlayerStatus.Instance.SetHp(PlayerStatus.Instance.playerHp.Value + Extracter.Instance.ParseFloat(augmentedDatasSO.datas[1]));
+            yield return new WaitForSeconds(Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
         }
 
     }

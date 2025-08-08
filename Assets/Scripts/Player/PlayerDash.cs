@@ -5,6 +5,7 @@ public class PlayerDash : MonoBehaviour
 {
     [SerializeField] private PlayerController controller;
     [SerializeField] private PlayerMovementData playerMovementData;
+    [SerializeField] private AugmentedDatasSO augmentedDatasSO;
     public float currentDashSpeed;
     private bool isDashing = false;
     private int currentDashCount;
@@ -13,8 +14,7 @@ public class PlayerDash : MonoBehaviour
     public int CurrentDashCount => currentDashCount;
     public int MaxDashCount => playerMovementData.runtimePlayerMovementData.maxDashCount;
     public bool IsDashing => isDashing;
-
-    private void Start()
+    public void ResetDashCoolDown()
     {
         currentDashCount = playerMovementData.runtimePlayerMovementData.maxDashCount;
 
@@ -51,7 +51,7 @@ public class PlayerDash : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(playerMovementData.playerMovementSO.dashCooldown);
+            yield return new WaitForSeconds(Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
 
             if (currentDashCount < playerMovementData.runtimePlayerMovementData.maxDashCount)
             {

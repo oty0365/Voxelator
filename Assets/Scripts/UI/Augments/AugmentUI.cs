@@ -40,13 +40,13 @@ public class AugmentUI : MonoBehaviour
             augmentSet[i].augName.text = Scripter.Instance.Translation(datas[i].augmentName);
             augmentSet[i].augImage.sprite = datas[i].augmentSprite;
             var text = "";
-            if (datas[i].augmentBehavior.TryGetComponent<AugmentDescriptionKeyDatas>(out var comp))
+            if (datas[i].augmentBehavior.TryGetComponent<AugmentDescriptionObj>(out var comp))
             {
-                text = Scripter.Instance.TranslationWithVariable(datas[i].augmentDescription, Extracter.Instance.CollectAugmentsAsString(comp.augmentTextTargets));
+                text = Scripter.Instance.TranslationWithVariable(datas[i].augmentDescription,comp.augmentedDatasSO.datas);
             }
             else
             {
-                text = Scripter.Instance.TranslationWithVariable(datas[i].augmentDescription, Extracter.Instance.CollectAugmentAsString(datas[i].augmentBehavior));
+                text = Scripter.Instance.Translation(datas[i].augmentDescription);
             }
             augmentSet[i].augDesc.text = text;
         }

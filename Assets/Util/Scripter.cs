@@ -50,7 +50,7 @@ public class Scripter : SingleMono<Scripter>
         for (int i = 0; i < values.Length; i++)
         {
             string placeholder = $"{{{i}}}";
-            replacedText = replacedText.Replace(placeholder, values[i]);
+            replacedText = replacedText.Replace(placeholder,Extracter.Instance.ParseFloat(values[i]).ToString());
         }
         return replacedText;
     }

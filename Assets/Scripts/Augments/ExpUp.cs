@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ExpUp : AAugment,IPoolingObject
 {
-    [SerializeField,TextableAugment] private int amount;
+    [SerializeField] AugmentedDatasSO augmentedDatasSO;
     public override void Execute()
     {
-        PlayerStatus.Instance.SetExp(PlayerStatus.Instance.PlayerExp+amount);
+        PlayerStatus.Instance.SetExp(PlayerStatus.Instance.PlayerExp + Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
         ObjectPooler.Instance.Return(gameObject);
     }
 

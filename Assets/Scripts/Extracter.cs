@@ -1,70 +1,51 @@
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEditor;
 using UnityEngine;
 
 public class Extracter : HalfSingleMono<Extracter> 
 {
-    public string[] CollectAugmentAsString(GameObject target)
+    public Dictionary<string, Stat<float>> stats = new();
+
+    public void UpLoadStats()
     {
-        var augmentComponents = target.GetComponents<MonoBehaviour>();
-
-
-        var allAugmentStrings = new List<string>();
-
-        foreach (var component in augmentComponents)
-        {
-            var allFields = component.GetType()
-                .GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-
-            var serializableFields = allFields
-                .Where(f => f.IsPublic || f.GetCustomAttribute<SerializeField>() != null);
-
-
-
-            var attributedFields = serializableFields
-                .Where(f => f.GetCustomAttribute<TextableAugmentAttribute>() != null);
-
-            var fieldStrings = attributedFields
-                .Select(f => {
-                    var value = f.GetValue(component)?.ToString() ?? "null";
-                    return value;
-                });
-
-            allAugmentStrings.AddRange(fieldStrings);
-        }
-
-        return allAugmentStrings.ToArray();
+        stats.Add("ATK", PlayerStatus.Instance.playerAtk);
+        stats.Add("DEF", PlayerStatus.Instance.playerDef);
+        stats.Add("HP", PlayerStatus.Instance.playerHp);
+        stats.Add("COOL", PlayerStatus.Instance.playerSkillCooldown);
     }
 
-
-  public string[] CollectAugmentsAsString(GameObject[] targets)
+    public float ParseFloat(string expression)
     {
-        var allAugmentStrings = new List<string>();
-        
-        foreach (var target in targets)
+        if (string.IsNullOrEmpty(expression))
+            return 0f;
+
+        foreach (var stat in stats)
         {
-            var augmentComponents = target.GetComponents<MonoBehaviour>();
-                
-            foreach (var component in augmentComponents)
+
+            string maxKey = "MAX" + stat.Key;
+            if (stat.Value is LimitedStat limitedStat)
             {
-                var allFields = component.GetType()
-                    .GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-                var serializableFields = allFields
-                    .Where(f => f.IsPublic || f.GetCustomAttribute<SerializeField>() != null);
-                var attributedFields = serializableFields
-                    .Where(f => f.GetCustomAttribute<TextableAugmentAttribute>() != null);
-                var fieldStrings = attributedFields
-                    .Select(f => {
-                        var value = f.GetValue(component)?.ToString() ?? "null";
-                        return value;
-                    });
-                allAugmentStrings.AddRange(fieldStrings);
+                expression = Regex.Replace(expression, @"\b" + maxKey + @"\b",
+                                         limitedStat.MaxValue.ToString(), RegexOptions.IgnoreCase);
             }
         }
-        
-        return allAugmentStrings.ToArray();
+        foreach (var stat in stats)
+        {
+            expression = Regex.Replace(expression, @"\b" + stat.Key + @"\b",stat.Value.Value.ToString(), RegexOptions.IgnoreCase);
+        }
+        try
+        {
+            return Convert.ToSingle(new DataTable().Compute(expression, null));
+        }
+        catch
+        {
+            return 0f;
+        }
     }
-
-
 }

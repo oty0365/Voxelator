@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3605824457017588961}
   - component: {fileID: 4620771027683306550}
   - component: {fileID: 7827493897081726139}
-  - component: {fileID: 237666286015683385}
+  - component: {fileID: -518971023894543875}
   m_Layer: 0
   m_Name: DroneAugment
   m_TagString: Untagged
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyData: {fileID: 11400000, guid: 5bc63d4e40e54224b88892891bb3ebc9, type: 2}
   healingDrone: {fileID: 5447179719464295193, guid: 9ab92322ccd3d1e4d87ef4e5f0b6afab, type: 3}
---- !u!114 &237666286015683385
+--- !u!114 &-518971023894543875
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,8 +70,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7026571366832352707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2aa06036731173b48b13e1b7f2f41eeb, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b2528a6cb2a6fc45bee6c0e1be71542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  augmentTextTargets:
-  - {fileID: 5447179719464295193, guid: 9ab92322ccd3d1e4d87ef4e5f0b6afab, type: 3}
+  augmentedDatasSO: {fileID: 11400000, guid: 888959e48c9bd434ea43e2b75a4df89f, type: 2}

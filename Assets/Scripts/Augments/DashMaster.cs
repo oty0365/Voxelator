@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class DashMaster : AAugment,IPoolingObject
 {
-    [TextableAugment, SerializeField] private float cooldown;
     public override void Execute()
     {
         PlayerController.Instance.playerMovementData.runtimePlayerMovementData.maxDashCount++;

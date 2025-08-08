@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6320187874955142167}
   - component: {fileID: 1200729738188830810}
   - component: {fileID: 3619168445762013898}
+  - component: {fileID: -812736575288820729}
   m_Layer: 0
   m_Name: DashMaster
   m_TagString: Untagged
@@ -46,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyData: {fileID: 11400000, guid: 3e0c4c30077620146aad6dbcb566e604, type: 2}
-  cooldown: 1
 --- !u!114 &3619168445762013898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +60,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectType: 14
+--- !u!114 &-812736575288820729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954172608273962981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2528a6cb2a6fc45bee6c0e1be71542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  augmentedDatasSO: {fileID: 11400000, guid: c69b48edf1a5e374bb2e5291d5eca7b1, type: 2}

@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class AtkUp : AAugment,IPoolingObject
 {
-    [SerializeField,TextableAugment] private float amount;
+    public AugmentedDatasSO augmentedDatasSO;
     public override void Execute()
     {
-        PlayerStatus.Instance.SetAtk(PlayerStatus.Instance.PlayerAtk+amount);
+        PlayerStatus.Instance.SetAtk(PlayerStatus.Instance.playerAtk.Value + Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
         ObjectPooler.Instance.Return(gameObject);
     }
 

@@ -1068,6 +1068,7 @@ GameObject:
   - component: {fileID: 192943261}
   - component: {fileID: 192943262}
   - component: {fileID: 192943263}
+  - component: {fileID: 192943264}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -1127,6 +1128,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bd286ab73b779340861a5ba52bd13fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &192943264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192943259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0087dd121069554982cd254ea392a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &201334883
@@ -4206,6 +4219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1478564949}
   playerMovementData: {fileID: 1478564947}
+  augmentedDatasSO: {fileID: 11400000, guid: c69b48edf1a5e374bb2e5291d5eca7b1, type: 2}
   currentDashSpeed: 1
 --- !u!114 &1478564949
 MonoBehaviour:
