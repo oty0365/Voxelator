@@ -7,7 +7,7 @@ public enum PlayerMoves
     Dash
 }
 
-public class PlayerController : HalfSingleMono<PlayerController>
+public class PlayerController : SceneSingletonMonoBehaviour<PlayerController>
 {
     [SerializeField] private Rigidbody2D rb2D;
     public PlayerMovementData playerMovementData;

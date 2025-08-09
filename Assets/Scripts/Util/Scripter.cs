@@ -21,7 +21,7 @@ public class Script
     public string currentText;
 }
 
-public class Scripter : SingleMono<Scripter>
+public class Scripter : SingletonMonoBehaviour<Scripter>
 {
     public Language curLanguage;
     [SerializeField] private ScriptingArray array;

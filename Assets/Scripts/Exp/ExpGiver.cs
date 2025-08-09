@@ -39,7 +39,7 @@ public class ExpGiver : MonoBehaviour,IPoolingObject
             yield return new WaitForSeconds(0.05f);
         }
         PlayerStatus.Instance.SetExp(PlayerStatus.Instance.PlayerExp + expAmount);
-        ObjectPooler.Instance.Return(gameObject);
+        ObjectPoolManager.Instance.Return(gameObject);
 
     }
 

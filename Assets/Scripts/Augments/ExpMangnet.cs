@@ -6,7 +6,7 @@ public class ExpMangnet : AAugment,IPoolingObject
     {
         ExpGiver.magnetToPlayer = true;
         UpLoad();
-        ObjectPooler.Instance.Return(gameObject);
+        ObjectPoolManager.Instance.Return(gameObject);
     }
 
     public void OnBirth()

@@ -2,15 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
+using UnityEditor;
 using UnityEngine;
 
-public class PlayerStatus : HalfSingleMono<PlayerStatus>
+public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
 {
+    [Header("UI연동")]
+    [SerializeField] private PlayerStatusUI playerStatusUI;
+    [Header("상태")]
     public bool isInfinite;
-    public event Action<float> OnMaxExp;
-    public event Action<int> OnLevelUp;
-    public event Action<float> OnExp;
-
+    [Header("충돌")]
     [SerializeField] private PlayerBasicStatusData playerBasicStatusData;
     [SerializeField] private Collider2D collider2D;
     [SerializeField] private LayerMask layerMask;
@@ -23,6 +24,9 @@ public class PlayerStatus : HalfSingleMono<PlayerStatus>
     public UnlimitedStat playerMoveSpeed = new();
     public UnlimitedStat playerAttackSpeed = new();
     public LimitedStat playerSkillCooldown = new();
+    public event Action<float> OnMaxExp;
+    public event Action<int> OnLevelUp;
+    public event Action<float> OnExp;
 
     private float _playerExp;
     private int _playerLevel;
@@ -127,14 +131,6 @@ public class PlayerStatus : HalfSingleMono<PlayerStatus>
     }
     public void ResetStatus()
     {
-        playerHp.OnChanged += PlayerStatusUI.Instance.SetHp;
-        playerAtk.OnChanged += PlayerStatusUI.Instance.SetAtk;
-        playerDef.OnChanged += PlayerStatusUI.Instance.SetDef;
-        OnMaxExp += PlayerStatusUI.Instance.SetMaxExp;
-        OnExp += PlayerStatusUI.Instance.SetExp;
-        OnLevelUp += PlayerStatusUI.Instance.SetLevel;
-
-
         playerHp.MaxValue = playerBasicStatusData.playerMaxHp;
         playerHp.Value = playerHp.MaxValue;
         playerMoveSpeed.Value = playerBasicStatusData.playerMoveSpeed;
@@ -202,5 +198,31 @@ public class PlayerStatus : HalfSingleMono<PlayerStatus>
         }
 
         _infiniteTimeFlow = StartCoroutine(InfiniteTimeFlow(infiniteTime));
+    }
+    public void Subscribe()
+    {
+        playerHp.OnChanged += playerStatusUI.SetHp;
+        playerAtk.OnChanged += playerStatusUI.SetAtk;
+        playerDef.OnChanged += playerStatusUI.SetDef;
+        OnMaxExp += playerStatusUI.SetMaxExp;
+        OnExp += playerStatusUI.SetExp;
+        OnLevelUp += playerStatusUI.SetLevel;
+    }
+    public void Unsubscribe()
+    {
+        playerHp.OnChanged -= playerStatusUI.SetHp;
+        playerAtk.OnChanged -= playerStatusUI.SetAtk;
+        playerDef.OnChanged -= playerStatusUI.SetDef;
+        OnMaxExp -= playerStatusUI.SetMaxExp;
+        OnExp -= playerStatusUI.SetExp;
+        OnLevelUp -= playerStatusUI.SetLevel;
+    }
+    private void OnEnable()
+    {
+        Subscribe();
+    }
+    private void OnDisable()
+    {
+        Unsubscribe();
     }
 }

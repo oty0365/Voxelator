@@ -6,7 +6,7 @@ public class AtkUp : AAugment,IPoolingObject
     public override void Execute()
     {
         PlayerStatus.Instance.SetAtk(PlayerStatus.Instance.playerAtk.Value + Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
-        ObjectPooler.Instance.Return(gameObject);
+        ObjectPoolManager.Instance.Return(gameObject);
     }
 
     public void OnBirth()

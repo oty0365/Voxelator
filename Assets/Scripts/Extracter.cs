@@ -8,7 +8,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor;
 using UnityEngine;
 
-public class Extracter : HalfSingleMono<Extracter> 
+public class Extracter : SceneSingletonMonoBehaviour<Extracter> 
 {
     public Dictionary<string, Stat<float>> stats = new();
 

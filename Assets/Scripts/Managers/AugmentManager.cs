@@ -19,10 +19,12 @@ public enum AugmentState
     Util = 1 << 2,
 }
 
-public class AugmentManager : HalfSingleMono<AugmentManager>
+public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
 {
-    public event Action<AugmentData[]> setUi;
+
     [SerializeField] AugmentDatas augmentDatas;
+    [SerializeField] AugmentUI augmentUI;
+    private event Action<AugmentData[]> setUi;
     private List<AugmentData> _augmentList = new();
     private Dictionary<AugmentData, AugmentStatus> _augmentDict = new();
     public int augmentedTime;
@@ -115,5 +117,21 @@ public class AugmentManager : HalfSingleMono<AugmentManager>
             filteredAugments[2],
             filteredAugments[3]
         };
+    }
+    public void Subscribe()
+    {
+        setUi += augmentUI.UpdateUI;
+    }
+    public void Unsubscribe()
+    {
+        setUi -= augmentUI.UpdateUI;
+    }
+    private void OnEnable()
+    {
+        Subscribe();
+    }
+    private void OnDisable()
+    {
+        Unsubscribe();
     }
 }

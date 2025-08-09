@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : HalfSingleMono<PlayerInput>
+public class PlayerInput : SceneSingletonMonoBehaviour<PlayerInput>
 {
     [SerializeField] private PlayerMove playerMove;
     [SerializeField] private PlayerDash playerDash;

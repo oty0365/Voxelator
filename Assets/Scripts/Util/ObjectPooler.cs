@@ -24,7 +24,7 @@ public enum PoolObjectType
 
 }
 
-public class ObjectPooler : HalfSingleMono<ObjectPooler>
+public class ObjectPoolManager : SceneSingletonMonoBehaviour<ObjectPoolManager>
 {
     [FormerlySerializedAs("retruningParentObj")] [SerializeField] private GameObject returningParentObj;
     private GameObject _currentReturningParentObj;

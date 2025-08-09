@@ -1,5 +1,6 @@
 using UnityEngine;
-public abstract class SingleMono<T> : MonoBehaviour where T : MonoBehaviour
+
+public abstract class SceneSingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T _instance;
 
@@ -8,7 +9,7 @@ public abstract class SingleMono<T> : MonoBehaviour where T : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance =FindFirstObjectByType<T>();
+                _instance = FindFirstObjectByType<T>();
             return _instance;
         }
     }
@@ -18,11 +19,10 @@ public abstract class SingleMono<T> : MonoBehaviour where T : MonoBehaviour
         if (_instance == null)
         {
             _instance = this as T;
-            DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)
         {
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
 }
