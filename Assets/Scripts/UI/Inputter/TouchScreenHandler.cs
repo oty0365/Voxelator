@@ -10,7 +10,7 @@ public class TouchScreenHandler : MonoBehaviour, IPointerDownHandler
     private void Start()
     {
         dashDirInputer += PlayerInput.Instance.OnDash;
-        rotationInputer += PlayerInput.Instance.OnRotate;
+        rotationInputer += PlayerInput.Instance.OnFlip;
     }
 
     public void OnPointerDown(PointerEventData eventData)

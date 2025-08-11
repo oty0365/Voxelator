@@ -5,7 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private PlayerController controller;
+    private PlayerController controller;
+
+    public void Start()
+    {
+        controller = PlayerController.Instance;
+    }
+
     public void SetDir(Vector2 dir)
     {
         if (controller.playerMoves == PlayerMoves.Dash)
@@ -15,7 +21,7 @@ public class PlayerMove : MonoBehaviour
         controller.currentDir = dir;
         if (dir == Vector2.zero)
         {
-            controller.playerMoves = PlayerMoves.None;
+            controller.playerMoves = PlayerMoves.Idle;
             return;
         }
         controller.playerMoves = PlayerMoves.Walk;

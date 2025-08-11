@@ -30,7 +30,7 @@ public class JoyStickHandle : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         _originJoyImage = originJoyTransform.GetComponent<Image>();
         _originJoyImage.enabled = false;
         moveDirInputer += PlayerInput.Instance.OnMove;
-        rotationInputer += PlayerInput.Instance.OnRotate;
+        rotationInputer += PlayerInput.Instance.OnFlip;
         _canvas = GetComponentInParent<Canvas>();
         if (_canvas.renderMode == RenderMode.ScreenSpaceCamera)
         {
