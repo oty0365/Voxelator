@@ -25,4 +25,10 @@ ThorneyCloathRuneDesc,1,1,적에게 피해를 받을 시 피해의 {0}%를 반�
 HealingDroneRuneName,1,1,치유 드론,Healing Drone
 HealingDroneRuneDesc,1,1,{0}초당 {1}의 체력을 회복 시켜주는 치유 드론을 배치한다.,Deploys a healing drone. \n every {0} seconds{COMMA} it will restore {1} HP.
 ReapersMarkRuneName,1,1,사신의 지목,Reaper's sMark
-ReapersMarkRuneDesc,1,1,가장 가까운 적에게 지목의 갈고리를 발사한다\n 발사한 갈고리가 적과 접촉할 시 {0}의 피해를 가하고 적의 체력이{1}% 이하일 시 적을 처형한다.,Launches a Marking Hook toward the nearest enemy.\nif it hits{COMMA} deals {0} damage and executes targets with less than {1}% HP.
+ReapersMarkRuneDesc,1,1,가장 가까운 적에게 지목의 갈고리를 발사한다\n 발사한 갈고리가 적과 접촉할 시 {0}의 고정 피해를 가하고 적의 체력이{1}% 이하일 시 적을 처형한다.,Launches a Marking Hook toward the nearest enemy.\nif it hits{COMMA} deals {0} damage and executes targets with less than {1}% HP.
+LongSwordRuneName,1,1,직검,LongSword
+LongSwordRuneDesc,1,1,모든 기사와 견습생들이 선호하는 가장 기본적인 무기이다.\n<color=#FF7272>{0}</color>만큼의 피해를 준다.,The most basic weapon favored by all knights and apprentices.\nDeals <color=#FF7272>{0}</color>damage.
+ThorneyShieldRuneName,1,1,가시 방패,Thorney Shield
+ThorneyShieldRuneDesc,1,1,공격을 막는 방패보단 적을 광역적으로 공격하는데 특화된 방패.\n<color=#FF7272>{0}</color>만큼의 피해를 준다.,A shield specialized not in blocking attacks{COMMA} but in striking enemies over a wide area.\nDeals <color=#FF7272>{0}</color>damage.
+CrystalMagicStaffRuneName,1,1,수정 마법봉,Crystal Staff
+CrystalMagicStaffRuneDesc,1,1,<color=#E669FF>마법</color> 얼음 고드름: <color=#FF7272>{0}</color>의 피해를 입히는 얼음 고드름을 {1}초에 한번씩 생성한다.,<color=#E669FF>Magic</color> Icicle: Creates an icicle that deals <color=#FF7272>{0}</color> damage once every {1} seconds.

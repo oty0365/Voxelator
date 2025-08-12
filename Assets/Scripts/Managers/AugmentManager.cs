@@ -52,6 +52,14 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
             AugmentSelection(AugmentState.Stat | AugmentState.Weapon | AugmentState.Util);
         }
     }
+    public int GetAugmentedCount(AugmentData key)
+    {
+        if (_augmentDict.ContainsKey(key))
+        {
+            return _augmentDict[key].currentCount;
+        }
+        return 0;
+    }
 
     public void AugmentSelection(AugmentState targetStates)
     {
