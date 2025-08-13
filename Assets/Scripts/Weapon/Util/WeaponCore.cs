@@ -27,7 +27,7 @@ public class WeaponCore : MonoBehaviour,IPoolingObject
         while (true)
         {
             gameObject.transform.position = PlayerStatus.Instance.gameObject.transform.position;
-            yield return new WaitForSeconds(0.01f);
+            yield return null;
         }
     }
     private void Update()
