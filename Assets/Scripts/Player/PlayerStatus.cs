@@ -7,11 +7,11 @@ using UnityEngine;
 
 public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
 {
-    [Header("UI¿¬µ¿")]
+    [Header("UI")]
     [SerializeField] private PlayerStatusUI playerStatusUI;
-    [Header("»óÅÂ")]
+    [Header("ë¬´ì ìƒíƒœì¸ì§€ í™•ì¸")]
     public bool isInfinite;
-    [Header("Ãæµ¹")]
+    [Header("í”Œë ˆì´ì–´ ì„¤ì •")]
     [SerializeField] private PlayerBasicStatusData playerBasicStatusData;
     [SerializeField] private Collider2D collider2D;
     [SerializeField] private LayerMask layerMask;
