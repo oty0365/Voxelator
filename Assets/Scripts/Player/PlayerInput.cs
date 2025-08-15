@@ -1,25 +1,23 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class PlayerInput : HalfSingleMono<PlayerInput>
+public class PlayerInput : SceneSingletonMonoBehaviour<PlayerInput>
 {
     [SerializeField] private PlayerMove playerMove;
     [SerializeField] private PlayerDash playerDash;
-    private void Start()
-    {
-        
-    }
+    [SerializeField] private PlayerApperence apperence;
     public void OnMove(Vector2 dir)
     {
         playerMove.SetDir(dir);
     }
-    public void OnRotate(Vector2 dir)
+    public void OnFlip(Vector2 dir)
     {
-        playerMove.SetRotaion(dir);
+        apperence.SetFlip(dir);
+        //playerMove.SetRotaion(dir);
     }
     public void OnDash(Vector2 dir)
     {
         playerDash.Dash(dir);
     }
+  
 }

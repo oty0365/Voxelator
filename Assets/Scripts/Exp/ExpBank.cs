@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ExpBank : HalfSingleMono<ExpBank>
+public class ExpBank : SceneSingletonMonoBehaviour<ExpBank>
 {
     public GameObject exp;
 }

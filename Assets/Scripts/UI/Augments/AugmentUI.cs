@@ -16,6 +16,7 @@ public class AugmentSet
 }
 public class AugmentUI : MonoBehaviour
 {
+
     [SerializeField] private GameObject augmentPanel;
     [SerializeField] AugmentSet[] augmentSet;
     private AugmentData[] augmentDatas;
@@ -24,11 +25,10 @@ public class AugmentUI : MonoBehaviour
     private void Start()
     {
         augmentPanel.SetActive(false);
-        AugmentManager.Instance.setUi+=UpdateUI;
     }
 
 
-    private void UpdateUI(AugmentData[] datas)
+    public void UpdateUI(AugmentData[] datas)
     {
         augmentDatas = datas;
         for (var i = 0; i < augmentSet.Length; i++)
@@ -103,7 +103,7 @@ public class AugmentUI : MonoBehaviour
             currentSize=Mathf.Lerp(currentSize, 0, 11f * Time.unscaledDeltaTime);
             yield return null;
         }
-        ObjectPooler.Instance.Get(augmentDatas[index].augmentBehavior.gameObject, center.transform.position, Vector2.zero);
+        ObjectPoolManager.Instance.Get(augmentDatas[index].augmentBehavior.gameObject, center.transform.position, Vector2.zero);
         Time.timeScale = 1;
         currentTransform.position = originPos;
         augmentPanel.SetActive(false);

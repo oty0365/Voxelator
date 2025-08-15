@@ -21,10 +21,15 @@ public enum PoolObjectType
     DashMasterAugment,
     HealingDroneAugment,
     HealingDrone,
+    Waterway,
+    CoreSetter,
+    LongSwordAugment,
+    LongSword,
+
 
 }
 
-public class ObjectPooler : HalfSingleMono<ObjectPooler>
+public class ObjectPoolManager : SceneSingletonMonoBehaviour<ObjectPoolManager>
 {
     [FormerlySerializedAs("retruningParentObj")] [SerializeField] private GameObject returningParentObj;
     private GameObject _currentReturningParentObj;

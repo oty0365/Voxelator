@@ -6,7 +6,7 @@ public class DashMaster : AAugment,IPoolingObject
     {
         PlayerController.Instance.playerMovementData.runtimePlayerMovementData.maxDashCount++;
         UpLoad();
-        ObjectPooler.Instance.Return(gameObject);
+        ObjectPoolManager.Instance.Return(gameObject);
     }
 
     public void OnBirth()

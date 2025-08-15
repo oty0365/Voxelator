@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameFlowManager : HalfSingleMono<GameFlowManager>
+public class GameFlowManager : SceneSingletonMonoBehaviour<GameFlowManager>
 {
     void Start()
     {

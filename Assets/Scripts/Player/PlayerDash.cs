@@ -43,7 +43,7 @@ public class PlayerDash : MonoBehaviour
         yield return new WaitForSeconds(playerMovementData.playerMovementSO.dashTime);
         currentDashSpeed = 1;
         controller.currentDir = Vector2.zero;
-        controller.playerMoves = PlayerMoves.None;
+        controller.playerMoves = PlayerMoves.Idle;
         isDashing = false;
     }
 

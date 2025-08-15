@@ -7,7 +7,7 @@ public class HpUp : AAugment,IPoolingObject
     {
         PlayerStatus.Instance.SetMaxHp(PlayerStatus.Instance.playerHp.MaxValue + Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
         PlayerStatus.Instance.SetHp(PlayerStatus.Instance.playerHp.Value + Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
-        ObjectPooler.Instance.Return(gameObject);
+        ObjectPoolManager.Instance.Return(gameObject);
     }
 
     public void OnBirth()

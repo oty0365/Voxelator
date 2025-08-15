@@ -6,7 +6,7 @@ public class DefUp : AAugment,IPoolingObject
     public override void Execute()
     {
         PlayerStatus.Instance.SetDef(PlayerStatus.Instance.playerDef.Value + Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
-        ObjectPooler.Instance.Return(gameObject);
+        ObjectPoolManager.Instance.Return(gameObject);
     }
 
     public void OnBirth()

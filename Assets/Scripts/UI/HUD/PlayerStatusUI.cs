@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatusUI : HalfSingleMono<PlayerStatusUI>
+public class PlayerStatusUI : MonoBehaviour
 {
     [SerializeField] private Slider playerExp;
     [SerializeField] private TextMeshProUGUI playerLevelText;
