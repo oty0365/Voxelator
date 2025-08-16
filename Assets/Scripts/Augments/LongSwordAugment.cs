@@ -3,7 +3,7 @@ using UnityEngine;
 public class LongSwordAugment : AAugment,IPoolingObject
 {
     public static GameObject core;
-    [SerializeField] private WeaponCoreDatas weaponCoreDatas;
+    [SerializeField] private WeaponCoreDataSO weaponCoreDatas;
     public void OnBirth()
     {
         Execute();

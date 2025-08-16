@@ -5,7 +5,6 @@ using UnityEngine;
 public class SnakeBody : MonoBehaviour,IPoolingObject
 {
     [SerializeField] private AugmentedDatasSO augmentedDatasSO;
-    [SerializeField] private SpriteRenderer sr;
     public GameObject target;
     public float speed;
     public float rotationSpeed;
@@ -17,7 +16,6 @@ public class SnakeBody : MonoBehaviour,IPoolingObject
     }
     public void OnBirth()
     {
-        sr.sprite = PlayerApperence.Instance.playerSkin.sprite;
         if (parent == null)
         {
             target = PlayerStatus.Instance.gameObject;

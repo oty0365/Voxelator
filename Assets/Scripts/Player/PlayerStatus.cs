@@ -12,7 +12,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     [Header("무적상태인지 확인")]
     public bool isInfinite;
     [Header("플레이어 설정")]
-    [SerializeField] private PlayerBasicStatusData playerBasicStatusData;
+    [SerializeField] private PlayerBasicStatusDataSO playerBasicStatusData;
     [SerializeField] private Collider2D collider2D;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private LayerMask originMask;

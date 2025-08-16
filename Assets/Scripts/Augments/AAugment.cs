@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class AAugment : MonoBehaviour
 {
-    public AugmentData keyData;
+    public AugmentDataSO keyData;
 
     public abstract void Execute();
     public void UpLoad() 

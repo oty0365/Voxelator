@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AugmentDatas", menuName = "Scriptable Objects/AugmentDatas")]
-public class AugmentDatas : ScriptableObject
+public class AugmentDatasSO : ScriptableObject
 {
-    public AugmentData[] datas;
+    public AugmentDataSO[] datas;
 }

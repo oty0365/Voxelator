@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class WeaponSetter : MonoBehaviour
 {
-    public WeaponCoreDatas weaponCoreDatas;
-    public AugmentData parentData;
+    public WeaponCoreDataSO weaponCoreDatas;
+    public AugmentDataSO parentData;
        
     public void SetWeapons()
     {
