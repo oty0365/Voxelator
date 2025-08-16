@@ -19,7 +19,7 @@ public class AugmentUI : MonoBehaviour
 
     [SerializeField] private GameObject augmentPanel;
     [SerializeField] AugmentSet[] augmentSet;
-    private AugmentData[] augmentDatas;
+    private AugmentDataSO[] augmentDatas;
     [SerializeField] private RectTransform center;
 
     private void Start()
@@ -28,7 +28,7 @@ public class AugmentUI : MonoBehaviour
     }
 
 
-    public void UpdateUI(AugmentData[] datas)
+    public void UpdateUI(AugmentDataSO[] datas)
     {
         augmentDatas = datas;
         for (var i = 0; i < augmentSet.Length; i++)

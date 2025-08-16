@@ -24,7 +24,7 @@ public class Script
 public class Scripter : SingletonMonoBehaviour<Scripter>
 {
     public Language curLanguage;
-    [SerializeField] private ScriptingArray array;
+    [SerializeField] private ScriptingArraySO array;
     public Dictionary<string, Script> scripts = new();
 
     protected override void Awake()
@@ -62,7 +62,7 @@ public class Scripter : SingletonMonoBehaviour<Scripter>
             TextAsset csv = Resources.Load<TextAsset>("Texts/"+i);
             if (csv == null)
             {
-                Debug.LogError($"CSV ÆÄÀÏ {i} À»(¸¦) Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+                Debug.LogError($"CSV ï¿½ï¿½ï¿½ï¿½ {i} ï¿½ï¿½(ï¿½ï¿½) Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
                 return;
             }
             string[] lines = csv.text.Split('\n');

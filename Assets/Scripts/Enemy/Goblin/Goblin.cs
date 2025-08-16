@@ -2,52 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goblin : Enemy,IPoolingObject
+public class Goblin : AEnemy, IPoolingObject, IFootSteper
 {
+    [SerializeField] private FootStepEffect footStepEffect;
+    public void StartStep()=>footStepEffect.StartStep();
+    public void EndStep()=>footStepEffect.EndStep();
+    
     private void Start()
     {
         Initialize();
-        var moveTowards = new GoblinMoveTowards(this);
+        var moveTowards = new EnemyMoveTowards(this);
         fsm.RegisterState("Run", moveTowards);
         fsm.ChangeState("Run");
     }
     public void OnBirth()
     {
         Initialize();
-        var moveTowards = new GoblinMoveTowards(this);
+        var moveTowards = new EnemyMoveTowards(this);
         fsm.RegisterState("Run", moveTowards);
         fsm.ChangeState("Run");
     }
 
     public void OnDeathInit()
     {
-        
-    }
-}
-public class GoblinMoveTowards : IState
-{
-    private Enemy _enemy;
-        
-    public GoblinMoveTowards(Enemy enemy)
-    {
-        this._enemy = enemy;
-    }
-        
-    public void Enter()
-    {
-        _enemy.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_enemy.enemyData.moveSpeed.Value;
+        EndStep();
     }
 
-    public void FixedExecute()
+    public override void Initialize()
     {
-        _enemy.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_enemy.enemyData.moveSpeed.Value;
-    }
-    public void Execute()
-    { 
-        _enemy.FacePlayer();
-    }
-    public void Exit()
-    {
+        base.Initialize();
+        StartStep();
         
     }
 }

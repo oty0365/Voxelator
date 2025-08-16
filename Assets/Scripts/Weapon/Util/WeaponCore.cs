@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponCore : MonoBehaviour,IPoolingObject
 {
     [SerializeField] private WeaponSetter weaponSetter;
-    public WeaponCoreDatas weaponCoreDatas;
+    public WeaponCoreDataSO weaponCoreDatas;
     private Coroutine _currentMoveFlow;
     public void OnBirth()
     {

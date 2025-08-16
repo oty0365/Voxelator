@@ -22,16 +22,16 @@ public enum AugmentState
 public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
 {
 
-    [SerializeField] AugmentDatas augmentDatas;
+    [SerializeField] AugmentDatasSO augmentDatas;
     [SerializeField] AugmentUI augmentUI;
-    private event Action<AugmentData[]> setUi;
-    private List<AugmentData> _augmentList = new();
-    private Dictionary<AugmentData, AugmentStatus> _augmentDict = new();
+    private event Action<AugmentDataSO[]> setUi;
+    private List<AugmentDataSO> _augmentList = new();
+    private Dictionary<AugmentDataSO, AugmentStatus> _augmentDict = new();
     public int augmentedTime;
 
     private void Start()
     {
-        _augmentList = new List<AugmentData>(augmentDatas.datas);
+        _augmentList = new List<AugmentDataSO>(augmentDatas.datas);
         StartCoroutine(CheckAugmentedTime());
         foreach(var i in _augmentList)
         {
@@ -52,7 +52,7 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
             AugmentSelection(AugmentState.Stat | AugmentState.Weapon | AugmentState.Util);
         }
     }
-    public int GetAugmentedCount(AugmentData key)
+    public int GetAugmentedCount(AugmentDataSO key)
     {
         if (_augmentDict.ContainsKey(key))
         {
@@ -67,7 +67,7 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
         Time.timeScale = 0;
     }
 
-    public void ConsumedAugment(AugmentData key)
+    public void ConsumedAugment(AugmentDataSO key)
     {
         if (_augmentDict.ContainsKey(key))
         {
@@ -99,12 +99,12 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
         }
     }
 
-    public void RemoveData(AugmentData data)
+    public void RemoveData(AugmentDataSO data)
     {
         _augmentList.Remove(data);
     }
 
-    private AugmentData[] GetRandomAugments(AugmentState targetStates)
+    private AugmentDataSO[] GetRandomAugments(AugmentState targetStates)
     {
         var filteredAugments = _augmentList.Where(augment =>(augment.augmentState & targetStates) != 0).ToList();
 
@@ -119,7 +119,7 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
             (filteredAugments[i], filteredAugments[randIndex]) = (filteredAugments[randIndex], filteredAugments[i]);
         }
 
-        return new AugmentData[] {
+        return new AugmentDataSO[] {
             filteredAugments[0],
             filteredAugments[1],
             filteredAugments[2],
