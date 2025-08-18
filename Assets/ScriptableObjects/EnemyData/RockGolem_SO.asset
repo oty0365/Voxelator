@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ceed4e4b0942d942ab9acd61f7c8eb2, type: 3}
+  m_Name: RockGolem_SO
+  m_EditorClassIdentifier: 
+  health:
+    maxRange: 15
+    minRange: 25
+  expDrop:
+    maxRange: 8
+    minRange: 15
+  baseAttack:
+    maxRange: 1
+    minRange: 1
+  baseDefense:
+    maxRange: 1
+    minRange: 2
+  entityType: 2
+  moveSpeed: 0.5

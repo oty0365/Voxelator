@@ -12,7 +12,7 @@ public class RunTimeEnemyData
 
 }
 
-public abstract class AEnemy : MonoBehaviour
+public abstract class AEnemy : MonoBehaviour,IDamageStat
 {
     [SerializeField] private EnemyDataSO baseEnemyData;
     public RunTimeEnemyData enemyData = new();
@@ -50,6 +50,11 @@ public abstract class AEnemy : MonoBehaviour
         {
             sr.flipX = false;
         }
+    }
+
+    public float GetStat()
+    {
+        return enemyData.baseAttack.Value;
     }
 
     private IEnumerator HitFlow()
@@ -128,25 +133,52 @@ public abstract class AEnemy : MonoBehaviour
 }
 public class EnemyMoveTowards : IState
 {
-    private AEnemy _goblin;
+    private AEnemy _enemy;
         
     public EnemyMoveTowards(AEnemy enemy)
     {
-        this._goblin = enemy;
+        this._enemy = enemy;
     }
         
     public void Enter()
     {
-        _goblin.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_goblin.gameObject.transform.position).normalized*_goblin.enemyData.moveSpeed.Value;
+        _enemy.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_enemy.enemyData.moveSpeed.Value;
     }
 
     public void FixedExecute()
     {
-        _goblin.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_goblin.gameObject.transform.position).normalized*_goblin.enemyData.moveSpeed.Value;
+        _enemy.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_enemy.enemyData.moveSpeed.Value;
     }
     public void Execute()
     { 
-        _goblin.FacePlayer();
+        _enemy.FacePlayer();
+    }
+    public void Exit()
+    {
+        
+    }
+}
+public class EnemyMoveTowardsNonFlip : IState
+{
+    private AEnemy _enemy;
+        
+    public EnemyMoveTowardsNonFlip(AEnemy enemy)
+    {
+        this._enemy = enemy;
+    }
+        
+    public void Enter()
+    {
+        _enemy.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_enemy.enemyData.moveSpeed.Value;
+    }
+
+    public void FixedExecute()
+    {
+        _enemy.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_enemy.enemyData.moveSpeed.Value;
+    }
+    public void Execute()
+    { 
+        
     }
     public void Exit()
     {

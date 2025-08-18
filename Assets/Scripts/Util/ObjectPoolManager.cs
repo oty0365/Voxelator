@@ -25,6 +25,7 @@ public enum PoolObjectType
     CoreSetter,
     LongSwordAugment,
     LongSword,
+    HitEffect,
 
 
 }
