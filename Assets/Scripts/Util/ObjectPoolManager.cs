@@ -26,6 +26,10 @@ public enum PoolObjectType
     LongSwordAugment,
     LongSword,
     HitEffect,
+    RockGolem,
+    Goblin,
+    PlainChopperYouth
+    
 
 
 }

@@ -17,3 +17,5 @@ MonoBehaviour:
     data: {fileID: 7087632177871736754, guid: f86be19ced665284eb4519a03782806b, type: 3}
   - name: Exp
     data: {fileID: 2609676869748365458, guid: 09826456ddbf6a84ab030aca7d22e4cc, type: 3}
+  - name: HitParticle
+    data: {fileID: 3650066380682929340, guid: db67fa537b6c9f546baa2487162f90fa, type: 3}

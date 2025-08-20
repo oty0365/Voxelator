@@ -15,14 +15,13 @@ public class RunTimeEnemyData
 public abstract class AEnemy : MonoBehaviour,IDamageStat
 {
     [SerializeField] private EnemyDataSO baseEnemyData;
+    public CharacterType characterType;
     public RunTimeEnemyData enemyData = new();
     public Rigidbody2D rb2D;
     public Fsm fsm;
     public SpriteRenderer sr;
     protected MaterialPropertyBlock _metProps;
     protected Coroutine _currentHitFlow;
-    //피격 이후 효과는 나중에 이펙터같은 클래스 하나 만들어서 해결하는 방식으로 하겠습니다
-    //public GameObject hitEffect;
 
     public virtual void Initialize()
     {
@@ -88,46 +87,45 @@ public abstract class AEnemy : MonoBehaviour,IDamageStat
 
     public virtual void Drop()
     {
-        var a = ObjectPoolManager.Instance.Get(ExpBank.Instance.exp, transform.position, new Vector3(0, 0, 45));
+        var a = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get("Exp"), transform.position, new Vector3(0, 0, 45));
         a.GetComponent<ExpGiver>().expAmount = enemyData.expDrop;
     }
-    //몬스터 피격판정은 플레이어 피격판정 이후에 만들 것이고 플레이어와 다르게 다중히트 허용이니 그것도 신경 쓸 것입니다.
-    /*
-    private void OnTriggerEnter2D(Collider2D other)
+
+    public virtual void OnHit(DamageData damage)
     {
-        if (other.CompareTag("Weapon"))
+        var defenceValue = 9f;
+        var realDamage=damage.damage - damage.damage * (enemyData.baseDefense.Value / (enemyData.baseDefense.Value + defenceValue));
+        if (enemyData.baseDefense.Value <= 0)
         {
-            Hit(other.gameObject);
+            realDamage = damage.damage;
         }
 
-        if (other.CompareTag("Player"))
+        if (realDamage > 0)
         {
-            if (!PlayerStatus.Instance.isInfinite)
-            {
-                PlayerStatus.Instance.GetDamage(hitModule.damage, hitModule.infiniteTime);
-            }
+            var hit = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get("HitParticle"), transform.position, new Vector3(-90, 0, 0)); 
+            var hitObj = hit.GetComponent<ParticleObject>();
+            var hitPrt = hitObj.prt.main;
+            hitPrt.startColor = characterType.GetColor();
         }
-    }
-    public virtual void Hit(GameObject caster)
-    {
-        float totalDamage = caster.GetComponent<WeaponModule>().damage + PlayerStatus.Instance.PlayerAtk;
-        CurrentHp -= totalDamage;
-
-        ObjectPooler.Instance.Get(hitEffect, transform.position, new Vector3(-90, 0, 0));
-        SoundManager.Instance.PlaySFX("Hit");
+        enemyData.health.Value -= realDamage;
         if (_currentHitFlow != null)
         {
             StopCoroutine(_currentHitFlow);
         }
-
         if (gameObject.activeSelf)
         {
             _currentHitFlow = StartCoroutine(HitFlow());
         }
-    }*/
+
+        if (enemyData.health.Value <= 0)
+        {
+            Death();
+        }
+    }
 
     public virtual void Death()
     {
+        Drop();
         ObjectPoolManager.Instance.Return(gameObject);
     }
 }

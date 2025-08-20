@@ -21,6 +21,8 @@ public class AugmentUI : MonoBehaviour
     [SerializeField] AugmentSet[] augmentSet;
     private AugmentDataSO[] augmentDatas;
     [SerializeField] private RectTransform center;
+    [SerializeField] private float cardAnimationDuration = 0.3f; 
+    [SerializeField] private float cardAnimationDelay = 0.1f; 
 
     private void Start()
     {
@@ -33,7 +35,7 @@ public class AugmentUI : MonoBehaviour
         augmentDatas = datas;
         for (var i = 0; i < augmentSet.Length; i++)
         {
-            augmentSet[i].augmentFrame.transform.localScale = new Vector2(1, 1);
+            augmentSet[i].augmentFrame.transform.localScale = Vector2.zero; 
             augmentSet[i].augmentFrame.color = SetColor(datas[i].augmentState);
             augmentSet[i].augmentFrame.GetComponent<CardUI>().isSelected = false;
             augmentSet[i].augmentFrame.gameObject.SetActive(true);
@@ -52,6 +54,35 @@ public class AugmentUI : MonoBehaviour
         }
         
         augmentPanel.SetActive(true);
+        StartCoroutine(AnimateCardsSequentially());
+    }
+
+    private IEnumerator AnimateCardsSequentially()
+    {
+        for (int i = 0; i < augmentSet.Length; i++)
+        {
+            StartCoroutine(AnimateCardScale(i));
+            yield return new WaitForSecondsRealtime(cardAnimationDelay);
+        }
+    }
+
+    private IEnumerator AnimateCardScale(int cardIndex)
+    {
+        Transform cardTransform = augmentSet[cardIndex].augmentFrame.transform;
+        float elapsedTime = 0f;
+        Vector2 startScale = Vector2.zero;
+        Vector2 targetScale = Vector2.one;
+
+        while (elapsedTime < cardAnimationDuration)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            float t = elapsedTime / cardAnimationDuration;
+            t = 1f - Mathf.Pow(1f - t, 3f);
+            
+            cardTransform.localScale = Vector2.Lerp(startScale, targetScale, t);
+            yield return null;
+        }
+        cardTransform.localScale = targetScale;
     }
 
     private Color SetColor(AugmentState augmentState)
@@ -67,6 +98,9 @@ public class AugmentUI : MonoBehaviour
                 break;
             case AugmentState.Weapon:
                 color = Color.blue;
+                break;
+            case AugmentState.Active:
+                color = Color.red;
                 break;
         }
         return color;

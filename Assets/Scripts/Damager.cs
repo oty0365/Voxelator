@@ -27,10 +27,10 @@ public interface IDamager
 }
 public class Damager : MonoBehaviour,IDamager
 {
-    [SerializeField] DamagerDataSO damagerData;
+    [SerializeField] protected DamagerDataSO damagerData;
     public GameObject parent;
     
-    public DamageData GetDamage(float originalDamage)
+    public virtual DamageData GetDamage(float originalDamage)
     {
         var damageData = new DamageData();
         damageData.damage = originalDamage+damagerData.damage;

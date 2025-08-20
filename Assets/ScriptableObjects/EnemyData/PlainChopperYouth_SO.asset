@@ -16,8 +16,8 @@ MonoBehaviour:
     maxRange: 2
     minRange: 4
   expDrop:
-    maxRange: 0
-    minRange: 2
+    maxRange: 10
+    minRange: 20
   baseAttack:
     maxRange: 1
     minRange: 2

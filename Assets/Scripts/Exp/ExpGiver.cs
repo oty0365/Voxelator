@@ -21,7 +21,7 @@ public class ExpGiver : MonoBehaviour,IPoolingObject
     private IEnumerator GotoPlayerFlow()
     {
 
-        while (Vector3.Distance(PlayerStatus.Instance.gameObject.transform.position, transform.position) > 0.32f)
+        while (Vector3.Distance(PlayerStatus.Instance.gameObject.transform.position, transform.position) > 0.02f)
         {
             gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, PlayerStatus.Instance.gameObject.transform.position, Time.deltaTime * 4f);
             yield return null;
@@ -30,7 +30,7 @@ public class ExpGiver : MonoBehaviour,IPoolingObject
     }
     private IEnumerator CheckToAbsorbFlow()
     {
-        while (Vector3.Distance(PlayerStatus.Instance.gameObject.transform.position, transform.position) > 0.32f)
+        while (Vector3.Distance(PlayerStatus.Instance.gameObject.transform.position, transform.position) > 0.5f)
         {
             if (magnetToPlayer && magnetFlow == null)
             {

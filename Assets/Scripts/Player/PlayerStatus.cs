@@ -5,7 +5,7 @@ using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
+public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent,IDamageStat
 {
     [Header("UI")]
     [SerializeField] private PlayerStatusUI playerStatusUI;
@@ -236,6 +236,12 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
             playerHp.Value -= realDamage;   
         }
     }
+
+    public float GetStat()
+    {
+        return playerAtk.Value;
+    }
+
     private void OnEnable()
     {
         Subscribe();

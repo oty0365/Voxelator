@@ -9,7 +9,7 @@ public class RandomRanged
 
     public float GetRandomized()
     {
-        return Random.Range(minRange, maxRange);
+        return float.Parse($"{Random.Range(minRange, maxRange):F1}");
     }
     public int GetRandomizedAsInt()
     {

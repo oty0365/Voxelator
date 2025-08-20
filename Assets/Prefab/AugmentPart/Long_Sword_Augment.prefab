@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6158109396659925208}
   - component: {fileID: 888457675678987802}
   - component: {fileID: 477730454687675245}
+  - component: {fileID: -3832317086211382156}
   m_Layer: 0
   m_Name: Long_Sword_Augment
   m_TagString: Untagged
@@ -60,3 +61,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyData: {fileID: 11400000, guid: 8b850d92e394fbf428430779d32c54ae, type: 2}
   weaponCoreDatas: {fileID: 11400000, guid: 1b820444e90eea04699d10cac20a87f8, type: 2}
+--- !u!114 &-3832317086211382156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4005693027469601840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2528a6cb2a6fc45bee6c0e1be71542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  augmentedDatasSO: {fileID: 11400000, guid: d125dc7886d086f41a38d9c0626ea989, type: 2}
