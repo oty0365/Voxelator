@@ -17,6 +17,7 @@ public enum AugmentState
     Stat = 1 << 0,
     Weapon = 1 << 1,
     Util = 1 << 2,
+    Active = 1<<3,
 }
 
 public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
@@ -49,7 +50,7 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            AugmentSelection(AugmentState.Stat | AugmentState.Weapon | AugmentState.Util);
+            AugmentSelection(AugmentState.Stat | AugmentState.Weapon | AugmentState.Util |  AugmentState.Active);
         }
     }
     public int GetAugmentedCount(AugmentDataSO key)

@@ -5,7 +5,7 @@ using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
+public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent,IDamageStat
 {
     [Header("UI")]
     [SerializeField] private PlayerStatusUI playerStatusUI;
@@ -207,6 +207,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         OnMaxExp += playerStatusUI.SetMaxExp;
         OnExp += playerStatusUI.SetExp;
         OnLevelUp += playerStatusUI.SetLevel;
+        EventManager.Instance.AddListener(ActionKey.OnPlayerHit,new Action<GameObject>(OnDamage));
     }
     public void Unsubscribe()
     {
@@ -216,7 +217,31 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         OnMaxExp -= playerStatusUI.SetMaxExp;
         OnExp -= playerStatusUI.SetExp;
         OnLevelUp -= playerStatusUI.SetLevel;
+        EventManager.Instance.RemoveListener(ActionKey.OnPlayerHit,new Action<GameObject>(OnDamage));
     }
+
+    public void OnDamage(GameObject damager)
+    {
+        var damagerObject = damager.GetComponent<Damager>();
+        var damageData =damager.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<IDamageStat>().GetStat());
+        var defenceValue = 9f;
+        var realDamage=damageData.damage - damageData.damage * (playerDef.Value / (playerDef.Value + defenceValue));
+        if (playerDef.Value <= 0)
+        {
+            realDamage = damageData.damage;
+        }
+        if (realDamage > 0)
+        {
+            CammeraManager.Instance.ShakeCamera(damageData.damage/(9+damageData.damage),0.5f);
+            playerHp.Value -= realDamage;   
+        }
+    }
+
+    public float GetStat()
+    {
+        return playerAtk.Value;
+    }
+
     private void OnEnable()
     {
         Subscribe();

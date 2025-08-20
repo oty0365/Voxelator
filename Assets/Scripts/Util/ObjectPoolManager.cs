@@ -25,6 +25,11 @@ public enum PoolObjectType
     CoreSetter,
     LongSwordAugment,
     LongSword,
+    HitEffect,
+    RockGolem,
+    Goblin,
+    PlainChopperYouth
+    
 
 
 }

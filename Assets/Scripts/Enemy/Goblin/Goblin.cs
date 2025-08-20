@@ -32,6 +32,6 @@ public class Goblin : AEnemy, IPoolingObject, IFootSteper
     {
         base.Initialize();
         StartStep();
-        
     }
+    
 }

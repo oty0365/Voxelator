@@ -5,7 +5,6 @@ using UnityEngine;
 public enum ActionKey
 {
     OnPlayerHit,
-    
 }
 
 public class EventManager : SceneSingletonMonoBehaviour<EventManager>
