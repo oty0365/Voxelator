@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &44018985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4286,6 +4286,8 @@ MonoBehaviour:
   activationRows:
   - {fileID: 432211421}
   - {fileID: 1478564937}
+  - {fileID: 1609832506}
+  - {fileID: 44018984}
 --- !u!1 &1563382608
 GameObject:
   m_ObjectHideFlags: 0
@@ -4347,7 +4349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1609832507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5216,10 +5218,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2148010966509966344, guid: 971cc62fab1997c4dba5b0d9f3b60b9d, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 519420031}
     - target: {fileID: 2843253885855637959, guid: 971cc62fab1997c4dba5b0d9f3b60b9d, type: 3}
       propertyPath: m_Name
       value: Player
