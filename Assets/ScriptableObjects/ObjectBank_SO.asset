@@ -19,3 +19,5 @@ MonoBehaviour:
     data: {fileID: 2609676869748365458, guid: 09826456ddbf6a84ab030aca7d22e4cc, type: 3}
   - name: HitParticle
     data: {fileID: 3650066380682929340, guid: db67fa537b6c9f546baa2487162f90fa, type: 3}
+  - name: InteractionButton
+    data: {fileID: 2782235754551400892, guid: 565d8fe6ba790c144ab37ae10b69f784, type: 3}

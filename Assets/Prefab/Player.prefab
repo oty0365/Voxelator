@@ -434,3 +434,7 @@ MonoBehaviour:
   originMask:
     serializedVersion: 2
     m_Bits: 0
+  interactionDistance: 2
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 128

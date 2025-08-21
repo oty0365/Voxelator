@@ -28,7 +28,9 @@ public enum PoolObjectType
     HitEffect,
     RockGolem,
     Goblin,
-    PlainChopperYouth
+    PlainChopperYouth,
+    InteractionButton,
+    
     
 
 
