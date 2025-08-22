@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 2
+  sr: {fileID: 6541206134884101487}
 --- !u!1 &6330892358022346488
 GameObject:
   m_ObjectHideFlags: 0

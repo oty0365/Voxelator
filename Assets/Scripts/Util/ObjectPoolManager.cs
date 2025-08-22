@@ -30,7 +30,7 @@ public enum PoolObjectType
     Goblin,
     PlainChopperYouth,
     InteractionButton,
-    
+    EffectIcon,
     
 
 

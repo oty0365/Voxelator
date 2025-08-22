@@ -36,6 +36,8 @@ public abstract class AEnemy : MonoBehaviour,IDamageStat
         enemyData.baseDefense.Value = baseEnemyData.baseDefense.GetRandomized();
         enemyData.expDrop = baseEnemyData.expDrop.GetRandomizedAsInt();
         enemyData.moveSpeed.Value = baseEnemyData.moveSpeed;
+        
+        characterType.EntityType = characterType.entityType;
     }
     
     public void FacePlayer()
