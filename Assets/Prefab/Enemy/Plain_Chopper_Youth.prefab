@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 7930148193884786480}
   - component: {fileID: 3847775275903475275}
   - component: {fileID: -8309927698655190844}
+  - component: {fileID: 3104272523732884222}
   m_Layer: 6
   m_Name: Plain_Chopper_Youth
   m_TagString: Untagged
@@ -164,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseEnemyData: {fileID: 11400000, guid: 415c5e68629296b47bef66a4b19d533b, type: 2}
+  statContainer: {fileID: 3104272523732884222}
   characterType: {fileID: -8309927698655190844}
   rb2D: {fileID: 8751803924559274194}
   fsm: {fileID: 3955988119931990452}
@@ -324,3 +326,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   sr: {fileID: 2578847502262157905}
+--- !u!114 &3104272523732884222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2641471648305024932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52efc21066ab8324caf932868d6219f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

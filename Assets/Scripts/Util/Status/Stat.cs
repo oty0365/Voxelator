@@ -1,5 +1,11 @@
 using System;
 
+public enum BuffType
+{
+    Add,
+    Mul,
+}
+
 public class Stat<T>
 {
     public event Action<T> OnChanged;

@@ -28,7 +28,7 @@ public class PlayerInteractions : MonoBehaviour,IEvent
     public void OnHit(GameObject damager)
     {
         var damagerObject = damager.GetComponent<Damager>();
-        var damageData =damager.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<IDamageStat>().GetStat());
+        var damageData =damager.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<StatContainer>().GetStat<UnlimitedStat>(StatusCode.Atk).Value);
         if (_currentInfiniteTimeFlow != null)
         {
             StopCoroutine(_currentInfiniteTimeFlow);

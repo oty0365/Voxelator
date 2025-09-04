@@ -4,7 +4,7 @@ public class FullHp : AAugment,IPoolingObject
 {
     public override void Execute()
     {
-        PlayerStatus.Instance.SetHp(PlayerStatus.Instance.playerHp.MaxValue);
+        PlayerStatus.Instance.playerHp.Value = PlayerStatus.Instance.playerHp.MaxValue;
         ObjectPoolManager.Instance.Return(gameObject);
     }
 

@@ -12,9 +12,10 @@ public class RunTimeEnemyData
 
 }
 
-public abstract class AEnemy : MonoBehaviour,IDamageStat
+public abstract class AEnemy : MonoBehaviour
 {
     [SerializeField] private EnemyDataSO baseEnemyData;
+    [SerializeField] private StatContainer statContainer;
     public CharacterType characterType;
     public RunTimeEnemyData enemyData = new();
     public Rigidbody2D rb2D;
@@ -36,8 +37,12 @@ public abstract class AEnemy : MonoBehaviour,IDamageStat
         enemyData.baseDefense.Value = baseEnemyData.baseDefense.GetRandomized();
         enemyData.expDrop = baseEnemyData.expDrop.GetRandomizedAsInt();
         enemyData.moveSpeed.Value = baseEnemyData.moveSpeed;
-        
         characterType.EntityType = characterType.entityType;
+        
+        statContainer.AddStat(StatusCode.Hp,enemyData.health);
+        statContainer.AddStat(StatusCode.Def,enemyData.baseDefense);
+        statContainer.AddStat(StatusCode.MoveSpeed,enemyData.moveSpeed);
+        statContainer.AddStat(StatusCode.Atk,enemyData.baseAttack);
     }
     
     public void FacePlayer()
@@ -51,11 +56,6 @@ public abstract class AEnemy : MonoBehaviour,IDamageStat
         {
             sr.flipX = false;
         }
-    }
-
-    public float GetStat()
-    {
-        return enemyData.baseAttack.Value;
     }
 
     private IEnumerator HitFlow()
@@ -128,6 +128,10 @@ public abstract class AEnemy : MonoBehaviour,IDamageStat
     public virtual void Death()
     {
         Drop();
+        statContainer.DeleteStat(StatusCode.Hp);
+        statContainer.DeleteStat(StatusCode.Def);
+        statContainer.DeleteStat(StatusCode.MoveSpeed);
+        statContainer.DeleteStat(StatusCode.Atk);
         ObjectPoolManager.Instance.Return(gameObject);
     }
 }

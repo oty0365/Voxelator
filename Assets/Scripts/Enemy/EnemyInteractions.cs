@@ -35,7 +35,7 @@ public class EnemyInteractions : MonoBehaviour
             return; 
         }
         var damagerObject = weaponCollider.GetComponent<Damager>();
-        var damageData = weaponCollider.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<IDamageStat>().GetStat());
+        var damageData = weaponCollider.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<StatContainer>().GetStat<UnlimitedStat>(StatusCode.Atk).Value);
         enemy.OnHit(damageData);
         if (gameObject.activeSelf)
         {

@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3792555848978251614}
   - component: {fileID: 2091825114814667545}
   - component: {fileID: -6854756579703197765}
+  - component: {fileID: -2770633074554441895}
   m_Layer: 6
   m_Name: Rock_Golem
   m_TagString: Untagged
@@ -234,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseEnemyData: {fileID: 11400000, guid: 2ee3b08d74bb61641be6855e98462635, type: 2}
+  statContainer: {fileID: -2770633074554441895}
   characterType: {fileID: -6854756579703197765}
   rb2D: {fileID: 5223511131626546196}
   fsm: {fileID: 6490348949767198947}
@@ -293,6 +295,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityType: 2
   sr: {fileID: 1347717951013576063}
+--- !u!114 &-2770633074554441895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3293455106274102512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52efc21066ab8324caf932868d6219f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6824300027341917040
 GameObject:
   m_ObjectHideFlags: 0
