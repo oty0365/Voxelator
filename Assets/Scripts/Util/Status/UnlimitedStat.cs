@@ -18,9 +18,22 @@ public class UnlimitedStat : Stat<float>
             OnChanged?.Invoke(_value);
         }
     }
+
+    public override float BaseVal
+    {
+        get=>_baseVal;
+        set
+        {
+            if (!Equals(_baseVal, value))
+            {
+                _baseVal = value;
+                Value = _buffs[BuffType.Mul]*(_buffs[BuffType.Add]+BaseVal);
+            }
+        }
+    }
     public void SetBuff(BuffType type, float value)
     {
         _buffs[type] += value;
-        Value = _buffs[BuffType.Mul]*_buffs[BuffType.Add];
+        Value = _buffs[BuffType.Mul]*(_buffs[BuffType.Add]+BaseVal);
     }
 }

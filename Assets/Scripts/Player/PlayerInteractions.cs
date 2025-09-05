@@ -78,12 +78,12 @@ public class PlayerInteractions : MonoBehaviour,IEvent
 
     public void Subscribe()
     {
-        EventManager.Instance.AddListener(ActionKey.OnPlayerHit,new Action<GameObject>(OnHit));
+        EventManager.Instance.AddListener(EventKey.OnPlayerHit,new Action<GameObject>(OnHit));
     }
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(ActionKey.OnPlayerHit, new Action<GameObject>(OnHit));
+        EventManager.Instance.RemoveListener(EventKey.OnPlayerHit, new Action<GameObject>(OnHit));
     }
 
     private void OnEnable()

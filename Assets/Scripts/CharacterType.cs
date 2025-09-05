@@ -7,15 +7,6 @@ public enum EntityType
     Monster,
     Machine
 }
-
-public enum DamageType
-{
-    None,
-    OverHeat,
-    Freeze,
-    Virus,
-    Debug,
-}
 public class CharacterType : MonoBehaviour
 {
     public EntityType entityType;
@@ -93,5 +84,7 @@ public class CharacterType : MonoBehaviour
                 currentType = new Machine();
                 break;
         }
+
+        currentType.owner = gameObject;
     }
 }

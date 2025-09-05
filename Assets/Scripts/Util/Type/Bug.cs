@@ -2,25 +2,29 @@ using UnityEngine;
 
 public class Bug: Type,ITypeCalculater
 {
-    public float Calculate(DamageType damageType,float value)
+    public float Calculate(EffectType damageType,float value)
     {
         var damage = 0f;
         switch (damageType)
         {
-            case DamageType.Debug:
+            case EffectType.Debug:
                 damage=value * 2f;
                 break;
-            case DamageType.Freeze:
+            case EffectType.Freeze:
                 damage = value * 1.2f;
                 break;
-            case DamageType.OverHeat:
+            case EffectType.OverHeat:
                 damage = value * 0.5f;
                 break;
-            case DamageType.Virus:
+            case EffectType.Virus:
                 damage = 0;
                 break;
         }
         typeBars[damageType].Value += damage;
+        if (owner.GetComponent<EffectContainer>().HasEffect(damageType))
+        {
+            damage = 0;
+        }
         return damage;
     }
 }

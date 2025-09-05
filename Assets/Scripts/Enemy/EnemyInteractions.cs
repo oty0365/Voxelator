@@ -10,7 +10,7 @@ public class EnemyInteractions : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            EventManager.Instance.Invoke(ActionKey.OnPlayerHit, gameObject);
+            EventManager.Instance.Invoke(EventKey.OnPlayerHit, gameObject);
         }
 
         if (other.CompareTag("Weapon"))

@@ -3,15 +3,28 @@ using UnityEngine;
 
 public abstract class Type
 {
-    public Dictionary<DamageType,LimitedStat> typeBars = new(){
-        {DamageType.Debug , new LimitedStat{MaxValue = 100,Value = 0}},
-        {DamageType.Freeze, new LimitedStat{MaxValue = 100,Value = 0}},
-        {DamageType.OverHeat, new LimitedStat{MaxValue = 100,Value = 0}},
-        {DamageType.Virus ,new LimitedStat{MaxValue = 100,Value = 0}}
+    public GameObject owner;
+    public Dictionary<EffectType,LimitedStat> typeBars = new(){
+        {EffectType.Debug , new LimitedStat{BaseMaxVal = 100,Value = 0}},
+        {EffectType.Freeze, new LimitedStat{BaseMaxVal = 100,Value = 0}},
+        {EffectType.OverHeat, new LimitedStat{BaseMaxVal = 100,Value = 0}},
+        {EffectType.Virus ,new LimitedStat{BaseMaxVal = 100,Value = 0}}
     };
-    public void Resistance(DamageType damageType)
+    public void Resistance(EffectType damageType)
     {
-        typeBars[damageType].MaxValue += 50;
-        typeBars[damageType].Value = 0;
+        typeBars[damageType].SetBuff(BuffType.Add,-typeBars[damageType].BaseMaxVal);
+        typeBars[damageType].BaseMaxVal += 50;
+    }
+
+    public void Check()
+    {
+        foreach (var typeBar in typeBars)
+        {
+            if (typeBar.Value.Value >= typeBar.Value.MaxValue)
+            {
+                Resistance(typeBar.Key);
+                EffectComputeManager.Instance.RunEffect(typeBar.Key,owner);
+            }
+        }
     }
 }

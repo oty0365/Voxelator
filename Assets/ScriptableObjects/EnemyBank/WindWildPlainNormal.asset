@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2374e1112e1d55f49aca0d91ff58b96d, type: 3}
+  m_Name: WindWildPlainNormal
+  m_EditorClassIdentifier: 
+  enemyBank:
+  - code: 0
+    enemyObj: {fileID: 5778658301210856545, guid: c7348848778ab684fb11749a72d017ee, type: 3}
+  - code: 1
+    enemyObj: {fileID: 2641471648305024932, guid: 4d4cb0b0937c40f49a727c6dae14fef7, type: 3}
+  - code: 2
+    enemyObj: {fileID: 3293455106274102512, guid: 51d284054afa9864693d2a1e392fe114, type: 3}

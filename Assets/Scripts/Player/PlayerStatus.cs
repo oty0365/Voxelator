@@ -13,7 +13,6 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     [SerializeField] private Collider2D collider2D;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private LayerMask originMask;
-    [SerializeField] private GameObject playerHitParticle;
     [SerializeField] private StatContainer statContainer;
     
     public LimitedStat playerHp = new();
@@ -183,7 +182,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         OnMaxExp += playerStatusUI.SetMaxExp;
         OnExp += playerStatusUI.SetExp;
         OnLevelUp += playerStatusUI.SetLevel;
-        EventManager.Instance.AddListener(ActionKey.OnPlayerHit,new Action<GameObject>(OnDamage));
+        EventManager.Instance.AddListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
     }
     public void Unsubscribe()
     {
@@ -193,7 +192,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         OnMaxExp -= playerStatusUI.SetMaxExp;
         OnExp -= playerStatusUI.SetExp;
         OnLevelUp -= playerStatusUI.SetLevel;
-        EventManager.Instance.RemoveListener(ActionKey.OnPlayerHit,new Action<GameObject>(OnDamage));
+        EventManager.Instance.RemoveListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
     }
 
     public void OnDamage(GameObject damager)

@@ -2,17 +2,19 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ActionKey
+public enum EventKey
 {
     OnPlayerHit,
+    SpawnElite,
+    
 }
 
 public class EventManager : SceneSingletonMonoBehaviour<EventManager>
 {
 
-        private readonly Dictionary<ActionKey, MulticastDelegate> _events = new();
+        private readonly Dictionary<EventKey, MulticastDelegate> _events = new();
         
-        public void AddListener(ActionKey actionKey, MulticastDelegate listener)
+        public void AddListener(EventKey actionKey, MulticastDelegate listener)
         {
             if (_events.TryGetValue(actionKey, out var existing))
             {
@@ -28,7 +30,7 @@ public class EventManager : SceneSingletonMonoBehaviour<EventManager>
             }
         }
         
-        public void RemoveListener(ActionKey actionKey, MulticastDelegate listener)
+        public void RemoveListener(EventKey actionKey, MulticastDelegate listener)
         {
             if (_events.TryGetValue(actionKey, out var existing))
             {
@@ -48,7 +50,7 @@ public class EventManager : SceneSingletonMonoBehaviour<EventManager>
             }
         }
         
-        public void Invoke(ActionKey actionKey, params object[] args)
+        public void Invoke(EventKey actionKey, params object[] args)
         {
             if (_events.TryGetValue(actionKey, out var del))
             {

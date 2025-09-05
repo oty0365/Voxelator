@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2374e1112e1d55f49aca0d91ff58b96d, type: 3}
+  m_Name: WindWildPlainElite
+  m_EditorClassIdentifier: 
+  enemyBank:
+  - code: 3
+    enemyObj: {fileID: 5778658301210856545, guid: c7348848778ab684fb11749a72d017ee, type: 3}
+  - code: 4
+    enemyObj: {fileID: 5778658301210856545, guid: c7348848778ab684fb11749a72d017ee, type: 3}

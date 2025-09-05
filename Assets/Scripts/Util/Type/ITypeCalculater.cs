@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface ITypeCalculater
 {
-    public float Calculate(DamageType damageType,float value);
+    public float Calculate(EffectType damageType,float value);
 }
