@@ -5,7 +5,7 @@ public class TimeManager : SceneSingletonMonoBehaviour<TimeManager>
 {
     public int gameTime;
     private Coroutine _currentClockFlow;
-
+    
     public void StartGame()
     {
         if (_currentClockFlow != null)
@@ -29,8 +29,13 @@ public class TimeManager : SceneSingletonMonoBehaviour<TimeManager>
 
     private IEnumerator ClockFlow()
     {
-        yield return new WaitForSeconds(1);
-        gameTime++;
+        while (true)
+        {
+            EventManager.Instance.Invoke(EventKey.OnClocked, gameTime);
+            yield return new WaitForSeconds(1);
+            gameTime++;
+        }
+
     }
     
     

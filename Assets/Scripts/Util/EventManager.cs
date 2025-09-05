@@ -5,8 +5,13 @@ using UnityEngine;
 public enum EventKey
 {
     OnPlayerHit,
+    OnClocked,
+    AddToSpawner,
+    ShowMapBanner,
     SpawnElite,
-    
+    StartSpawning,
+    StopSpawning,
+    ContinueSpawning,
 }
 
 public class EventManager : SceneSingletonMonoBehaviour<EventManager>

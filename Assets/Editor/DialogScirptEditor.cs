@@ -29,16 +29,16 @@ public class DialogScriptEditor : Editor
         headerStyle.normal.textColor = new Color(0.25f, 0.6f, 1f);
 
         EditorGUILayout.Space(5);
-        EditorGUILayout.LabelField("Dialog Script ����", headerStyle);
+        EditorGUILayout.LabelField("Dialog Script 설정", headerStyle);
         EditorGUILayout.Space(10);
 
-        EditorGUILayout.PropertyField(talker, new GUIContent("��ȭ�� �̸�"));
-        EditorGUILayout.PropertyField(hasSelection, new GUIContent("������ ����"));
+        EditorGUILayout.PropertyField(talker, new GUIContent("대화자 이름"));
+        EditorGUILayout.PropertyField(hasSelection, new GUIContent("선택지 여부"));
 
         if (!hasSelection.boolValue)
         {
             EditorGUILayout.Space(10);
-            EditorGUILayout.LabelField("��ȭ�� �ʻ�", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("대화자 초상", EditorStyles.boldLabel);
 
             talkersFace.objectReferenceValue = EditorGUILayout.ObjectField(
                 talkersFace.objectReferenceValue,
@@ -55,17 +55,17 @@ public class DialogScriptEditor : Editor
             }
             else
             {
-                EditorGUILayout.HelpBox("��������Ʈ�� ���õ��� �ʾҽ��ϴ�.", MessageType.Warning);
+                EditorGUILayout.HelpBox("대화자 초상이 없다. 초상 부분에 아무것도 출력이 안될 수 있다.", MessageType.Warning);
             }
 
-            EditorGUILayout.PropertyField(dialogue, new GUIContent("��� ����"));
+            EditorGUILayout.PropertyField(dialogue, new GUIContent("대사 내용"));
         }
         else
         {
-            EditorGUILayout.HelpBox("������ ��忡���� �ʻ�� ��簡 ��Ȱ��ȭ�˴ϴ�.", MessageType.Info);
+            EditorGUILayout.HelpBox("대사 내용이 없다.", MessageType.Info);
         }
         EditorGUILayout.Space(5);
-        EditorGUILayout.PropertyField(eventsWhileTalk, new GUIContent("��ȭ �� �̺�Ʈ"));
+        EditorGUILayout.PropertyField(eventsWhileTalk, new GUIContent("대화중 이벤트"));
         serializedObject.ApplyModifiedProperties();
     }
 }
