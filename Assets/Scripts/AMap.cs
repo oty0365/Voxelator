@@ -23,7 +23,7 @@ public abstract class AMap : MonoBehaviour
     public void CheckTime(int time)
     {
         Debug.Log(time);
-        if (time >= eventTable[0])
+        if (eventTable.Count > 0 && time >= eventTable[0])
         {
             Execute(eventTable[0]);
             eventTable.RemoveAt(0);

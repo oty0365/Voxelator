@@ -129,7 +129,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     public void ResetStatus()
     {
         playerHp.SetMaxBuff(BuffType.Add,playerBasicStatusData.playerMaxHp); 
-        playerHp.Value = playerHp.MaxValue;
+        playerHp.SetBuff(BuffType.Add,playerBasicStatusData.playerMaxHp);
         playerMoveSpeed.SetBuff(BuffType.Add,playerBasicStatusData.playerMoveSpeed);
         playerAtk.SetBuff(BuffType.Add,playerBasicStatusData.playerAtk);
         playerDef.SetBuff(BuffType.Add,playerBasicStatusData.playerDef);

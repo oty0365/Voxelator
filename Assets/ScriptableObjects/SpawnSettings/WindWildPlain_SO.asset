@@ -16,5 +16,5 @@ MonoBehaviour:
   minSpawnCoolDown: 0.1
   maxSpawnCount: 2
   minSpawnCount: 1
-  difficultyIncreaseRate: 1.1
-  difficultyIncreaseInterval: 5
+  difficultyIncreaseRate: 0.85
+  difficultyIncreaseInterval: 10

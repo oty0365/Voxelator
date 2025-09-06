@@ -66,7 +66,6 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
         Debug.Log(code);
         if (_normalDict.ContainsKey(code)&&!_spawnableTable.Contains(_normalDict[code]))
         {
-
             _spawnableTable.Add(_normalDict[code]);
         }
     }
@@ -111,7 +110,8 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
         while (true)
         {
             yield return new WaitForSeconds(spawnSettings.difficultyIncreaseInterval);
-            _currentSpawnCoolDown = Mathf.Max(_currentSpawnCoolDown * spawnSettings.difficultyIncreaseRate, spawnSettings.minSpawnCoolDown);
+            _currentSpawnCoolDown *= spawnSettings.difficultyIncreaseRate;
+            _currentSpawnCoolDown = Mathf.Clamp(_currentSpawnCoolDown, spawnSettings.minSpawnCoolDown, spawnSettings.maxSpawnCoolDown); 
         }
     }
     

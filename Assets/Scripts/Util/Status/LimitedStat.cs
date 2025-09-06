@@ -19,8 +19,8 @@ public class LimitedStat : Stat<float>
             if (value != _maxValue) 
             {
                 _maxValue = value;
-                Value = _maxValue;
             }
+            OnChanged?.Invoke(_value, _maxValue);
         }
     }
 
@@ -29,6 +29,7 @@ public class LimitedStat : Stat<float>
         get => _value;
         set
         {
+            Debug.Log(value);
             if (value != _value)
             {
                 _value = Mathf.Clamp(value, 0, _maxValue);
@@ -64,7 +65,7 @@ public class LimitedStat : Stat<float>
 
     public void SetBuff(BuffType type, float value)
     {
-         _buffs[type] += value;
+        _buffs[type] += value;
         Value = _buffs[BuffType.Mul]*(_buffs[BuffType.Add]+BaseVal);
     }
 
