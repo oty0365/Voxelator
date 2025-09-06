@@ -6,7 +6,8 @@ public class HpUp : AAugment,IPoolingObject
     public override void Execute()
     {
         PlayerStatus.Instance.playerHp.SetMaxBuff(BuffType.Add,Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
-        //PlayerStatus.Instance.playerHp.SetBuff(BuffType.Add,Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
+        Debug.Log(Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
+        PlayerStatus.Instance.playerHp.SetBuff(BuffType.Add,Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
     }
 
     public void OnBirth()

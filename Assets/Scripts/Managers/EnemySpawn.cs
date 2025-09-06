@@ -38,7 +38,6 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
     {
         foreach (var n in normal.enemyBank)
         {
-            Debug.Log(n.code);
             if (!_normalDict.ContainsKey(n.code))
             {
                 _normalDict.Add(n.code, n.enemyObj);

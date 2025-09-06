@@ -29,10 +29,10 @@ public class LimitedStat : Stat<float>
         get => _value;
         set
         {
-            Debug.Log(value);
-            if (value != _value)
+            var clamped = Mathf.Clamp(value, 0, _maxValue);
+            if (!Mathf.Approximately(clamped, _value))
             {
-                _value = Mathf.Clamp(value, 0, _maxValue);
+                _value = clamped;
             }
             OnChanged?.Invoke(_value, _maxValue);
         }
@@ -66,7 +66,7 @@ public class LimitedStat : Stat<float>
     public void SetBuff(BuffType type, float value)
     {
         _buffs[type] += value;
-        Value = _buffs[BuffType.Mul]*(_buffs[BuffType.Add]+BaseVal);
+        Value = _buffs[BuffType.Mul] * (_buffs[BuffType.Add] + BaseVal);
     }
 
     public void SetMaxBuff(BuffType type, float value)

@@ -17,12 +17,10 @@ public abstract class AMap : MonoBehaviour
             }
         }
         eventTable.Sort();
-        Debug.Log(eventTable.Count);
     }
 
     public void CheckTime(int time)
     {
-        Debug.Log(time);
         if (eventTable.Count > 0 && time >= eventTable[0])
         {
             Execute(eventTable[0]);
