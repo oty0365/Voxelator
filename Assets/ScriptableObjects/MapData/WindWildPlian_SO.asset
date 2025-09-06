@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccdc507072af63943a2fec4a242926ff, type: 3}
-  m_Name: ScriptingArray_SO
+  m_Script: {fileID: 11500000, guid: 06a8304a7c1eb6f4a953c93b9e360e07, type: 3}
+  m_Name: WindWildPlian_SO
   m_EditorClassIdentifier: 
-  scriptingArray:
-  - Voxcelator_DataChip
-  - Voxcelator_MapName
+  mapBanner: {fileID: 21300000, guid: f8be862cb796b734cb92e56d949fab85, type: 3}
+  mapName: WindWildPlains

@@ -62,7 +62,6 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
     }
     public void TryUnlockEnemy(EnemyCode code)
     {            
-        Debug.Log(code);
         if (_normalDict.ContainsKey(code)&&!_spawnableTable.Contains(_normalDict[code]))
         {
             _spawnableTable.Add(_normalDict[code]);

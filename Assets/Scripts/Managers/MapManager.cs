@@ -30,7 +30,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     {
         _currentMapCode = code;
     }
-    public void InstantiateMap()
+    public GameObject InstantiateMap()
     {
         if (_currentMap != null)
         {
@@ -38,6 +38,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             _currentMap = null;
         }
         _currentMap = Instantiate(_currentMapDict[_currentMapCode], new Vector3(0, 0, 0), Quaternion.identity);
+        return _currentMap;
     }
 
     

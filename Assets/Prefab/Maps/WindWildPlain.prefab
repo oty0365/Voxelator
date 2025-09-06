@@ -72,6 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7558211450220301475}
+  - component: {fileID: 5782322568417421228}
   m_Layer: 0
   m_Name: WindWildPlain
   m_TagString: Untagged
@@ -95,3 +96,16 @@ Transform:
   - {fileID: 8249831192119889402}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5782322568417421228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5823154650940456548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a452d29ed8f6f48897ac99a826b295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapData: {fileID: 11400000, guid: ab547d4cd5eb6b74b9d5ec06890e3dde, type: 2}
