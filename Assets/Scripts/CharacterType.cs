@@ -7,11 +7,12 @@ public enum EntityType
     Monster,
     Machine
 }
-
 public class CharacterType : MonoBehaviour
 {
-    [SerializeField] private EntityType entityType;
-
+    public EntityType entityType;
+    public Type currentType; 
+    [SerializeField] private SpriteRenderer sr;
+    
     public EntityType EntityType
     {
         get=>entityType;
@@ -21,6 +22,8 @@ public class CharacterType : MonoBehaviour
             {
                 entityType = value;
             }
+            SetColor();
+            SetType();
         }
     }
 
@@ -43,5 +46,45 @@ public class CharacterType : MonoBehaviour
                 break;
         }
         return color;
+    }
+    public void SetColor()
+    {
+        var color = Color.white;
+        switch (entityType)
+        {
+            case EntityType.Human:
+                color = Color.white;
+                break;
+            case EntityType.Bug:
+                color = new Color32(248, 74, 78,255);
+                break;
+            case EntityType.Monster:
+                color = new Color32(74, 248, 122, 255);
+                break;
+            case EntityType.Machine:
+                color = new Color32(74,177,248,255);
+                break;
+        }
+        sr.color = color;
+    }
+    public void SetType()
+    {
+        switch (entityType)
+        {
+            case EntityType.Human:
+                currentType = new Human();
+                break;
+            case EntityType.Bug:
+                currentType = new Bug();
+                break;
+            case EntityType.Monster:
+                currentType = new Monster();
+                break;
+            case EntityType.Machine:
+                currentType = new Machine();
+                break;
+        }
+
+        currentType.owner = gameObject;
     }
 }

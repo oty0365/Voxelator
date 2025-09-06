@@ -10,7 +10,7 @@ public class EnemyInteractions : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            EventManager.Instance.Invoke(ActionKey.OnPlayerHit, gameObject);
+            EventManager.Instance.Invoke(EventKey.OnPlayerHit, gameObject);
         }
 
         if (other.CompareTag("Weapon"))
@@ -35,7 +35,7 @@ public class EnemyInteractions : MonoBehaviour
             return; 
         }
         var damagerObject = weaponCollider.GetComponent<Damager>();
-        var damageData = weaponCollider.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<IDamageStat>().GetStat());
+        var damageData = weaponCollider.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<StatContainer>().GetStat<UnlimitedStat>(StatusCode.Atk).Value);
         enemy.OnHit(damageData);
         if (gameObject.activeSelf)
         {

@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections;
-using UnityEditor;
 using UnityEngine;
 
-public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent,IDamageStat
+public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
 {
     [Header("UI")]
     [SerializeField] private PlayerStatusUI playerStatusUI;
@@ -16,7 +13,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent,IDa
     [SerializeField] private Collider2D collider2D;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private LayerMask originMask;
-    [SerializeField] private GameObject playerHitParticle;
+    [SerializeField] private StatContainer statContainer;
     
     public LimitedStat playerHp = new();
     public UnlimitedStat playerDef = new();
@@ -131,49 +128,27 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent,IDa
     }
     public void ResetStatus()
     {
-        playerHp.MaxValue = playerBasicStatusData.playerMaxHp;
-        playerHp.Value = playerHp.MaxValue;
-        playerMoveSpeed.Value = playerBasicStatusData.playerMoveSpeed;
-        playerAtk.Value = playerBasicStatusData.playerAtk;
-        playerDef.Value = playerBasicStatusData.playerDef;
-        playerAttackSpeed.Value = playerBasicStatusData.playerAttackSpeed;
+        playerHp.SetMaxBuff(BuffType.Add,playerBasicStatusData.playerMaxHp); 
+        playerHp.SetBuff(BuffType.Add,playerBasicStatusData.playerMaxHp);
+        playerMoveSpeed.SetBuff(BuffType.Add,playerBasicStatusData.playerMoveSpeed);
+        playerAtk.SetBuff(BuffType.Add,playerBasicStatusData.playerAtk);
+        playerDef.SetBuff(BuffType.Add,playerBasicStatusData.playerDef);
+        playerAttackSpeed.SetBuff(BuffType.Add,playerBasicStatusData.playerAttackSpeed);
         PlayerMaxExp = playerBasicStatusData.playerMaxExp;
         PlayerExp = 0;
         PlayerLevel = 1;
-        playerSkillCooldown.MaxValue = 100;
+        playerSkillCooldown.SetMaxBuff(BuffType.Add,playerBasicStatusData.playerSkillCoolDown);
         playerSkillCooldown.Value = 0;
+        statContainer.AddStat(StatusCode.Atk,playerAtk);
+        statContainer.AddStat(StatusCode.Def,playerDef);
+        statContainer.AddStat(StatusCode.Hp,playerHp);
+        statContainer.AddStat(StatusCode.MoveSpeed,playerMoveSpeed);
     }
 
     public void SetExp(float exp)
     {
         PlayerExp = exp;
     }
-
-    public void SetMaxHp(float hp)
-    {
-        playerHp.MaxValue = hp;
-    }
-
-    public void SetHp(float hp)
-    {
-        playerHp.Value = hp;
-    }
-
-    public void SetAtk(float atk)
-    {
-        playerAtk.Value = atk;
-    }
-
-    public void SetAtkSpeed(float atkSpeed)
-    {
-        playerAttackSpeed.Value = atkSpeed;
-    }
-
-    public void SetDef(float def)
-    {
-        playerDef.Value = def;
-    }
-
     private IEnumerator InfiniteTimeFlow(float time)
     {
         collider2D.excludeLayers = layerMask;
@@ -188,7 +163,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent,IDa
         var realDamage = damage - playerDef.Value;
         if (realDamage > 0)
         {
-            SetHp(playerHp.Value - realDamage);
+            //statContainer.SetStat(StatusCode.Hp,playerHp.Value - realDamage);
         }
         if (_infiniteTimeFlow != null)
         {
@@ -207,7 +182,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent,IDa
         OnMaxExp += playerStatusUI.SetMaxExp;
         OnExp += playerStatusUI.SetExp;
         OnLevelUp += playerStatusUI.SetLevel;
-        EventManager.Instance.AddListener(ActionKey.OnPlayerHit,new Action<GameObject>(OnDamage));
+        EventManager.Instance.AddListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
     }
     public void Unsubscribe()
     {
@@ -217,13 +192,13 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent,IDa
         OnMaxExp -= playerStatusUI.SetMaxExp;
         OnExp -= playerStatusUI.SetExp;
         OnLevelUp -= playerStatusUI.SetLevel;
-        EventManager.Instance.RemoveListener(ActionKey.OnPlayerHit,new Action<GameObject>(OnDamage));
+        EventManager.Instance.RemoveListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
     }
 
     public void OnDamage(GameObject damager)
     {
         var damagerObject = damager.GetComponent<Damager>();
-        var damageData =damager.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<IDamageStat>().GetStat());
+        var damageData =damager.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<StatContainer>().GetStat<UnlimitedStat>(StatusCode.Atk).Value);
         var defenceValue = 9f;
         var realDamage=damageData.damage - damageData.damage * (playerDef.Value / (playerDef.Value + defenceValue));
         if (playerDef.Value <= 0)
@@ -233,15 +208,9 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent,IDa
         if (realDamage > 0)
         {
             CammeraManager.Instance.ShakeCamera(damageData.damage/(9+damageData.damage),0.5f);
-            playerHp.Value -= realDamage;   
+            playerHp.SetBuff(BuffType.Add,-realDamage);   
         }
     }
-
-    public float GetStat()
-    {
-        return playerAtk.Value;
-    }
-
     private void OnEnable()
     {
         Subscribe();

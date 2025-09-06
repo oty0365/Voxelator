@@ -16,6 +16,15 @@ public class TouchScreenHandler : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         Vector3 worldTouchPos = Camera.main.ScreenToWorldPoint(eventData.position);
+        var hit=Physics2D.Raycast(worldTouchPos, Vector2.zero, Mathf.Infinity);
+        if (hit != null)
+        {
+            var interactbtn = hit.collider.gameObject.GetComponent<InteractionButton>();
+            if (interactbtn != null)
+            {
+                interactbtn.OnInteract();
+            }
+        }
         Vector2 playerPos = PlayerStatus.Instance.transform.position;
         Vector2 dashDir = ((Vector2)worldTouchPos - playerPos);
         dashDir.Normalize();

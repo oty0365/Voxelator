@@ -10,4 +10,5 @@ public class PlayerBasicStatusDataSO : ScriptableObject
     public float playerMaxExp;
     public float playerAttackSpeed;
     public int playerBulletCount;
+    public float playerSkillCoolDown;
 }

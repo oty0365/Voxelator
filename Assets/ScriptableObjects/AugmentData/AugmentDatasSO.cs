@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AugmentDatas", menuName = "Scriptable Objects/AugmentDatas")]
+[CreateAssetMenu(fileName = "AugmentDatasSO", menuName = "Scriptable Objects/AugmentDatasSO")]
 public class AugmentDatasSO : ScriptableObject
 {
     public AugmentDataSO[] datas;

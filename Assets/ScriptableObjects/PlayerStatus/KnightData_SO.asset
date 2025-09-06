@@ -19,3 +19,4 @@ MonoBehaviour:
   playerMaxExp: 50
   playerAttackSpeed: 1
   playerBulletCount: 0
+  playerSkillCoolDown: 100
