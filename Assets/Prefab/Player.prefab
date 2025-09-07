@@ -298,7 +298,7 @@ MonoBehaviour:
   playerStatusUI: {fileID: 0}
   isInfinite: 0
   playerBasicStatusData: {fileID: 11400000, guid: edf6fc7c5b3d6494fb6c6fd55f618601, type: 2}
-  collider2D: {fileID: 4079214832653041016}
+  col2D: {fileID: 4079214832653041016}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInfinite: 0
-  collider2D: {fileID: 7741388316059204424}
+  col2D: {fileID: 4079214832653041016}
   layerMask:
     serializedVersion: 2
     m_Bits: 64

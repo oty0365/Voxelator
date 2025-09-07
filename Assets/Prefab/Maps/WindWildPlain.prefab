@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTable: {fileID: 11400000, guid: 07a1bf1da0a24c74aa200693e3de2bef, type: 2}
+  currentTutorialDia: {fileID: 11400000, guid: 75857eb8389ae13439659418e204e74e, type: 2}
 --- !u!114 &4875801784468543473
 MonoBehaviour:
   m_ObjectHideFlags: 0

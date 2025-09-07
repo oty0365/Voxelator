@@ -4,6 +4,7 @@ using UnityEngine;
 public class WindWildPlainMap : AMap,IEvent
 {
 
+    [SerializeField] private DialogsSO currentTutorialDia;
     public override void Execute(int time)
     {
         switch (time)
@@ -13,7 +14,9 @@ public class WindWildPlainMap : AMap,IEvent
                 EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.PlainChopper);
                 break;
             case 5:
-                EventManager.Instance.Invoke(EventKey.StartSpawning);
+                TimeManager.Instance.StopGame();
+                DialogManager.Instance.StartConversation(currentTutorialDia);
+                //EventManager.Instance.Invoke(EventKey.StartSpawning);
                 break;
             case 110:
                 EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.Goblin);

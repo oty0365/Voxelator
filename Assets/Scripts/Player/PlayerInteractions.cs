@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerInteractions : MonoBehaviour,IEvent
 {
     public bool isInfinite;
-    [SerializeField] private Collider2D collider2D;
+    [SerializeField] private Collider2D col2D;
     [Header("플레이어 레이어 마스크")]
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private LayerMask originMask;
@@ -33,18 +33,18 @@ public class PlayerInteractions : MonoBehaviour,IEvent
         {
             StopCoroutine(_currentInfiniteTimeFlow);
             isInfinite =  false;
-            collider2D.excludeLayers = originMask;
+            col2D.excludeLayers = originMask;
         }
         _currentInfiniteTimeFlow = StartCoroutine(InfiniteTimeFlow(damageData.time));
     }
     
     private IEnumerator InfiniteTimeFlow(float time)
     {
-        collider2D.excludeLayers = layerMask; 
+        col2D.excludeLayers = layerMask; 
         isInfinite = true; 
         yield return new WaitForSeconds(time); 
         isInfinite = false; 
-        collider2D.excludeLayers = originMask;
+        col2D.excludeLayers = originMask;
     }
 
     private IEnumerator InteractionFlow()

@@ -1,0 +1,435 @@
+fileFormatVersion: 2
+guid: 4a21f51bd07e92d4e89e37422492bf9a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3897564818035718202
+    second: GameDialog-Sheet_0
+  - first:
+      213: 806249445016617374
+    second: GameDialog-Sheet_1
+  - first:
+      213: 7205487124893849740
+    second: GameDialog-Sheet_2
+  - first:
+      213: -8577904366794954957
+    second: GameDialog-Sheet_3
+  - first:
+      213: 2742654477652150958
+    second: GameDialog-Sheet_4
+  - first:
+      213: 4755541264242062484
+    second: GameDialog-Sheet_5
+  - first:
+      213: -547141959743287469
+    second: GameDialog-Sheet_6
+  - first:
+      213: -4823383774284684570
+    second: GameDialog-Sheet_7
+  - first:
+      213: -616098391774441471
+    second: GameDialog-Sheet_8
+  - first:
+      213: -1452781748136497085
+    second: GameDialog-Sheet_9
+  - first:
+      213: 1469619148850395833
+    second: GameDialog-Sheet_10
+  - first:
+      213: 4672584106790665476
+    second: GameDialog-Sheet_11
+  - first:
+      213: -7791887750360296170
+    second: GameDialog-Sheet_12
+  - first:
+      213: -3791016651491493049
+    second: GameDialog-Sheet_13
+  - first:
+      213: -4444182050594744458
+    second: GameDialog-Sheet_14
+  - first:
+      213: -4916703642067296362
+    second: GameDialog-Sheet_15
+  - first:
+      213: 5078503475214017852
+    second: GameDialog-Sheet_16
+  - first:
+      213: -5113495445887527362
+    second: GameDialog-Sheet_17
+  - first:
+      213: -8147158630884259362
+    second: GameDialog-Sheet_18
+  - first:
+      213: 3162205655141728760
+    second: GameDialog-Sheet_19
+  - first:
+      213: -3382108341154859266
+    second: GameDialog-Sheet_20
+  - first:
+      213: 5605245911058156057
+    second: GameDialog-Sheet_21
+  - first:
+      213: 1579243669279364046
+    second: GameDialog-Sheet_22
+  - first:
+      213: 4691170873651431021
+    second: GameDialog-Sheet_23
+  - first:
+      213: -2335776025550587864
+    second: GameDialog-Sheet_24
+  - first:
+      213: 8725203570686242278
+    second: GameDialog-Sheet_25
+  - first:
+      213: 3583569186419127203
+    second: GameDialog-Sheet_26
+  - first:
+      213: -8390478060762104112
+    second: GameDialog-Sheet_27
+  - first:
+      213: 2279025533987410254
+    second: GameDialog-Sheet_28
+  - first:
+      213: 2643204914802338767
+    second: GameDialog-Sheet_29
+  - first:
+      213: 838296751583462376
+    second: GameDialog-Sheet_30
+  - first:
+      213: -9002953087215038614
+    second: GameDialog-Sheet_31
+  - first:
+      213: -4147832296707641299
+    second: GameDialog-Sheet_32
+  - first:
+      213: -977302867609915120
+    second: GameDialog-Sheet_33
+  - first:
+      213: 8415950989126713971
+    second: GameDialog-Sheet_34
+  - first:
+      213: 6535487439051674987
+    second: GameDialog-Sheet_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GameDialog-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3834144d8ee61630800000000000000
+      internalID: 3897564818035718202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameDialog-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91429a399f503b00800000000000000
+      internalID: 806249445016617374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameDialog-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c88d2f02d580ff360800000000000000
+      internalID: 7205487124893849740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameDialog-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3372ae31d6925f880800000000000000
+      internalID: -8577904366794954957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameDialog-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eaa471a57bddf0620800000000000000
+      internalID: 2742654477652150958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameDialog-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4943cd975931ff140800000000000000
+      internalID: 4755541264242062484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameDialog-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f4ac759492868f0800000000000000
+      internalID: -547141959743287469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GameDialog-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2e06e3306ef0db0800000000000000
+      internalID: -4823383774284684570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8566056532f15774f8070da8853bd217
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GameDialog-Sheet_0: 3897564818035718202
+      GameDialog-Sheet_1: 806249445016617374
+      GameDialog-Sheet_2: 7205487124893849740
+      GameDialog-Sheet_3: -8577904366794954957
+      GameDialog-Sheet_4: 2742654477652150958
+      GameDialog-Sheet_5: 4755541264242062484
+      GameDialog-Sheet_6: -547141959743287469
+      GameDialog-Sheet_7: -4823383774284684570
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

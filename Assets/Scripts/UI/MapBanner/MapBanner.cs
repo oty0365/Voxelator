@@ -15,7 +15,7 @@ public class MapBanner : MonoBehaviour, IEvent
     [SerializeField] private float fadeInTime=2f;
     [SerializeField] private float stayTime=1f;
     [SerializeField] private float fadeOutTime=2f;
-    [SerializeField] private float fadeSpeed = 10f;
+    [SerializeField] private float fadeSpeed =10f;
     
     private Coroutine _currentMapFadeFlow;
 
@@ -39,12 +39,16 @@ public class MapBanner : MonoBehaviour, IEvent
         for (var i = 0f; i < fadeInTime; i += Time.deltaTime)
         {
             color=Color.Lerp(color, Color.white, fadeSpeed * Time.deltaTime);
+            mapBannerImage.color = color;
+            mapBannerText.color = color;
             yield return null;
         }
         yield return new WaitForSeconds(stayTime);
         for (var i = 0f; i < fadeOutTime; i += Time.deltaTime)
         {
             color=Color.Lerp(color, Color.clear, fadeSpeed * Time.deltaTime);
+            mapBannerImage.color = color;
+            mapBannerText.color = color;
             yield return null;
         }
         color = Color.clear;

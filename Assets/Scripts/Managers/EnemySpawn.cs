@@ -70,7 +70,6 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
 
     public void StartSpawn()
     {
-        Debug.Log("시작");
         _currentSpawnCoolDown = spawnSettings.maxSpawnCoolDown;
         ContinueSpawn();
     }
