@@ -10,7 +10,7 @@ public class GoblinKnightAnimator : EntityAnimator
     {
         switch (playerMoves) 
         {
-            case EntityMoves.Idle:
+            case EntityMoves.Walk:
                 ani.SetInteger(_aniHash, 0);
                 break;
             case EntityMoves.PrepareDash:

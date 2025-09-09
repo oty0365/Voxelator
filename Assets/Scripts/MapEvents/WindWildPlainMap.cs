@@ -15,7 +15,7 @@ public class WindWildPlainMap : AMap,IEvent
                 break;
             case 5:
                 TimeManager.Instance.StopGame();
-                DialogManager.Instance.StartConversation(currentTutorialDia);
+                //DialogManager.Instance.StartConversation(currentTutorialDia);
                 break;
             case 6:
                 AugmentManager.Instance.AugmentSelection(AugmentState.Weapon);

@@ -14,6 +14,7 @@ public abstract class AIndicator : MonoBehaviour,IPoolingObject
     [Header("크기")]
     [SerializeField] protected float baseSize;
     public Vector2 size;
+    public Vector2 localSize;
     
     [Header("색상")]
     public Color stareColor;
@@ -85,12 +86,12 @@ public abstract class AIndicator : MonoBehaviour,IPoolingObject
 
     private IEnumerator FadeOutFlow()
     {
+        mark.gameObject.SetActive(false);
         for (float t = 0; t < fadeTime; t += Time.deltaTime)
         {
             image.color = Color.Lerp(image.color, Color.clear,fadeSpeed * Time.deltaTime);
             yield return null;
         }
-        mark.gameObject.SetActive(false);
         ObjectPoolManager.Instance.Return(gameObject);
     }
 
