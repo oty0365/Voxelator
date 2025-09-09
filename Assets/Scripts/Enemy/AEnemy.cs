@@ -89,7 +89,7 @@ public abstract class AEnemy : MonoBehaviour
 
     public virtual void Drop()
     {
-        var a = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get("Exp"), transform.position, new Vector3(0, 0, 45));
+        var a = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.Exp), transform.position, new Vector3(0, 0, 45));
         a.GetComponent<ExpGiver>().expAmount = enemyData.expDrop;
     }
 
@@ -104,7 +104,7 @@ public abstract class AEnemy : MonoBehaviour
 
         if (realDamage > 0)
         {
-            var hit = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get("HitParticle"), transform.position, new Vector3(-90, 0, 0)); 
+            var hit = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.HitParticle), transform.position, new Vector3(-90, 0, 0)); 
             var hitObj = hit.GetComponent<ParticleObject>();
             var hitPrt = hitObj.prt.main;
             hitPrt.startColor = characterType.GetColor();
@@ -135,11 +135,11 @@ public abstract class AEnemy : MonoBehaviour
         ObjectPoolManager.Instance.Return(gameObject);
     }
 }
-public class EnemyMoveTowards : IState
+public class EnemyMoveTowardsST : IState
 {
     private AEnemy _enemy;
         
-    public EnemyMoveTowards(AEnemy enemy)
+    public EnemyMoveTowardsST(AEnemy enemy)
     {
         this._enemy = enemy;
     }
@@ -162,11 +162,11 @@ public class EnemyMoveTowards : IState
         
     }
 }
-public class EnemyMoveTowardsNonFlip : IState
+public class EnemyMoveTowardsNonFlipST : IState
 {
     private AEnemy _enemy;
         
-    public EnemyMoveTowardsNonFlip(AEnemy enemy)
+    public EnemyMoveTowardsNonFlipST(AEnemy enemy)
     {
         this._enemy = enemy;
     }

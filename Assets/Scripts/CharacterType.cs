@@ -10,7 +10,8 @@ public enum EntityType
 public class CharacterType : MonoBehaviour
 {
     public EntityType entityType;
-    public Type currentType; 
+    public Type currentType;
+    public bool isElite;
     [SerializeField] private SpriteRenderer sr;
     
     public EntityType EntityType
@@ -45,6 +46,11 @@ public class CharacterType : MonoBehaviour
                 color = new Color32(74,177,248,255);
                 break;
         }
+
+        if (isElite)
+        {
+            color =  Color.yellow;
+        }
         return color;
     }
     public void SetColor()
@@ -64,6 +70,10 @@ public class CharacterType : MonoBehaviour
             case EntityType.Machine:
                 color = new Color32(74,177,248,255);
                 break;
+        }
+        if (isElite)
+        {
+            color =  Color.yellow;
         }
         sr.color = color;
     }

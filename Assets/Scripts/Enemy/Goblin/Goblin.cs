@@ -11,14 +11,14 @@ public class Goblin : AEnemy, IPoolingObject, IFootSteper
     private void Start()
     {
         Initialize();
-        var moveTowards = new EnemyMoveTowards(this);
+        var moveTowards = new EnemyMoveTowardsST(this);
         fsm.RegisterState("Run", moveTowards);
         fsm.ChangeState("Run");
     }
     public void OnBirth()
     {
         Initialize();
-        var moveTowards = new EnemyMoveTowards(this);
+        var moveTowards = new EnemyMoveTowardsST(this);
         fsm.RegisterState("Run", moveTowards);
         fsm.ChangeState("Run");
     }

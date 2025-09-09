@@ -1,25 +1,21 @@
 using UnityEngine;
 
-public class PlayerAnimator : MonoBehaviour
+public class PlayerAnimator : EntityAnimator
 {
-    private Animator ani;
     private string _aniHash = "Behave";
     private string _aniTriggerHash = "Dash";
-    void Start()
-    {
-        ani=gameObject.GetComponent<Animator>();
-    }
-    public void SetAnimation(PlayerMoves playerMoves)
+    
+    public override void SetAnimation(EntityMoves playerMoves)
     {
         switch (playerMoves) 
         {
-            case PlayerMoves.Idle:
+            case EntityMoves.Idle:
                 ani.SetInteger(_aniHash, 0);
                 break;
-            case PlayerMoves.Walk:
+            case EntityMoves.Walk:
                 ani.SetInteger(_aniHash, 1);
                 break;
-            case PlayerMoves.Dash:
+            case EntityMoves.Dash:
                 ani.SetInteger(_aniHash, 2);
                 ani.SetTrigger(_aniTriggerHash);
                 break;

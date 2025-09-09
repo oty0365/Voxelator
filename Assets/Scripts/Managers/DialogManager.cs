@@ -50,6 +50,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
         talkerDialogTmp.color = color;
         talkerPortraitImage.color = color;
         dialogPanel.gameObject.SetActive(true);
+        PutText();
         for (var i = 0f; i < fadeTime; i += Time.deltaTime)
         {
             color=Color.Lerp(color, Color.white, fadeSpeed * Time.deltaTime);
@@ -59,7 +60,6 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
             talkerPortraitImage.color = color;
             yield return null;
         }
-        PutText();
     }
 
     private IEnumerator FadeOutFlow()
@@ -109,6 +109,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
     private void EndConversation()
     {
         StartCoroutine(FadeOutFlow());
+        TimeManager.Instance.ContinueGame();
     }
 
     private void PutText()

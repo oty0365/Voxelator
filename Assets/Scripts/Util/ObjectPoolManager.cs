@@ -31,9 +31,10 @@ public enum PoolObjectType
     PlainChopperYouth,
     InteractionButton,
     EffectIcon,
-    
-
-
+    StaticAreaIndicator,
+    StaticLineIndicator,
+    DynamicLineIndicator,
+    DynamicAreaIndicator
 }
 
 public class ObjectPoolManager : SceneSingletonMonoBehaviour<ObjectPoolManager>

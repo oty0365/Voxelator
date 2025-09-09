@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectBankManager : SceneSingletonMonoBehaviour<ObjectBankManager>
 {
     [SerializeField] private ObjectBankSO objectBankSO; 
-    private Dictionary<string, GameObject> bank = new();
+    private Dictionary<ObjectCode, GameObject> bank = new();
 
     private void Start()
     {
@@ -13,7 +13,7 @@ public class ObjectBankManager : SceneSingletonMonoBehaviour<ObjectBankManager>
             bank.Add(i.name, i.data);
         }
     }
-    public GameObject Get(string key)
+    public GameObject Get(ObjectCode key)
     {
         if (bank.ContainsKey(key))
         {

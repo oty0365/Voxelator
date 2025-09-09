@@ -16,7 +16,7 @@ public class LongSwordAugment : AAugment,IPoolingObject
     {
         if (core == null)
         {
-            core = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get("WeaponCore"), PlayerInput.Instance.gameObject.transform.position, new Vector3(0, 0, 0));
+            core = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.WeaponCore), PlayerInput.Instance.gameObject.transform.position, new Vector3(0, 0, 0));
             var weaponCore = core.GetComponent<WeaponCore>();
             var weaponSetter = core.transform.GetChild(0).gameObject.GetComponent<WeaponSetter>();
             weaponCore.weaponCoreDatas = weaponCoreDatas;

@@ -16,7 +16,12 @@ public class WindWildPlainMap : AMap,IEvent
             case 5:
                 TimeManager.Instance.StopGame();
                 DialogManager.Instance.StartConversation(currentTutorialDia);
-                //EventManager.Instance.Invoke(EventKey.StartSpawning);
+                break;
+            case 6:
+                AugmentManager.Instance.AugmentSelection(AugmentState.Weapon);
+                break;
+            case 7:
+                EventManager.Instance.Invoke(EventKey.StartSpawning);
                 break;
             case 110:
                 EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.Goblin);

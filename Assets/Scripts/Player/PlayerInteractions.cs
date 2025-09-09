@@ -63,7 +63,7 @@ public class PlayerInteractions : MonoBehaviour,IEvent
 
             foreach (var a in added)
             {
-                var button = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get("InteractionButton"),
+                var button = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.InteractionButton),
                     a.transform.position, Vector3.zero);
                 button.GetComponent<InteractionButton>().interacter = a.gameObject;
                 if (!_interactionDic.ContainsKey(a))

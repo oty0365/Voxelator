@@ -11,14 +11,14 @@ public class RockGolem : AEnemy, IPoolingObject, IFootSteper
     private void Start()
     {
         Initialize();
-        var moveTowards = new EnemyMoveTowardsNonFlip(this);
+        var moveTowards = new EnemyMoveTowardsNonFlipST(this);
         fsm.RegisterState("Run", moveTowards);
         fsm.ChangeState("Run");
     }
     public void OnBirth()
     {
         Initialize();
-        var moveTowards = new EnemyMoveTowardsNonFlip(this);
+        var moveTowards = new EnemyMoveTowardsNonFlipST(this);
         fsm.RegisterState("Run", moveTowards);
         fsm.ChangeState("Run");
     }
