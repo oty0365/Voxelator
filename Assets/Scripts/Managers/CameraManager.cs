@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class CammeraManager : SceneSingletonMonoBehaviour<CammeraManager>
+public class CameraManager : SceneSingletonMonoBehaviour<CameraManager>
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float followSpeed = 10f;

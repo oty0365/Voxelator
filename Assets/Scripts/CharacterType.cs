@@ -49,7 +49,7 @@ public class CharacterType : MonoBehaviour
 
         if (isElite)
         {
-            color =  Color.yellow;
+            color = new Color32(255, 141, 255,255);
         }
         return color;
     }
@@ -73,7 +73,7 @@ public class CharacterType : MonoBehaviour
         }
         if (isElite)
         {
-            color =  Color.yellow;
+            color = new Color32(255, 141, 255,255);
         }
         sr.color = color;
     }

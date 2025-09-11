@@ -91,7 +91,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 8068928027856642600, guid: dd774f858c8ba3841956cff5c385d7b4, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.24784446, a: 1}
+  m_Color: {r: 1, g: 0.5529412, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footStepObj: {fileID: 7449522239600359466, guid: 7903965d3a924834f80b2d3df9cfe9e4, type: 3}
-  coolDown: 0.25
-  size: {x: 0.2, y: 0.2}
+  coolDown: 0.2
+  size: {x: 0.25, y: 0.25}
   footTransform: {fileID: 2331721200991413975}
 --- !u!61 &8711252282228113815
 BoxCollider2D:
@@ -172,7 +172,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 320
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6f8afd7edb03243a1d5952a69dbfb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolObjectType: 23
+  poolObjectType: 33
 --- !u!114 &5550829983331579131
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,17 +10,12 @@ public class PlainChopperYouth : AEnemy, IPoolingObject, IFootSteper
     
     private void Start()
     {
-        Initialize();
-        var moveTowards = new EnemyMoveTowardsST(this);
-        fsm.RegisterState("Run", moveTowards);
-        fsm.ChangeState("Run");
+        //Initialize();
     }
     public void OnBirth()
     {
         Initialize();
-        var moveTowards = new EnemyMoveTowardsST(this);
-        fsm.RegisterState("Run", moveTowards);
-        fsm.ChangeState("Run");
+
     }
 
     public void OnDeathInit()
@@ -32,5 +27,8 @@ public class PlainChopperYouth : AEnemy, IPoolingObject, IFootSteper
     {
         base.Initialize();
         StartStep();
+        var moveTowards = new EnemyMoveTowardsST(this);
+        fsm.RegisterState("Run", moveTowards);
+        fsm.ChangeState("Run");
     }
 }

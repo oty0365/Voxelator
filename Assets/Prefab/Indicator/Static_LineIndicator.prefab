@@ -108,10 +108,11 @@ MonoBehaviour:
   mark: {fileID: 5681798548521193235}
   baseSize: 320
   size: {x: 0, y: 0}
+  localSize: {x: 0, y: 0}
   stareColor: {r: 1, g: 0.5254902, b: 0.5254902, a: 1}
   exeColor: {r: 1, g: 0, b: 0, a: 1}
   fadeSpeed: 10
-  fadeTime: 0.4
+  fadeTime: 0.6
 --- !u!1 &8548719542815014062
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public enum ObjectCode
     StaticIndicatorLine,
     DynamicIndicatorArea,
     DynamicIndicatorLine,
+    AfterImageGenerator,
 }
 
 [Serializable]

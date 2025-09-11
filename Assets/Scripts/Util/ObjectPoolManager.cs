@@ -34,7 +34,10 @@ public enum PoolObjectType
     StaticAreaIndicator,
     StaticLineIndicator,
     DynamicLineIndicator,
-    DynamicAreaIndicator
+    DynamicAreaIndicator,
+    AfterImageGenerator,
+    AfterImage,
+    GoblinKnight,
 }
 
 public class ObjectPoolManager : SceneSingletonMonoBehaviour<ObjectPoolManager>
@@ -162,7 +165,7 @@ public class ObjectPoolManager : SceneSingletonMonoBehaviour<ObjectPoolManager>
         {
             obj = objectPoolList[key].Dequeue();
             poolObj = GetPoolingComponent(obj);
-            obj.transform.parent = parent;
+            obj.transform.SetParent(parent,false);
             obj.SetActive(true);
         }
 

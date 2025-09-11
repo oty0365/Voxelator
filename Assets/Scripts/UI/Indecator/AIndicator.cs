@@ -26,10 +26,17 @@ public abstract class AIndicator : MonoBehaviour,IPoolingObject
     
     protected Coroutine currentFadeInFlow;
     protected Coroutine currentFadeOutFlow;
+    protected GameObject parent;
     
     public void OnBirth()
     {
         OnStart();
+    }
+
+    public void SetParent(GameObject parentObj)
+    {
+        parent = parentObj;
+        parent.GetComponent<ILifeSycler>().OnDeath += OnExit;
     }
 
     public void SetBaseSize(float indiSize)
@@ -97,6 +104,8 @@ public abstract class AIndicator : MonoBehaviour,IPoolingObject
 
     public void OnDeathInit()
     {
+        parent.GetComponent<ILifeSycler>().OnDeath -= OnExit;
+        parent = null;
         StopCoroutine(currentFadeInFlow);
         StopCoroutine(currentFadeOutFlow);
         currentFadeInFlow = null;

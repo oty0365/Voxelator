@@ -207,7 +207,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         }
         if (realDamage > 0)
         {
-            CammeraManager.Instance.ShakeCamera(damageData.damage/(9+damageData.damage),0.5f);
+            CameraManager.Instance.ShakeCamera(damageData.damage/(9+damageData.damage),0.5f);
             playerHp.SetBuff(BuffType.Add,-realDamage);   
         }
     }

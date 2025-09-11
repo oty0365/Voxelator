@@ -4,7 +4,7 @@ using UnityEngine;
 public class WindWildPlainMap : AMap,IEvent
 {
 
-    [SerializeField] private DialogsSO currentTutorialDia;
+    [SerializeField] private DialogsSO[] mapDia;
     public override void Execute(int time)
     {
         switch (time)
@@ -15,7 +15,7 @@ public class WindWildPlainMap : AMap,IEvent
                 break;
             case 5:
                 TimeManager.Instance.StopGame();
-                //DialogManager.Instance.StartConversation(currentTutorialDia);
+                DialogManager.Instance.StartConversation(mapDia[0]);
                 break;
             case 6:
                 AugmentManager.Instance.AugmentSelection(AugmentState.Weapon);
@@ -23,16 +23,26 @@ public class WindWildPlainMap : AMap,IEvent
             case 7:
                 EventManager.Instance.Invoke(EventKey.StartSpawning);
                 break;
-            case 110:
+            case 70:
                 EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.Goblin);
-                Debug.Log(1);
-                //EventManager.Instance.Invoke(EventKey.SpawnElite);
+                break;
+            case 110:
+                EventManager.Instance.Invoke(EventKey.ShowEventBanner,"EliteSpawn");
+                EventManager.Instance.Invoke(EventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
                 break;
             case 200:
                 EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.RockGolem);
                 break;
             case 220:
-                //EventManager.Instance.Invoke(EventKey.SpawnElite);
+                EventManager.Instance.Invoke(EventKey.ShowEventBanner,"EliteSpawn");
+                EventManager.Instance.Invoke(EventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
+                EventManager.Instance.Invoke(EventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
+                break;
+            case 280:
+                EventManager.Instance.Invoke(EventKey.StopSpawning);
+                EventManager.Instance.Invoke(EventKey.KillAllMonsters);
+                TimeManager.Instance.StopGame();
+                DialogManager.Instance.StartConversation(mapDia[1]);
                 break;
             default:
                 Debug.Log("타임라인 불일치");

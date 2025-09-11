@@ -65,6 +65,7 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
     public void AugmentSelection(AugmentState targetStates)
     {
         setUi?.Invoke(GetRandomAugments(targetStates));
+        CameraManager.Instance.StopShake();
         Time.timeScale = 0;
     }
 

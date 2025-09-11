@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class JoyStickHandle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
+public class JoyStickHandle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler 
 {
     public Action<Vector2> moveDirInputer;
     public Action<Vector2> rotationInputer;
@@ -129,5 +129,10 @@ public class JoyStickHandle : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
         moveDirInputer?.Invoke(Vector2.zero);
         _lastValidInput = Vector2.zero;
+    }
+
+    private void OnDisable()
+    {
+        OnPointerUp(null);
     }
 }

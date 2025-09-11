@@ -12,6 +12,10 @@ public enum EventKey
     StartSpawning,
     StopSpawning,
     ContinueSpawning,
+    ShowEventBanner,
+    KillAllMonsters,
+    OnTalkStart,
+    OnTalkEnd,
 }
 
 public class EventManager : SceneSingletonMonoBehaviour<EventManager>

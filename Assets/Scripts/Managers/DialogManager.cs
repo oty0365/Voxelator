@@ -39,6 +39,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
         currentDialogs = dialogs;
         currentIndex = 0;
         _isPuttingText = false;
+        EventManager.Instance.Invoke(EventKey.OnTalkStart);
         StartCoroutine(FadeInFlow());
     }
 
@@ -49,17 +50,21 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
         talkerNameTmp.color = color;
         talkerDialogTmp.color = color;
         talkerPortraitImage.color = color;
-        dialogPanel.gameObject.SetActive(true);
         PutText();
+        dialogPanel.gameObject.SetActive(true);
         for (var i = 0f; i < fadeTime; i += Time.deltaTime)
         {
             color=Color.Lerp(color, Color.white, fadeSpeed * Time.deltaTime);
             dialogContainer.color = color;
             talkerNameTmp.color = color;
             talkerDialogTmp.color = color;
-            talkerPortraitImage.color = color;
+            if (talkerPortraitImage.sprite != null)
+            {
+                talkerPortraitImage.color = color;
+            }
             yield return null;
         }
+
     }
 
     private IEnumerator FadeOutFlow()
@@ -78,6 +83,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
             talkerPortraitImage.color = color;
             yield return null;
         }
+        talkerPortraitImage.sprite = null;
         dialogPanel.gameObject.SetActive(false);
     }
 
@@ -108,6 +114,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
 
     private void EndConversation()
     {
+        EventManager.Instance.Invoke(EventKey.OnTalkEnd);
         StartCoroutine(FadeOutFlow());
         TimeManager.Instance.ContinueGame();
     }
@@ -127,7 +134,19 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
         {
             _isPuttingText = true;
             talkerPortraitImage.sprite = currentDia.talkersFace;
-            talkerNameTmp.text = scripter.scripts[currentDia.talker].currentText;
+            if (talkerPortraitImage.sprite != null)
+            {
+                talkerPortraitImage.color = Color.white;
+            }
+            if (currentDia.talker == String.Empty)
+            {
+                talkerNameTmp.text = "";
+            }
+            else
+            {
+                talkerNameTmp.text = scripter.scripts[currentDia.talker].currentText;
+            }
+
             _putTextFlow = StartCoroutine(PutTextFlow(scripter.scripts[currentDia.dialogue[0]].currentText));
         }
     }

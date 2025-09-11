@@ -14,6 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBank:
   - code: 3
-    enemyObj: {fileID: 5778658301210856545, guid: c7348848778ab684fb11749a72d017ee, type: 3}
-  - code: 4
-    enemyObj: {fileID: 5778658301210856545, guid: c7348848778ab684fb11749a72d017ee, type: 3}
+    enemyObj: {fileID: 5778658301210856545, guid: e4a323ff253e40e478d8077b08365242, type: 3}

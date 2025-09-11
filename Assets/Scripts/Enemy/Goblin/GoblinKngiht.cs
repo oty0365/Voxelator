@@ -15,7 +15,7 @@ public class GoblinKnight : AEnemy, IPoolingObject, IFootSteper
     
     private void Start()
     {
-        Initialize();
+        //Initialize();
     }
     public void OnBirth()
     {
@@ -81,7 +81,7 @@ public class GoblinKnight : AEnemy, IPoolingObject, IFootSteper
     {
         private AEnemy _enemy;
         private float _startTime;
-        private float[] _waitDuration = {3f,3.5f};
+        private float[] _waitDuration = {1f,1.5f};
         private float _dashRange = 6f;
         private StaticLineIndicator _sli;
         private Vector3 _finalDestination;
@@ -99,6 +99,7 @@ public class GoblinKnight : AEnemy, IPoolingObject, IFootSteper
             var o = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.StaticIndicatorLine),IndicatorCanvas.Instance.canvasPrefab.transform);
             var finalDestination = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_dashRange;
             _sli = o.GetComponent<StaticLineIndicator>();
+            _sli.SetParent(_enemy.gameObject);
             _sli.SetTarget(_enemy.gameObject, _enemy.transform.position+finalDestination, new Vector3(0.5f, 0.5f, 0f));
         }
 
@@ -141,6 +142,7 @@ public class GoblinKnight : AEnemy, IPoolingObject, IFootSteper
         private Vector2 _finalDestination;
         private float _dashSpeed = 12f;
         private float _dashRange = 6f;
+        private AfterImageGenerator _generator;
 
         public GoblinKnightDashST(AEnemy enemy)
         {
@@ -151,10 +153,13 @@ public class GoblinKnight : AEnemy, IPoolingObject, IFootSteper
         {
             _enemy.rb2D.linearVelocity  = Vector2.zero;
             _enemy.gameObject.GetComponent<GoblinKnight>().goblinKnightAnimator.SetAnimation(EntityMoves.Dash);
-            var o = ObjectBankManager.Instance.Get(ObjectCode.DynamicIndicatorLine);
+            var o = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.AfterImageGenerator),Vector2.zero,Vector3.zero);
+            _generator = o.GetComponent<AfterImageGenerator>();
+            _generator.StartSpawn(_enemy.gameObject,0.05f);
             var dir = _enemy.GetComponent<GoblinKnight>().finalDestination;
             _finalDestination =dir*_dashRange+_enemy.rb2D.position;
             _enemy.rb2D.linearVelocity  = dir*_dashSpeed;
+            _enemy.enemyData.baseAttack.SetBuff(BuffType.Mul,2);
         }
 
         public void Execute()
@@ -173,7 +178,8 @@ public class GoblinKnight : AEnemy, IPoolingObject, IFootSteper
 
         public void Exit()
         {
-            
+            _enemy.enemyData.baseAttack.SetBuff(BuffType.Mul,-2);
+            ObjectPoolManager.Instance.Return(_generator.gameObject);
         }
         
     }
