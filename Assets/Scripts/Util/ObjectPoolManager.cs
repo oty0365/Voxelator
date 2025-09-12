@@ -38,6 +38,7 @@ public enum PoolObjectType
     AfterImageGenerator,
     AfterImage,
     GoblinKnight,
+    GoblinBeastRider,
 }
 
 public class ObjectPoolManager : SceneSingletonMonoBehaviour<ObjectPoolManager>

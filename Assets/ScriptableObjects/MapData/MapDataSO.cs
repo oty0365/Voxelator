@@ -5,4 +5,6 @@ public class MapDataSO : ScriptableObject
 {
     public Sprite mapBanner;
     public string mapName;
+    public Sprite bossBanner;
+    public string bossName;
 }

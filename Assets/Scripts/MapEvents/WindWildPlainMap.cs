@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class WindWildPlainMap : AMap,IEvent
 {
 
     [SerializeField] private DialogsSO[] mapDia;
+    [SerializeField] private Transform playerBossBattlePos;
+    [SerializeField] private Transform bossSpawnPos;
     public override void Execute(int time)
     {
         switch (time)
@@ -18,10 +21,20 @@ public class WindWildPlainMap : AMap,IEvent
                 DialogManager.Instance.StartConversation(mapDia[0]);
                 break;
             case 6:
-                AugmentManager.Instance.AugmentSelection(AugmentState.Weapon);
+                //AugmentManager.Instance.AugmentSelection(AugmentState.Weapon);
+                TimeManager.Instance.StopGame();
+                EventManager.Instance.Invoke(EventKey.StopSpawning);
+                EventManager.Instance.Invoke(EventKey.KillAllMonsters);
+                PlayerStatus.Instance.gameObject.transform.position = playerBossBattlePos.position;
+                DialogManager.Instance.StartConversation(mapDia[1]);
                 break;
             case 7:
-                EventManager.Instance.Invoke(EventKey.StartSpawning);
+                ObjectPoolManager.Instance.Get(EnemySpawn.Instance.GetBoss(EnemyCode.BossGoblinBeastRider),bossSpawnPos.position, Vector3.zero);
+                MapManager.Instance.SetBossBattle();
+                EventManager.Instance.Invoke(EventKey.ShowMapBanner);
+                CameraManager.Instance.SetTarget(bossSpawnPos);
+                StartCoroutine(EndCutSceneFlow());
+                //EventManager.Instance.Invoke(EventKey.StartSpawning);
                 break;
             case 70:
                 EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.Goblin);
@@ -41,8 +54,12 @@ public class WindWildPlainMap : AMap,IEvent
             case 280:
                 EventManager.Instance.Invoke(EventKey.StopSpawning);
                 EventManager.Instance.Invoke(EventKey.KillAllMonsters);
+                PlayerStatus.Instance.gameObject.transform.position = playerBossBattlePos.position;
                 TimeManager.Instance.StopGame();
                 DialogManager.Instance.StartConversation(mapDia[1]);
+                break;
+            case 281:
+                CameraManager.Instance.SetTarget(bossSpawnPos);
                 break;
             default:
                 Debug.Log("타임라인 불일치");
@@ -69,5 +86,11 @@ public class WindWildPlainMap : AMap,IEvent
     public void OnDisable()
     {
         Unsubscribe();
+    }
+
+    private IEnumerator EndCutSceneFlow()
+    {
+        yield return new WaitForSeconds(3.5f);
+        CameraManager.Instance.SetTarget(PlayerStatus.Instance.gameObject.transform);
     }
 }

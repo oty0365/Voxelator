@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameFlowManager : SceneSingletonMonoBehaviour<GameFlowManager>
 {
     [SerializeField] GameObject[] activationRows;
-    [SerializeField] private GameObject mapBanner;
+    public GameObject mapBanner;
     void Start()
     {
         Activation();
@@ -24,6 +24,7 @@ public class GameFlowManager : SceneSingletonMonoBehaviour<GameFlowManager>
         var map = MapManager.Instance.InstantiateMap();
         var mapSetter = map.GetComponent<MapSetter>();
         mapSetter.SetMapBanner(mapBanner);
+        MapManager.Instance.SetMapSetter(mapSetter);
         TimeManager.Instance.StartGame();
     }
 

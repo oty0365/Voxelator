@@ -6,12 +6,13 @@ public enum EntityMoves
     Walk,
     Dash,
     PrepareDash,
-    
+    Roar,
+    Bite
 }
 
 public abstract class EntityAnimator : MonoBehaviour
 {
-    [SerializeField] protected Animator ani;
+    public Animator ani;
 
     public virtual void SetAnimation(EntityMoves moves)
     {

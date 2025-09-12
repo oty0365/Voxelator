@@ -24,7 +24,10 @@ public class TimeManager : SceneSingletonMonoBehaviour<TimeManager>
     
     public void ContinueGame()
     {
-        _currentClockFlow = StartCoroutine(ClockFlow());
+        if (_currentClockFlow == null)
+        {
+            _currentClockFlow = StartCoroutine(ClockFlow());
+        }
     }
 
     private IEnumerator ClockFlow()

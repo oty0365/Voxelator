@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapBanner: {fileID: 21300000, guid: f8be862cb796b734cb92e56d949fab85, type: 3}
   mapName: WindWildPlains
+  bossBanner: {fileID: 21300000, guid: a071e4ad3ede0d945ad898b1dc78df9f, type: 3}
+  bossName: GoblinBeastRiderName

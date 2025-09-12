@@ -12,6 +12,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     [SerializeField] private MapSetsSO mapSetsSO;
     private GameObject _currentMap;
     private MapCode _currentMapCode;
+    private MapSetter _currentMapSetter;
     private Dictionary<MapCode, GameObject> _currentMapDict = new();
 
     protected override void Awake()
@@ -41,5 +42,14 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         return _currentMap;
     }
 
+    public void SetMapSetter(MapSetter setter)
+    {
+        _currentMapSetter = setter;
+    }
+
+    public void SetBossBattle()
+    {
+        _currentMapSetter?.SetBossBanner(GameFlowManager.Instance.mapBanner);
+    }
     
 }

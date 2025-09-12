@@ -25,6 +25,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
     [SerializeField] private float fadeTime = 0.8f;
 
     private bool _isPuttingText;
+    private bool _isEnded;
     private Coroutine _putTextFlow;
     private Scripter scripter;
 
@@ -39,6 +40,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
         currentDialogs = dialogs;
         currentIndex = 0;
         _isPuttingText = false;
+        _isEnded = false;
         EventManager.Instance.Invoke(EventKey.OnTalkStart);
         StartCoroutine(FadeInFlow());
     }
@@ -114,9 +116,14 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
 
     private void EndConversation()
     {
-        EventManager.Instance.Invoke(EventKey.OnTalkEnd);
-        StartCoroutine(FadeOutFlow());
-        TimeManager.Instance.ContinueGame();
+        if (!_isEnded)
+        {
+            _isEnded = true;
+            Debug.Log("EndConversation");
+            EventManager.Instance.Invoke(EventKey.OnTalkEnd);
+            TimeManager.Instance.ContinueGame();
+            StartCoroutine(FadeOutFlow());
+        }
     }
 
     private void PutText()

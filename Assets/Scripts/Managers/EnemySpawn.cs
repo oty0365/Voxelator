@@ -70,6 +70,16 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
         Vector3 pos = player.transform.position + new Vector3(x, y, 0);
         ObjectPoolManager.Instance.Get(_eliteDict[code], pos, new Vector3(0, 0, 0));
     }
+
+    public GameObject GetBoss(EnemyCode code)
+    {
+        if (_bossDict.ContainsKey(code))
+        {
+            return _bossDict[code];
+        }
+
+        return null;
+    }
     
     public void TryUnlockEnemy(EnemyCode code)
     {            
