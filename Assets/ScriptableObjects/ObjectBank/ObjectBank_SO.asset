@@ -13,11 +13,21 @@ MonoBehaviour:
   m_Name: ObjectBank_SO
   m_EditorClassIdentifier: 
   objectBankSet:
-  - name: WeaponCore
+  - name: 0
     data: {fileID: 7087632177871736754, guid: f86be19ced665284eb4519a03782806b, type: 3}
-  - name: Exp
+  - name: 1
     data: {fileID: 2609676869748365458, guid: 09826456ddbf6a84ab030aca7d22e4cc, type: 3}
-  - name: HitParticle
+  - name: 2
     data: {fileID: 3650066380682929340, guid: db67fa537b6c9f546baa2487162f90fa, type: 3}
-  - name: InteractionButton
+  - name: 3
     data: {fileID: 2782235754551400892, guid: 565d8fe6ba790c144ab37ae10b69f784, type: 3}
+  - name: 4
+    data: {fileID: 7997756066553473992, guid: 504708a15db068b4eaafa0b600a62901, type: 3}
+  - name: 5
+    data: {fileID: 7997756066553473992, guid: 99c87972c3e98d241b23d9fa17f5a2b6, type: 3}
+  - name: 6
+    data: {fileID: 7997756066553473992, guid: 1bc7c2b1df03cd140ba746fc0a739a16, type: 3}
+  - name: 7
+    data: {fileID: 7997756066553473992, guid: bb844609c9409fe4db85a82801b315b9, type: 3}
+  - name: 8
+    data: {fileID: 7020202725890406773, guid: 5888c55bd9b1d6443af2355d5d8793d9, type: 3}

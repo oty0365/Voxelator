@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d91d740936759574087bf3ec934a5abe, type: 3}
-  m_Name: DialogScriptSO
+  m_Name: SaintTT2-3
   m_EditorClassIdentifier: 
-  talker: 
+  talker: SaintName
   hasSelection: 0
-  talkersFace: {fileID: 0}
-  dialogue: []
+  talkersFace: {fileID: 21300000, guid: 0290c93a05a89804aac8227d889a8c0a, type: 3}
+  dialogue:
+  - SaintMap2TT3
   eventsWhileTalk: 

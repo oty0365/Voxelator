@@ -12,6 +12,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     [SerializeField] private MapSetsSO mapSetsSO;
     private GameObject _currentMap;
     private MapCode _currentMapCode;
+    private MapSetter _currentMapSetter;
     private Dictionary<MapCode, GameObject> _currentMapDict = new();
 
     protected override void Awake()
@@ -30,7 +31,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     {
         _currentMapCode = code;
     }
-    public void InstantiateMap()
+    public GameObject InstantiateMap()
     {
         if (_currentMap != null)
         {
@@ -38,7 +39,17 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             _currentMap = null;
         }
         _currentMap = Instantiate(_currentMapDict[_currentMapCode], new Vector3(0, 0, 0), Quaternion.identity);
+        return _currentMap;
     }
 
+    public void SetMapSetter(MapSetter setter)
+    {
+        _currentMapSetter = setter;
+    }
+
+    public void SetBossBattle()
+    {
+        _currentMapSetter?.SetBossBanner(GameFlowManager.Instance.mapBanner);
+    }
     
 }

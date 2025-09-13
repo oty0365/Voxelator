@@ -31,9 +31,14 @@ public enum PoolObjectType
     PlainChopperYouth,
     InteractionButton,
     EffectIcon,
-    
-
-
+    StaticAreaIndicator,
+    StaticLineIndicator,
+    DynamicLineIndicator,
+    DynamicAreaIndicator,
+    AfterImageGenerator,
+    AfterImage,
+    GoblinKnight,
+    GoblinBeastRider,
 }
 
 public class ObjectPoolManager : SceneSingletonMonoBehaviour<ObjectPoolManager>
@@ -161,7 +166,7 @@ public class ObjectPoolManager : SceneSingletonMonoBehaviour<ObjectPoolManager>
         {
             obj = objectPoolList[key].Dequeue();
             poolObj = GetPoolingComponent(obj);
-            obj.transform.parent = parent;
+            obj.transform.SetParent(parent,false);
             obj.SetActive(true);
         }
 

@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scriptingArray:
   - Voxcelator_DataChip
+  - Voxcelator_MapName
+  - Voxcelator_NunTalk
+  - Voxcelator_MapEvents
+  - Voxcelator_MapTalk

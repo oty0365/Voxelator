@@ -17,7 +17,7 @@ public class TouchScreenHandler : MonoBehaviour, IPointerDownHandler
     {
         Vector3 worldTouchPos = Camera.main.ScreenToWorldPoint(eventData.position);
         var hit=Physics2D.Raycast(worldTouchPos, Vector2.zero, Mathf.Infinity);
-        if (hit != null)
+        if (!hit)
         {
             var interactbtn = hit.collider.gameObject.GetComponent<InteractionButton>();
             if (interactbtn != null)

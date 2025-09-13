@@ -1,25 +1,18 @@
 using System;
 using UnityEngine;
 
-public enum PlayerMoves
-{
-    Idle,
-    Walk,
-    Dash
-}
-
 public class PlayerController : SceneSingletonMonoBehaviour<PlayerController>,IEvent
 {
     [SerializeField] private Rigidbody2D rb2D;
     [SerializeField] private PlayerAnimator playerAnimator;
 
-    private event Action<PlayerMoves> playerMovesAnimator;
-    private PlayerMoves _playerMoves;
+    private event Action<EntityMoves> playerMovesAnimator;
+    private EntityMoves _playerMoves;
 
     public PlayerMovementData playerMovementData;
     public PlayerDash playerDash;
     public Vector2 currentDir;
-    public PlayerMoves playerMoves 
+    public EntityMoves playerMoves 
     {
         get => _playerMoves;
         set

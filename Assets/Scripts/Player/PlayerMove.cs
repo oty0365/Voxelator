@@ -18,18 +18,18 @@ public class PlayerMove : MonoBehaviour,IEvent
 
     public void SetDir(Vector2 dir)
     {
-        if (controller.playerMoves == PlayerMoves.Dash)
+        if (controller.playerMoves == EntityMoves.Dash)
         {
             return;
         }
         controller.currentDir = dir;
         if (dir == Vector2.zero)
         {
-            controller.playerMoves = PlayerMoves.Idle;
+            controller.playerMoves = EntityMoves.Idle;
             onFootStepEnd?.Invoke();
             return;
         }
-        controller.playerMoves = PlayerMoves.Walk;
+        controller.playerMoves = EntityMoves.Walk;
         onFootStepStart?.Invoke();
 
     }

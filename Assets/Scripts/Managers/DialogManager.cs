@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -6,55 +7,86 @@ using UnityEngine.UI;
 public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
 {
 
-    [Header("���̾�α� ������")]
+    [Header("대화 설정")]
     public DialogsSO currentDialogs;
     public int currentIndex;
     public bool isEventing;
 
-    [Header("���̾�α� UI")]
-    public GameObject dialogPannel;
+    [Header("대화 UI")] 
+    public GameObject dialogPanel;
+    public Image dialogContainer;
     public Image talkerPortraitImage;
     public TextMeshProUGUI talkerNameTmp;
     public TextMeshProUGUI talkerDialogTmp;
-    public GameObject nextIndicator;
 
-    [Header("�ؽ�Ʈ ��� �ӵ�")]
+    [Header("수치")]
     [SerializeField] private float textSpeed = 0.05f;
+    [SerializeField] private float fadeSpeed = 15f;
+    [SerializeField] private float fadeTime = 0.8f;
 
     private bool _isPuttingText;
+    private bool _isEnded;
     private Coroutine _putTextFlow;
     private Scripter scripter;
 
     private void Start()
     {
-        dialogPannel.SetActive(false);
-        if (nextIndicator != null)
-        {
-            nextIndicator.SetActive(false);
-        }
+        dialogPanel.gameObject.SetActive(false);
         scripter = Scripter.Instance;
-    }
-
-    private void Update()
-    {
-        if (!dialogPannel.activeSelf) return;
-
-        if (nextIndicator != null)
-            nextIndicator.SetActive(!_isPuttingText);
-
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)))
-        {
-            NextText();
-        }
     }
 
     public void StartConversation(DialogsSO dialogs)
     {
-        dialogPannel.SetActive(true);
         currentDialogs = dialogs;
         currentIndex = 0;
         _isPuttingText = false;
+        _isEnded = false;
+        EventManager.Instance.Invoke(EventKey.OnTalkStart);
+        StartCoroutine(FadeInFlow());
+    }
+
+    private IEnumerator FadeInFlow()
+    {
+        var color = Color.clear;
+        dialogContainer.color = color;
+        talkerNameTmp.color = color;
+        talkerDialogTmp.color = color;
+        talkerPortraitImage.color = color;
         PutText();
+        dialogPanel.gameObject.SetActive(true);
+        for (var i = 0f; i < fadeTime; i += Time.deltaTime)
+        {
+            color=Color.Lerp(color, Color.white, fadeSpeed * Time.deltaTime);
+            dialogContainer.color = color;
+            talkerNameTmp.color = color;
+            talkerDialogTmp.color = color;
+            if (talkerPortraitImage.sprite != null)
+            {
+                talkerPortraitImage.color = color;
+            }
+            yield return null;
+        }
+
+    }
+
+    private IEnumerator FadeOutFlow()
+    {
+        var color = Color.white;
+        dialogContainer.color = color;
+        talkerNameTmp.color = color;
+        talkerDialogTmp.color = color;
+        talkerPortraitImage.color = color;
+        for (var i = 0f; i < fadeTime; i += Time.deltaTime)
+        {
+            color=Color.Lerp(color, Color.clear, fadeSpeed * Time.deltaTime);
+            dialogContainer.color = color;
+            talkerNameTmp.color = color;
+            talkerDialogTmp.color = color;
+            talkerPortraitImage.color = color;
+            yield return null;
+        }
+        talkerPortraitImage.sprite = null;
+        dialogPanel.gameObject.SetActive(false);
     }
 
     public void NextText()
@@ -84,14 +116,13 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
 
     private void EndConversation()
     {
-        dialogPannel.SetActive(false);
-        currentDialogs = null;
-        currentIndex = 0;
-
-        //PlayerInteraction.Instance.OnInteractMode(1);
-
-        if (nextIndicator != null)
-            nextIndicator.SetActive(false);
+        if (!_isEnded)
+        {
+            _isEnded = true;
+            EventManager.Instance.Invoke(EventKey.OnTalkEnd);
+            TimeManager.Instance.ContinueGame();
+            StartCoroutine(FadeOutFlow());
+        }
     }
 
     private void PutText()
@@ -109,7 +140,19 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
         {
             _isPuttingText = true;
             talkerPortraitImage.sprite = currentDia.talkersFace;
-            talkerNameTmp.text = scripter.scripts[currentDia.talker].currentText;
+            if (talkerPortraitImage.sprite != null)
+            {
+                talkerPortraitImage.color = Color.white;
+            }
+            if (currentDia.talker == String.Empty)
+            {
+                talkerNameTmp.text = "";
+            }
+            else
+            {
+                talkerNameTmp.text = scripter.scripts[currentDia.talker].currentText;
+            }
+
             _putTextFlow = StartCoroutine(PutTextFlow(scripter.scripts[currentDia.dialogue[0]].currentText));
         }
     }
@@ -150,5 +193,4 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
 
         _isPuttingText = false;
     }
-
 }

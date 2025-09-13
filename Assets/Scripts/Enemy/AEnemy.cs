@@ -12,7 +12,7 @@ public class RunTimeEnemyData
 
 }
 
-public abstract class AEnemy : MonoBehaviour
+public abstract class AEnemy : MonoBehaviour,ILifeSycler
 {
     [SerializeField] private EnemyDataSO baseEnemyData;
     [SerializeField] private StatContainer statContainer;
@@ -21,23 +21,32 @@ public abstract class AEnemy : MonoBehaviour
     public Rigidbody2D rb2D;
     public Fsm fsm;
     public SpriteRenderer sr;
+    public event Action OnDeath;
     protected MaterialPropertyBlock _metProps;
     protected Coroutine _currentHitFlow;
 
     public virtual void Initialize()
     {
+        EnemySpawn.Instance.UpLoadToList(gameObject);
         _metProps = new MaterialPropertyBlock();
         sr.GetPropertyBlock(_metProps);
         _metProps.SetFloat("_Progress", 0);
         sr.SetPropertyBlock(_metProps);
         
-        enemyData.health.MaxValue=baseEnemyData.health.GetRandomized();
-        enemyData.health.Value=enemyData.health.MaxValue;
-        enemyData.baseAttack.Value = baseEnemyData.baseAttack.GetRandomized();
-        enemyData.baseDefense.Value = baseEnemyData.baseDefense.GetRandomized();
-        enemyData.expDrop = baseEnemyData.expDrop.GetRandomizedAsInt();
-        enemyData.moveSpeed.Value = baseEnemyData.moveSpeed;
+        //.health.MaxValue=;
+        //enemyData.health.Value=enemyData.health.MaxValue;
+        //enemyData.baseAttack.Value = baseEnemyData.baseAttack.GetRandomized();
+        //enemyData.baseDefense.Value = baseEnemyData.baseDefense.GetRandomized();
+        //enemyData.moveSpeed.Value = baseEnemyData.moveSpeed;
         characterType.EntityType = characterType.entityType;
+        
+        
+        enemyData.expDrop = baseEnemyData.expDrop.GetRandomizedAsInt();
+        enemyData.health.SetMaxBuff(BuffType.Add,baseEnemyData.health.GetRandomized());
+        enemyData.health.SetBuff(BuffType.Add,enemyData.health.MaxValue);
+        enemyData.baseAttack.SetBuff(BuffType.Add,baseEnemyData.baseAttack.GetRandomized());
+        enemyData.baseDefense.SetBuff(BuffType.Add,baseEnemyData.baseDefense.GetRandomized());
+        enemyData.moveSpeed.SetBuff(BuffType.Add,baseEnemyData.moveSpeed);
         
         statContainer.AddStat(StatusCode.Hp,enemyData.health);
         statContainer.AddStat(StatusCode.Def,enemyData.baseDefense);
@@ -89,8 +98,13 @@ public abstract class AEnemy : MonoBehaviour
 
     public virtual void Drop()
     {
-        var a = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get("Exp"), transform.position, new Vector3(0, 0, 45));
+        var a = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.Exp), transform.position, new Vector3(0, 0, 45));
         a.GetComponent<ExpGiver>().expAmount = enemyData.expDrop;
+    }
+
+    private void OnDisable()
+    {
+        OnDeath?.Invoke();
     }
 
     public virtual void OnHit(DamageData damage)
@@ -104,7 +118,7 @@ public abstract class AEnemy : MonoBehaviour
 
         if (realDamage > 0)
         {
-            var hit = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get("HitParticle"), transform.position, new Vector3(-90, 0, 0)); 
+            var hit = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.HitParticle), transform.position, new Vector3(-90, 0, 0)); 
             var hitObj = hit.GetComponent<ParticleObject>();
             var hitPrt = hitObj.prt.main;
             hitPrt.startColor = characterType.GetColor();
@@ -128,18 +142,25 @@ public abstract class AEnemy : MonoBehaviour
     public virtual void Death()
     {
         Drop();
+        enemyData.health.SetMaxBuff(BuffType.Add,-enemyData.health.MaxValue);
+        enemyData.health.SetBuff(BuffType.Add,-enemyData.health.Value);
+        enemyData.baseAttack.SetBuff(BuffType.Add,-enemyData.baseAttack.Value);
+        enemyData.baseDefense.SetBuff(BuffType.Add,-enemyData.baseDefense.Value);
+        enemyData.moveSpeed.SetBuff(BuffType.Add,-enemyData.moveSpeed.Value);
+        
         statContainer.DeleteStat(StatusCode.Hp);
         statContainer.DeleteStat(StatusCode.Def);
         statContainer.DeleteStat(StatusCode.MoveSpeed);
         statContainer.DeleteStat(StatusCode.Atk);
+        EnemySpawn.Instance.RemoveInList(gameObject);
         ObjectPoolManager.Instance.Return(gameObject);
     }
 }
-public class EnemyMoveTowards : IState
+public class EnemyMoveTowardsST : IState
 {
     private AEnemy _enemy;
         
-    public EnemyMoveTowards(AEnemy enemy)
+    public EnemyMoveTowardsST(AEnemy enemy)
     {
         this._enemy = enemy;
     }
@@ -162,11 +183,11 @@ public class EnemyMoveTowards : IState
         
     }
 }
-public class EnemyMoveTowardsNonFlip : IState
+public class EnemyMoveTowardsNonFlipST : IState
 {
     private AEnemy _enemy;
         
-    public EnemyMoveTowardsNonFlip(AEnemy enemy)
+    public EnemyMoveTowardsNonFlipST(AEnemy enemy)
     {
         this._enemy = enemy;
     }

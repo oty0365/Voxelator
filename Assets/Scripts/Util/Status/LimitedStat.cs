@@ -74,4 +74,5 @@ public class LimitedStat : Stat<float>
          _maxBuffs[type] += value;
          MaxValue = _maxBuffs[BuffType.Mul]*(_maxBuffs[BuffType.Add]+BaseMaxVal);
     }
+    
 }

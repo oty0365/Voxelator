@@ -22,6 +22,7 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
     private Dictionary<EnemyCode, GameObject> _bossDict = new();
     
     private List<GameObject> _spawnableTable = new();
+    [SerializeField]private List<GameObject> _mapMonsters = new();
     
     private float _currentSpawnCoolDown;
     private Coroutine _currentSpawnFlow;
@@ -60,9 +61,28 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
             }
         }
     }
+
+    public void SpawnElite(EnemyCode code)
+    {
+        int ran = Random.Range(0, 360);
+        float x = Mathf.Cos(ran * Mathf.Deg2Rad) * distance;
+        float y = Mathf.Sin(ran * Mathf.Deg2Rad) * distance;
+        Vector3 pos = player.transform.position + new Vector3(x, y, 0);
+        ObjectPoolManager.Instance.Get(_eliteDict[code], pos, new Vector3(0, 0, 0));
+    }
+
+    public GameObject GetBoss(EnemyCode code)
+    {
+        if (_bossDict.ContainsKey(code))
+        {
+            return _bossDict[code];
+        }
+
+        return null;
+    }
+    
     public void TryUnlockEnemy(EnemyCode code)
     {            
-        Debug.Log(code);
         if (_normalDict.ContainsKey(code)&&!_spawnableTable.Contains(_normalDict[code]))
         {
             _spawnableTable.Add(_normalDict[code]);
@@ -71,9 +91,27 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
 
     public void StartSpawn()
     {
-        Debug.Log("시작");
         _currentSpawnCoolDown = spawnSettings.maxSpawnCoolDown;
         ContinueSpawn();
+    }
+
+    public void UpLoadToList(GameObject obj)
+    {
+        _mapMonsters.Add(obj);
+    }
+
+    public void RemoveInList(GameObject obj)
+    {
+        _mapMonsters.Remove(obj);
+    }
+
+    public void RemoveAllMonstersInMap()
+    {
+        for (var m=0; m< _mapMonsters.Count;m++)
+        {
+            ObjectPoolManager.Instance.Return(_mapMonsters[m]); 
+        }
+        _mapMonsters.Clear();
     }
 
     public void ContinueSpawn()
@@ -137,6 +175,8 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
 
     public void Subscribe()
     {
+        EventManager.Instance.AddListener(EventKey.KillAllMonsters, new Action(RemoveAllMonstersInMap));
+        EventManager.Instance.AddListener(EventKey.SpawnElite, new Action<EnemyCode>(SpawnElite));
         EventManager.Instance.AddListener(EventKey.AddToSpawner, new Action<EnemyCode>(TryUnlockEnemy));
         EventManager.Instance.AddListener(EventKey.StartSpawning,new Action(StartSpawn));
         EventManager.Instance.AddListener(EventKey.ContinueSpawning,new Action(ContinueSpawn));
@@ -145,6 +185,8 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
 
     public void Unsubscribe()
     {
+        EventManager.Instance.RemoveListener(EventKey.KillAllMonsters, new Action(RemoveAllMonstersInMap));
+        EventManager.Instance.RemoveListener(EventKey.SpawnElite, new Action<EnemyCode>(SpawnElite));
         EventManager.Instance.RemoveListener(EventKey.AddToSpawner, new Action<EnemyCode>(TryUnlockEnemy));
         EventManager.Instance.RemoveListener(EventKey.StartSpawning,new Action(StartSpawn));
         EventManager.Instance.RemoveListener(EventKey.ContinueSpawning,new Action(ContinueSpawn));

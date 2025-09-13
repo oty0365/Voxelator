@@ -37,13 +37,13 @@ public class PlayerDash : MonoBehaviour
     private IEnumerator DashFlow(Vector2 dir)
     {
         isDashing = true;
-        controller.playerMoves = PlayerMoves.Dash;
+        controller.playerMoves = EntityMoves.Dash;
         controller.currentDir = dir;
         currentDashSpeed = playerMovementData.playerMovementSO.dashSpeed;
         yield return new WaitForSeconds(playerMovementData.playerMovementSO.dashTime);
         currentDashSpeed = 1;
         controller.currentDir = Vector2.zero;
-        controller.playerMoves = PlayerMoves.Idle;
+        controller.playerMoves = EntityMoves.Idle;
         isDashing = false;
     }
 

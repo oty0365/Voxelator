@@ -1,10 +1,23 @@
 using System;
 using UnityEngine;
 
+public enum ObjectCode
+{
+    WeaponCore,
+    Exp,
+    HitParticle,
+    InteractionButton,
+    StaticIndicatorArea,
+    StaticIndicatorLine,
+    DynamicIndicatorArea,
+    DynamicIndicatorLine,
+    AfterImageGenerator,
+}
+
 [Serializable]
 public class ObjectBankSet
 {
-    public string name;
+    public ObjectCode name;
     public GameObject data;
 }
 

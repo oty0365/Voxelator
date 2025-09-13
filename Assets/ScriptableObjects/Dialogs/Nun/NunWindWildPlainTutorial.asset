@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: NunWindWildPlainTutorial
   m_EditorClassIdentifier: 
   dialogScripts:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 40a4ac0285955094b83fda2c60789d49, type: 2}
+  - {fileID: 11400000, guid: 3c73093b916572a41801778b55b4a13b, type: 2}
+  - {fileID: 11400000, guid: 637a75a67b6a799448f25190435215b1, type: 2}
+  - {fileID: 11400000, guid: 3380582d9be8eae43aee260eaec2a1ea, type: 2}
+  - {fileID: 11400000, guid: 871fdd69873a78f40ac92dfbaa5afda0, type: 2}

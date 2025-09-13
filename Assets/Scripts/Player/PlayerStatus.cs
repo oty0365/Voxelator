@@ -10,7 +10,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     public bool isInfinite;
     [Header("플레이어 설정")]
     [SerializeField] private PlayerBasicStatusDataSO playerBasicStatusData;
-    [SerializeField] private Collider2D collider2D;
+    [SerializeField] private Collider2D col2D;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private LayerMask originMask;
     [SerializeField] private StatContainer statContainer;
@@ -151,11 +151,11 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     }
     private IEnumerator InfiniteTimeFlow(float time)
     {
-        collider2D.excludeLayers = layerMask;
+        col2D.excludeLayers = layerMask;
         isInfinite = true;
         yield return new WaitForSeconds(time);
         isInfinite = false;
-        collider2D.excludeLayers = originMask;
+        col2D.excludeLayers = originMask;
     }
 
     public void GetDamage(float damage, float infiniteTime)
@@ -169,7 +169,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         {
             StopCoroutine(_infiniteTimeFlow);
             isInfinite =  false;
-            collider2D.excludeLayers = originMask;
+            col2D.excludeLayers = originMask;
         }
 
         _infiniteTimeFlow = StartCoroutine(InfiniteTimeFlow(infiniteTime));
@@ -207,7 +207,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         }
         if (realDamage > 0)
         {
-            CammeraManager.Instance.ShakeCamera(damageData.damage/(9+damageData.damage),0.5f);
+            CameraManager.Instance.ShakeCamera(damageData.damage/(9+damageData.damage),0.5f);
             playerHp.SetBuff(BuffType.Add,-realDamage);   
         }
     }
