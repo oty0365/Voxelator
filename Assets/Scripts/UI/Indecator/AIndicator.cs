@@ -12,7 +12,7 @@ public abstract class AIndicator : MonoBehaviour,IPoolingObject
     public TextMeshProUGUI mark;
 
     [Header("크기")]
-    [SerializeField] protected float baseSize;
+    [SerializeField] protected float baseSize = 320;
     public Vector2 size;
     public Vector2 localSize;
     
@@ -39,11 +39,10 @@ public abstract class AIndicator : MonoBehaviour,IPoolingObject
         parent.GetComponent<ILifeSycler>().OnDeath += OnExit;
     }
 
-    public void SetBaseSize(float indiSize)
+    public void SetBaseSize(float indiSizeX,int indiSizeY)
     {
-        baseSize = indiSize;
-        size.x = baseSize;
-        size.y = baseSize;
+        size.x = indiSizeX;
+        size.y = indiSizeY;
         rectTransform.sizeDelta = size;
     }
     

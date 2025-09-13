@@ -54,8 +54,8 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
         fsm.RegisterState("DashPrepare", dashPrepare);
         fsm.RegisterState("Dash", dash);
         fsm.RegisterState("Roar", roar);
-        enemySkillCooldown.AddPattern("Dash",1.5f);
-        enemySkillCooldown.AddPattern("Roar",9f);
+        enemySkillCooldown.AddPattern("Dash",2.5f);
+        enemySkillCooldown.AddPattern("Roar",12f);
         StartCoroutine(StartBossBattleFlow());
 
     }
@@ -65,6 +65,7 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
         fsm.ChangeState("Idle");
         yield return new WaitForSeconds(startDelay);
         fsm.ChangeState("Roar");
+        enemySkillCooldown.ReSetSkillCool("Roar");
         
     }
     public class GoblinBeastRiderRoarST : IState
@@ -73,7 +74,7 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
         private GoblinBeastRider _goblinBeastRider;
         private float _waitLength;
         private float _currentTime;
-        private float _spawnDistance = 2.5f;
+        private float _spawnDistance = 1f;
         
         public GoblinBeastRiderRoarST(AEnemy enemy)
         {
@@ -83,6 +84,7 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
         public void Enter()
         {
             _currentTime = Time.time;
+            _enemy.rb2D.linearVelocity = Vector2.zero;
             _goblinBeastRider = _enemy.gameObject.GetComponent<GoblinBeastRider>();
             _goblinBeastRider.goblinBeastRiderAnimator.SetAnimation(EntityMoves.Roar);
             _waitLength = _goblinBeastRider.goblinBeastRiderAnimator.roarClip.length;
@@ -98,7 +100,7 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
                 {
                     ObjectPoolManager.Instance.Get(_goblinBeastRider.spawnEnemy, new Vector2(_enemy.transform.position.x + dirX[i]*_spawnDistance, _enemy.transform.position.y + dirY[i]*_spawnDistance), Vector3.zero);
                 }
-                _enemy.fsm.ChangeState("Idle");
+                _enemy.fsm.ChangeState("Run");
             }
         }
 
@@ -147,10 +149,11 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
         
     }
     
-    public class GoblinBeastRiderRunST : IState
+       public class GoblinBeastRiderRunST : IState
     {
         private AEnemy _enemy;
         private GoblinBeastRider _goblinBeastRider;
+        private float _keepDistance = 3f; 
         
         public GoblinBeastRiderRunST(AEnemy enemy)
         {
@@ -161,17 +164,42 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
         {
             _goblinBeastRider = _enemy.gameObject.GetComponent<GoblinBeastRider>(); 
             _goblinBeastRider.goblinBeastRiderAnimator.SetAnimation(EntityMoves.Walk);
-            _enemy.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_enemy.enemyData.moveSpeed.Value;
+            Vector2 targetPosition = GetTargetPosition();
+            _enemy.rb2D.linearVelocity = (targetPosition - _enemy.rb2D.position).normalized * _enemy.enemyData.moveSpeed.Value;
         }
 
         public void FixedExecute()
         {
-            _enemy.rb2D.linearVelocity = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_enemy.enemyData.moveSpeed.Value;
+            Vector2 targetPosition = GetTargetPosition();
+            _enemy.rb2D.linearVelocity = (targetPosition - _enemy.rb2D.position).normalized * _enemy.enemyData.moveSpeed.Value;
         }
+        
+        private Vector2 GetTargetPosition()
+        {
+            Vector2 playerPos = PlayerStatus.Instance.gameObject.transform.position;
+            Vector2 enemyPos = _enemy.rb2D.position;
+            
+            float targetX;
+            if (enemyPos.x < playerPos.x)
+            {
+                targetX = playerPos.x - _keepDistance;
+            }
+            else
+            {
+                targetX = playerPos.x + _keepDistance;
+            }
+            
+            return new Vector2(targetX, playerPos.y);
+        }
+        
         public void Execute()
         {
-            _goblinBeastRider.enemySkillCooldown.DecreaseCooldown("Dash",Time.deltaTime);
+            _goblinBeastRider.enemySkillCooldown.DecreaseCooldownAll(Time.deltaTime);
             _enemy.FacePlayer();
+            if (_goblinBeastRider.enemySkillCooldown.CheckToUseSkill("Roar"))
+            {
+                _enemy.fsm.ChangeState("Roar");
+            }
             if (Vector2.Distance(_enemy.rb2D.position, PlayerStatus.Instance.gameObject.transform.position) < 5&&_goblinBeastRider.enemySkillCooldown.CheckToUseSkill("Dash"))
             {
                 _enemy.fsm.ChangeState("DashPrepare");
@@ -186,8 +214,8 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
     {
         private AEnemy _enemy;
         private float _startTime;
-        private float[] _waitDuration = {1f,1.5f};
-        private float _dashRange = 6f;
+        private float[] _waitDuration = {0.5f,1f};
+        private float _dashRange = 9f;
         private StaticLineIndicator _sli;
         private Vector3 _finalDestination;
 
@@ -206,6 +234,7 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
             _sli = o.GetComponent<StaticLineIndicator>();
             _sli.SetParent(_enemy.gameObject);
             _sli.SetTarget(_enemy.gameObject, _enemy.transform.position+finalDestination, new Vector3(0.5f, 0.5f, 0f));
+            _sli.SetBaseSize(320,1000);
         }
 
         public void Execute()
@@ -219,6 +248,7 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
             {
                 _finalDestination = (PlayerStatus.Instance.gameObject.transform.position-_enemy.gameObject.transform.position).normalized*_dashRange;
                 _sli.SetTarget(_enemy.gameObject,_enemy.transform.position+_finalDestination,new Vector3(0.5f, 0.5f, 0f));
+                _sli.SetBaseSize(320,1000);
                 _enemy.FacePlayer();
             }
 
@@ -246,7 +276,7 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
         private AEnemy _enemy;
         private Vector2 _finalDestination;
         private float _dashSpeed = 12f;
-        private float _dashRange = 6f;
+        private float _dashRange = 9f;
         private AfterImageGenerator _generator;
 
         public GoblinBeastRiderDashST(AEnemy enemy)
@@ -264,12 +294,12 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
             var dir = _enemy.GetComponent<GoblinBeastRider>().finalDestination;
             _finalDestination =dir*_dashRange+_enemy.rb2D.position;
             _enemy.rb2D.linearVelocity  = dir*_dashSpeed;
-            _enemy.enemyData.baseAttack.SetBuff(BuffType.Mul,2);
+            _enemy.enemyData.baseAttack.SetBuff(BuffType.Mul,3);
         }
 
         public void Execute()
         {
-            if (Vector2.Distance(_enemy.rb2D.position, _finalDestination) <= 0.05f)
+            if (Vector2.Distance(_enemy.rb2D.position, _finalDestination) <= 0.15f)
             {
                 _enemy.rb2D.linearVelocity  = Vector2.zero;
                 _enemy.fsm.ChangeState("Run");
@@ -283,7 +313,7 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
 
         public void Exit()
         {
-            _enemy.enemyData.baseAttack.SetBuff(BuffType.Mul,-2);
+            _enemy.enemyData.baseAttack.SetBuff(BuffType.Mul,-3);
             ObjectPoolManager.Instance.Return(_generator.gameObject);
         }
         

@@ -164,7 +164,7 @@ public class GoblinKnight : AEnemy, IPoolingObject, IFootSteper
 
         public void Execute()
         {
-            if (Vector2.Distance(_enemy.rb2D.position, _finalDestination) <= 0.05f)
+            if (Vector2.Distance(_enemy.rb2D.position, _finalDestination) <= 0.1f)
             {
                 _enemy.rb2D.linearVelocity  = Vector2.zero;
                 _enemy.fsm.ChangeState("Run");

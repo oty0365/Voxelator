@@ -119,7 +119,6 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
         if (!_isEnded)
         {
             _isEnded = true;
-            Debug.Log("EndConversation");
             EventManager.Instance.Invoke(EventKey.OnTalkEnd);
             TimeManager.Instance.ContinueGame();
             StartCoroutine(FadeOutFlow());

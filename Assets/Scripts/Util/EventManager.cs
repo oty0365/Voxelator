@@ -16,6 +16,8 @@ public enum EventKey
     KillAllMonsters,
     OnTalkStart,
     OnTalkEnd,
+    OnBossBattleStart,
+    OnBossBattleEnd,
 }
 
 public class EventManager : SceneSingletonMonoBehaviour<EventManager>

@@ -22,7 +22,7 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
     private Dictionary<EnemyCode, GameObject> _bossDict = new();
     
     private List<GameObject> _spawnableTable = new();
-    private List<GameObject> _mapMonsters = new();
+    [SerializeField]private List<GameObject> _mapMonsters = new();
     
     private float _currentSpawnCoolDown;
     private Coroutine _currentSpawnFlow;
@@ -109,7 +109,7 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
     {
         for (var m=0; m< _mapMonsters.Count;m++)
         {
-            _mapMonsters[m].GetComponent<AEnemy>().Death();
+            ObjectPoolManager.Instance.Return(_mapMonsters[m]); 
         }
         _mapMonsters.Clear();
     }

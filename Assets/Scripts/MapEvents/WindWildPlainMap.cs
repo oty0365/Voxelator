@@ -8,6 +8,7 @@ public class WindWildPlainMap : AMap,IEvent
     [SerializeField] private DialogsSO[] mapDia;
     [SerializeField] private Transform playerBossBattlePos;
     [SerializeField] private Transform bossSpawnPos;
+    private AEnemy _currentBoss;
     public override void Execute(int time)
     {
         switch (time)
@@ -21,20 +22,10 @@ public class WindWildPlainMap : AMap,IEvent
                 DialogManager.Instance.StartConversation(mapDia[0]);
                 break;
             case 6:
-                //AugmentManager.Instance.AugmentSelection(AugmentState.Weapon);
-                TimeManager.Instance.StopGame();
-                EventManager.Instance.Invoke(EventKey.StopSpawning);
-                EventManager.Instance.Invoke(EventKey.KillAllMonsters);
-                PlayerStatus.Instance.gameObject.transform.position = playerBossBattlePos.position;
-                DialogManager.Instance.StartConversation(mapDia[1]);
+                AugmentManager.Instance.AugmentSelection(AugmentState.Weapon);
                 break;
             case 7:
-                ObjectPoolManager.Instance.Get(EnemySpawn.Instance.GetBoss(EnemyCode.BossGoblinBeastRider),bossSpawnPos.position, Vector3.zero);
-                MapManager.Instance.SetBossBattle();
-                EventManager.Instance.Invoke(EventKey.ShowMapBanner);
-                CameraManager.Instance.SetTarget(bossSpawnPos);
-                StartCoroutine(EndCutSceneFlow());
-                //EventManager.Instance.Invoke(EventKey.StartSpawning);
+                EventManager.Instance.Invoke(EventKey.StartSpawning);
                 break;
             case 70:
                 EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.Goblin);
@@ -54,12 +45,18 @@ public class WindWildPlainMap : AMap,IEvent
             case 280:
                 EventManager.Instance.Invoke(EventKey.StopSpawning);
                 EventManager.Instance.Invoke(EventKey.KillAllMonsters);
-                PlayerStatus.Instance.gameObject.transform.position = playerBossBattlePos.position;
                 TimeManager.Instance.StopGame();
+                PlayerStatus.Instance.gameObject.transform.position = playerBossBattlePos.position;
                 DialogManager.Instance.StartConversation(mapDia[1]);
                 break;
             case 281:
+                var boss=ObjectPoolManager.Instance.Get(EnemySpawn.Instance.GetBoss(EnemyCode.BossGoblinBeastRider),bossSpawnPos.position, Vector3.zero);
+                _currentBoss=boss.GetComponent<AEnemy>();
+                MapManager.Instance.SetBossBattle();
+                EventManager.Instance.Invoke(EventKey.ShowMapBanner);
                 CameraManager.Instance.SetTarget(bossSpawnPos);
+                StartCoroutine(EndCutSceneFlow());
+                //CameraManager.Instance.SetTarget(bossSpawnPos);
                 break;
             default:
                 Debug.Log("타임라인 불일치");
@@ -92,5 +89,6 @@ public class WindWildPlainMap : AMap,IEvent
     {
         yield return new WaitForSeconds(3.5f);
         CameraManager.Instance.SetTarget(PlayerStatus.Instance.gameObject.transform);
+        EventManager.Instance.Invoke(EventKey.OnBossBattleStart,"GoblinBeastRiderName",_currentBoss);
     }
 }

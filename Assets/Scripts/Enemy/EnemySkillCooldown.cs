@@ -54,6 +54,20 @@ public class EnemySkillCooldown
         }
         return false;
     }
-    
+
+    public void SetSkillCool(string name,float amount)
+    {
+        if(_runtimeCooldownData.ContainsKey(name))
+        {
+            _runtimeCooldownData[name] = amount;
+        }
+    }
+    public void ReSetSkillCool(string name)
+    {
+        if(_runtimeCooldownData.ContainsKey(name))
+        {
+            _runtimeCooldownData[name] = _coolDownSetData[name];
+        }
+    }
 
 }
