@@ -4,6 +4,7 @@ public enum BuffType
 {
     Add,
     Mul,
+    Set,
 }
 
 public class Stat<T>

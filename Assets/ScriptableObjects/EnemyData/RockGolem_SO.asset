@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RockGolem_SO
   m_EditorClassIdentifier: 
   health:
-    maxRange: 15
-    minRange: 25
+    maxRange: 14
+    minRange: 22
   expDrop:
     maxRange: 20
     minRange: 60

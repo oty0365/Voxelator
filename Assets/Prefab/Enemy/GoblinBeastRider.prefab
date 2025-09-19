@@ -91,7 +91,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_Sprite: {fileID: 3140714535101669435, guid: 45cb9f0dd4657af4c9a5e3a28611cd71, type: 3}
-  m_Color: {r: 1, g: 0.5529412, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7dca9b4f3d6bd341a36f23c6d20df88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footStepObj: {fileID: 7449522239600359466, guid: 7903965d3a924834f80b2d3df9cfe9e4, type: 3}
+  footStepObj: {fileID: 7449522239600359466, guid: 7776dd71736322d4c837a964ddaf1df1, type: 3}
   coolDown: 0.2
   size: {x: 0.25, y: 0.25}
   footTransform: {fileID: 2331721200991413975}
@@ -190,7 +190,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.06033209, y: -0.03290817}
+  m_Offset: {x: 0.060332417, y: -0.2761528}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -200,7 +200,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.79769343, y: 1.3132572}
+  m_Size: {x: 2.0593574, y: 0.82676804}
   m_EdgeRadius: 0
 --- !u!114 &4625112608533703529
 MonoBehaviour:
@@ -254,8 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f2d42f2dfe70b44883be5f19aee0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityType: 2
-  isElite: 0
+  entityType: 1
+  isElite: 1
   sr: {fileID: 6541206134884101487}
 --- !u!114 &912964551100154255
 MonoBehaviour:
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c270a052e04de4dbfc0baf7d48c0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseEnemyData: {fileID: 11400000, guid: 762ee50c2166c61438e75c22d13b218d, type: 2}
+  baseEnemyData: {fileID: 11400000, guid: 0b1f8191bd011db4fa8ce8ca7e5087d4, type: 2}
   statContainer: {fileID: 912964551100154255}
   characterType: {fileID: 5550829983331579131}
   rb2D: {fileID: 1970572999249613730}

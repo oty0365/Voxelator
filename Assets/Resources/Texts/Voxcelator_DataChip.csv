@@ -29,6 +29,6 @@ ReapersMarkRuneDesc,1,1,가장 가까운 적에게 지목의 갈고리를 발사
 LongSwordRuneName,1,1,직검,LongSword
 LongSwordRuneDesc,1,1,모든 기사와 견습생들이 선호하는 가장 기본적인 무기이다.\n<color=#FF7272>{0}</color>만큼의 피해를 준다.,The most basic weapon favored by all knights and apprentices.\nDeals <color=#FF7272>{0}</color>damage.
 ThorneyShieldRuneName,1,1,가시 방패,Thorney Shield
-ThorneyShieldRuneDesc,1,1,공격을 막는 방패보단 적을 광역적으로 공격하는데 특화된 방패.\n<color=#FF7272>{0}</color>만큼의 피해를 준다.,A shield specialized not in blocking attacks{COMMA} but in striking enemies over a wide area.\nDeals <color=#FF7272>{0}</color>damage.
+ThorneyShieldRuneDesc,1,1,공격을 막는 방패보단 적을 광역적으로 공격하는데 특화된 방패.\n<color=#72c4ff>{0}</color>만큼의 피해를 준다.,A shield specialized not in blocking attacks{COMMA} but in striking enemies over a wide area.\nDeals <color=#72c4ff>{0}</color>damage.
 CrystalMagicStaffRuneName,1,1,수정 마법봉,Crystal Staff
-CrystalMagicStaffRuneDesc,1,1,<color=#E669FF>마법</color> 얼음 고드름: <color=#FF7272>{0}</color>의 피해를 입히는 얼음 고드름을 {1}초에 한번씩 생성한다.,<color=#E669FF>Magic</color> Icicle: Creates an icicle that deals <color=#FF7272>{0}</color> damage once every {1} seconds.
+CrystalMagicStaffRuneDesc,1,1,<color=#E669FF>마법</color> 영혼 화살: <color=#FF7272>{0}</color>의 피해를 입히는 영혼 화살을 {1}초에 한번씩 생성한다.,<color=#E669FF>Magic</color> SoulBullet: Creates an bullet that deals <color=#FF7272>{0}</color> damage every {1} seconds.

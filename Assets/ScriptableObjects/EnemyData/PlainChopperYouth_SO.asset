@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlainChopperYouth_SO
   m_EditorClassIdentifier: 
   health:
-    maxRange: 2
-    minRange: 4
+    maxRange: 1
+    minRange: 2
   expDrop:
     maxRange: 10
     minRange: 20
@@ -25,4 +25,4 @@ MonoBehaviour:
     maxRange: 0
     minRange: 1
   entityType: 2
-  moveSpeed: 1.5
+  moveSpeed: 1.25

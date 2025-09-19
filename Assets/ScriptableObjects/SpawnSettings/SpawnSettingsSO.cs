@@ -9,4 +9,7 @@ public class SpawnSettingsSO : ScriptableObject
     public int minSpawnCount;
     public float difficultyIncreaseRate;
     public float difficultyIncreaseInterval;
+    public float healthIncreaseInterval;
+    public float attackIncreaseInterval;
+    public float expIncreaseInterval;
 }

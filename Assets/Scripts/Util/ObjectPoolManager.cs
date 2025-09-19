@@ -39,6 +39,14 @@ public enum PoolObjectType
     AfterImage,
     GoblinKnight,
     GoblinBeastRider,
+    WaterWay2,
+    BigSuriken,
+    ThroneyShieldAugment,
+    SoulBullet,
+    SoulBulletAugment,
+    SoulBulletGenerator
+    
+    
 }
 
 public class ObjectPoolManager : SceneSingletonMonoBehaviour<ObjectPoolManager>

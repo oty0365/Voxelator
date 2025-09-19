@@ -41,17 +41,19 @@ public abstract class AEnemy : MonoBehaviour,ILifeSycler
         characterType.EntityType = characterType.entityType;
         
         
-        enemyData.expDrop = baseEnemyData.expDrop.GetRandomizedAsInt();
-        enemyData.health.SetMaxBuff(BuffType.Add,baseEnemyData.health.GetRandomized());
-        enemyData.health.SetBuff(BuffType.Add,enemyData.health.MaxValue);
-        enemyData.baseAttack.SetBuff(BuffType.Add,baseEnemyData.baseAttack.GetRandomized());
-        enemyData.baseDefense.SetBuff(BuffType.Add,baseEnemyData.baseDefense.GetRandomized());
+        enemyData.expDrop = baseEnemyData.expDrop.GetRandomizedAsInt()+(int)Mathf.Round(TimeManager.Instance.gameTime*EnemySpawn.Instance.spawnSettings.expIncreaseInterval);
+        enemyData.health.AddMaxBuff(BuffType.Add,baseEnemyData.health.GetRandomized()+TimeManager.Instance.gameTime*EnemySpawn.Instance.spawnSettings.healthIncreaseInterval);
+        enemyData.health.AddBuff(BuffType.Add,enemyData.health.MaxValue);
+        enemyData.baseAttack.AddBuff(BuffType.Add,baseEnemyData.baseAttack.GetRandomized()+TimeManager.Instance.gameTime*EnemySpawn.Instance.spawnSettings.attackIncreaseInterval);
+        enemyData.baseDefense.AddBuff(BuffType.Add,baseEnemyData.baseDefense.GetRandomized());
         enemyData.moveSpeed.SetBuff(BuffType.Add,baseEnemyData.moveSpeed);
         
         statContainer.AddStat(StatusCode.Hp,enemyData.health);
         statContainer.AddStat(StatusCode.Def,enemyData.baseDefense);
         statContainer.AddStat(StatusCode.MoveSpeed,enemyData.moveSpeed);
         statContainer.AddStat(StatusCode.Atk,enemyData.baseAttack);
+        
+        
     }
     
     public void FacePlayer()
@@ -99,7 +101,9 @@ public abstract class AEnemy : MonoBehaviour,ILifeSycler
     public virtual void Drop()
     {
         var a = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.Exp), transform.position, new Vector3(0, 0, 45));
-        a.GetComponent<ExpGiver>().expAmount = enemyData.expDrop;
+        var exp = a.GetComponent<ExpGiver>();
+        exp.expAmount = enemyData.expDrop;
+        exp.SetExpColor();
     }
 
     private void OnDisable()
@@ -142,11 +146,17 @@ public abstract class AEnemy : MonoBehaviour,ILifeSycler
     public virtual void Death()
     {
         Drop();
-        enemyData.health.SetMaxBuff(BuffType.Add,-enemyData.health.MaxValue);
-        enemyData.health.SetBuff(BuffType.Add,-enemyData.health.Value);
-        enemyData.baseAttack.SetBuff(BuffType.Add,-enemyData.baseAttack.Value);
-        enemyData.baseDefense.SetBuff(BuffType.Add,-enemyData.baseDefense.Value);
-        enemyData.moveSpeed.SetBuff(BuffType.Add,-enemyData.moveSpeed.Value);
+        Vanish();
+    }
+
+    public virtual void Vanish()
+    {
+        Debug.Log(gameObject.name);
+        enemyData.health.SetMaxBuff(BuffType.Add,0);
+        enemyData.health.SetBuff(BuffType.Add,0);
+        enemyData.baseAttack.SetBuff(BuffType.Add,0);
+        enemyData.baseDefense.SetBuff(BuffType.Add,0);
+        enemyData.moveSpeed.SetBuff(BuffType.Add,0);
         
         statContainer.DeleteStat(StatusCode.Hp);
         statContainer.DeleteStat(StatusCode.Def);

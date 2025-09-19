@@ -29,6 +29,10 @@ public class PlayerInteractions : MonoBehaviour,IEvent
     {
         var damagerObject = damager.GetComponent<Damager>();
         var damageData =damager.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<StatContainer>().GetStat<UnlimitedStat>(StatusCode.Atk).Value);
+        var hit = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.HitParticle), transform.position, new Vector3(-90, 0, 0)); 
+        var hitObj = hit.GetComponent<ParticleObject>();
+        var hitPrt = hitObj.prt.main;
+        hitPrt.startColor = Color.white;
         if (_currentInfiniteTimeFlow != null)
         {
             StopCoroutine(_currentInfiniteTimeFlow);

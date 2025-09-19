@@ -4,6 +4,8 @@ using UnityEngine;
 public class ExpGiver : MonoBehaviour,IPoolingObject
 {
     public float expAmount;
+    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private Gradient gradient;
     [SerializeField] private TrailRenderer trail;
     public static bool magnetToPlayer;
     private Coroutine magnetFlow;
@@ -12,10 +14,15 @@ public class ExpGiver : MonoBehaviour,IPoolingObject
     {
         trail.Clear();
         StartCoroutine(CheckToAbsorbFlow());
-        if (magnetToPlayer)
+        if (gameObject.activeSelf&&magnetToPlayer)
         {
             StartCoroutine(GotoPlayerFlow());
         }
+    }
+
+    public void SetExpColor()
+    {
+        sr.color=gradient.Evaluate(expAmount/100);
     }
 
     private IEnumerator GotoPlayerFlow()

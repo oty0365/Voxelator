@@ -107,10 +107,11 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
 
     public void RemoveAllMonstersInMap()
     {
-        for (var m=0; m< _mapMonsters.Count;m++)
+        for (int m = _mapMonsters.Count - 1; m >= 0; m--)
         {
-            ObjectPoolManager.Instance.Return(_mapMonsters[m]); 
+            _mapMonsters[m].GetComponent<AEnemy>().Vanish();
         }
+
         _mapMonsters.Clear();
     }
 

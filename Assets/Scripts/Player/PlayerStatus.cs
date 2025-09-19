@@ -128,16 +128,16 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     }
     public void ResetStatus()
     {
-        playerHp.SetMaxBuff(BuffType.Add,playerBasicStatusData.playerMaxHp); 
-        playerHp.SetBuff(BuffType.Add,playerBasicStatusData.playerMaxHp);
-        playerMoveSpeed.SetBuff(BuffType.Add,playerBasicStatusData.playerMoveSpeed);
-        playerAtk.SetBuff(BuffType.Add,playerBasicStatusData.playerAtk);
-        playerDef.SetBuff(BuffType.Add,playerBasicStatusData.playerDef);
-        playerAttackSpeed.SetBuff(BuffType.Add,playerBasicStatusData.playerAttackSpeed);
+        playerHp.AddMaxBuff(BuffType.Add,playerBasicStatusData.playerMaxHp); 
+        playerHp.AddBuff(BuffType.Add,playerBasicStatusData.playerMaxHp);
+        playerMoveSpeed.AddBuff(BuffType.Add,playerBasicStatusData.playerMoveSpeed);
+        playerAtk.AddBuff(BuffType.Add,playerBasicStatusData.playerAtk);
+        playerDef.AddBuff(BuffType.Add,playerBasicStatusData.playerDef);
+        playerAttackSpeed.AddBuff(BuffType.Add,playerBasicStatusData.playerAttackSpeed);
         PlayerMaxExp = playerBasicStatusData.playerMaxExp;
         PlayerExp = 0;
         PlayerLevel = 1;
-        playerSkillCooldown.SetMaxBuff(BuffType.Add,playerBasicStatusData.playerSkillCoolDown);
+        playerSkillCooldown.AddMaxBuff(BuffType.Add,playerBasicStatusData.playerSkillCoolDown);
         playerSkillCooldown.Value = 0;
         statContainer.AddStat(StatusCode.Atk,playerAtk);
         statContainer.AddStat(StatusCode.Def,playerDef);
@@ -177,6 +177,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     public void Subscribe()
     {
         playerHp.OnChanged += playerStatusUI.SetHp;
+        playerHp.OnChanged += CameraManager.Instance.OnHealthChange;
         playerAtk.OnChanged += playerStatusUI.SetAtk;
         playerDef.OnChanged += playerStatusUI.SetDef;
         OnMaxExp += playerStatusUI.SetMaxExp;
@@ -187,6 +188,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     public void Unsubscribe()
     {
         playerHp.OnChanged -= playerStatusUI.SetHp;
+        playerHp.OnChanged -= CameraManager.Instance.OnHealthChange;
         playerAtk.OnChanged -= playerStatusUI.SetAtk;
         playerDef.OnChanged -= playerStatusUI.SetDef;
         OnMaxExp -= playerStatusUI.SetMaxExp;
@@ -208,7 +210,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         if (realDamage > 0)
         {
             CameraManager.Instance.ShakeCamera(damageData.damage/(9+damageData.damage),0.5f);
-            playerHp.SetBuff(BuffType.Add,-realDamage);   
+            playerHp.AddBuff(BuffType.Add,-realDamage);   
         }
     }
     private void OnEnable()

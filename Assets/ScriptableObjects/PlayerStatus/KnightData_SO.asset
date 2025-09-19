@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27ea049fe65262343a986b696f6b51ca, type: 3}
   m_Name: KnightData_SO
   m_EditorClassIdentifier: 
-  playerMaxHp: 60
-  playerMoveSpeed: 2
+  playerMaxHp: 45
+  playerMoveSpeed: 2.8
   playerAtk: 0
   playerDef: 0
   playerMaxExp: 50

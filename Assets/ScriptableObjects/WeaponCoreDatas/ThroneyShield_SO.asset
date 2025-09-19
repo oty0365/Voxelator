@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7e6ef6ae3a3164b92c0d25266b3f0c, type: 3}
+  m_Name: ThroneyShield_SO
+  m_EditorClassIdentifier: 
+  weaponPrefab: {fileID: 4005029236193123842, guid: 53b2f78359a0beb4cbb6fb244004426f, type: 3}
+  attackRange: 2
+  rotationSpeed: 150

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 4005029236193123842, guid: e2517ee92dc6ef4499f9ab63a4b35004, type: 3}
   attackRange: 1
-  rotationSpeed: -150
+  rotationSpeed: -200
