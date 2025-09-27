@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
 {
-    [Header("UI")]
-    [SerializeField] private PlayerStatusUI playerStatusUI;
+//    [Header("UI")]
+//    [SerializeField] private PlayerStatusUI playerStatusUI;
     [Header("무적상태인지 확인")]
     public bool isInfinite;
     [Header("플레이어 설정")]
@@ -176,25 +176,14 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     }
     public void Subscribe()
     {
-        playerHp.OnChanged += playerStatusUI.SetHp;
-        playerHp.OnChanged += CameraManager.Instance.OnHealthChange;
-        playerAtk.OnChanged += playerStatusUI.SetAtk;
-        playerDef.OnChanged += playerStatusUI.SetDef;
-        OnMaxExp += playerStatusUI.SetMaxExp;
-        OnExp += playerStatusUI.SetExp;
-        OnLevelUp += playerStatusUI.SetLevel;
         EventManager.Instance.AddListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
     }
     public void Unsubscribe()
     {
-        playerHp.OnChanged -= playerStatusUI.SetHp;
-        playerHp.OnChanged -= CameraManager.Instance.OnHealthChange;
-        playerAtk.OnChanged -= playerStatusUI.SetAtk;
-        playerDef.OnChanged -= playerStatusUI.SetDef;
-        OnMaxExp -= playerStatusUI.SetMaxExp;
-        OnExp -= playerStatusUI.SetExp;
-        OnLevelUp -= playerStatusUI.SetLevel;
-        EventManager.Instance.RemoveListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RemoveListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
+        }
     }
 
     public void OnDamage(GameObject damager)

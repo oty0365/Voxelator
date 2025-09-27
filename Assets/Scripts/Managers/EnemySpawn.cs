@@ -186,12 +186,16 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(EventKey.KillAllMonsters, new Action(RemoveAllMonstersInMap));
-        EventManager.Instance.RemoveListener(EventKey.SpawnElite, new Action<EnemyCode>(SpawnElite));
-        EventManager.Instance.RemoveListener(EventKey.AddToSpawner, new Action<EnemyCode>(TryUnlockEnemy));
-        EventManager.Instance.RemoveListener(EventKey.StartSpawning,new Action(StartSpawn));
-        EventManager.Instance.RemoveListener(EventKey.ContinueSpawning,new Action(ContinueSpawn));
-        EventManager.Instance.RemoveListener(EventKey.StopSpawning,new Action(StopSpawn));
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RemoveListener(EventKey.KillAllMonsters, new Action(RemoveAllMonstersInMap));
+            EventManager.Instance.RemoveListener(EventKey.SpawnElite, new Action<EnemyCode>(SpawnElite));
+            EventManager.Instance.RemoveListener(EventKey.AddToSpawner, new Action<EnemyCode>(TryUnlockEnemy));
+            EventManager.Instance.RemoveListener(EventKey.StartSpawning,new Action(StartSpawn));
+            EventManager.Instance.RemoveListener(EventKey.ContinueSpawning,new Action(ContinueSpawn));
+            EventManager.Instance.RemoveListener(EventKey.StopSpawning,new Action(StopSpawn));
+        }
+
     }
 
     public void OnEnable()

@@ -90,7 +90,10 @@ public class PlayerInteractions : MonoBehaviour,IEvent
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(EventKey.OnPlayerHit, new Action<GameObject>(OnHit));
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RemoveListener(EventKey.OnPlayerHit, new Action<GameObject>(OnHit));
+        }
     }
 
     private void OnEnable()

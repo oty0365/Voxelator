@@ -151,7 +151,6 @@ public abstract class AEnemy : MonoBehaviour,ILifeSycler
 
     public virtual void Vanish()
     {
-        Debug.Log(gameObject.name);
         enemyData.health.SetMaxBuff(BuffType.Add,0);
         enemyData.health.SetBuff(BuffType.Add,0);
         enemyData.baseAttack.SetBuff(BuffType.Add,0);

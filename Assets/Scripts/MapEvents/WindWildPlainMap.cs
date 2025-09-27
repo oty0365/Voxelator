@@ -71,7 +71,10 @@ public class WindWildPlainMap : AMap,IEvent
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(EventKey.OnClocked,new Action<int>(CheckTime));
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RemoveListener(EventKey.OnClocked,new Action<int>(CheckTime));
+        }
     }
 
     public void OnEnable()

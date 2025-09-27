@@ -3234,7 +3234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1161428998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4963,6 +4963,7 @@ MonoBehaviour:
   - {fileID: 1478564937}
   - {fileID: 1609832506}
   - {fileID: 44018984}
+  - {fileID: 1161428997}
   mapBanner: {fileID: 1180163905}
 --- !u!1 &1563382608
 GameObject:

@@ -3,14 +3,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStatusUI : MonoBehaviour
+public class PlayerStatusUI : MonoBehaviour,IEvent
 {
     [SerializeField] private Slider playerExp;
     [SerializeField] private TextMeshProUGUI playerLevelText;
     [SerializeField] private TextMeshProUGUI playerHpText;
     [SerializeField] private TextMeshProUGUI playerAtkText;
     [SerializeField] private TextMeshProUGUI playerDefText;
-
+    private PlayerStatus _playerStatus;
+    
     public void SetMaxExp(float exp)
     {
         playerExp.maxValue = exp;
@@ -47,4 +48,36 @@ public class PlayerStatusUI : MonoBehaviour
         return value;
     }
 
+    public void Subscribe()
+    {
+        _playerStatus= PlayerStatus.Instance;
+        _playerStatus.playerHp.OnChanged += SetHp;
+        _playerStatus.playerHp.OnChanged += CameraManager.Instance.OnHealthChange;
+        _playerStatus.playerAtk.OnChanged += SetAtk;
+        _playerStatus.playerDef.OnChanged += SetDef;
+        _playerStatus.OnMaxExp += SetMaxExp;
+        _playerStatus.OnExp += SetExp;
+        _playerStatus.OnLevelUp += SetLevel;
+    }
+
+    public void Unsubscribe()
+    {
+        _playerStatus.playerHp.OnChanged -= SetHp;
+        _playerStatus.playerHp.OnChanged -= CameraManager.Instance.OnHealthChange;
+        _playerStatus.playerAtk.OnChanged -= SetAtk;
+        _playerStatus.playerDef.OnChanged -= SetDef;
+        _playerStatus.OnMaxExp -= SetMaxExp;
+        _playerStatus.OnExp -= SetExp;
+        _playerStatus.OnLevelUp -= SetLevel;
+    }
+
+    private void OnEnable()
+    {
+        Subscribe();
+    }
+
+    private void OnDisable()
+    {
+        Unsubscribe();
+    }
 }
