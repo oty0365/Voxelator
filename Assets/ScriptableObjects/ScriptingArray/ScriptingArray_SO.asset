@@ -18,3 +18,6 @@ MonoBehaviour:
   - Voxcelator_NunTalk
   - Voxcelator_MapEvents
   - Voxcelator_MapTalk
+  - Voxcelator_FighterTalk
+  - Voxcelator_SmithTalk
+  - Voxcelator_MagicianTalk

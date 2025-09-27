@@ -67,9 +67,12 @@ public class PlayerInteractions : MonoBehaviour,IEvent
 
             foreach (var a in added)
             {
+                var pos = a.gameObject.transform.GetChild(0).transform;
                 var button = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.InteractionButton),
-                    a.transform.position, Vector3.zero);
-                button.GetComponent<InteractionButton>().interacter = a.gameObject;
+                    pos.position, Vector3.zero);
+                var btn = button.GetComponent<InteractionButton>();
+                btn.interacter = a.gameObject;
+                btn.SetPosition(pos);
                 if (!_interactionDic.ContainsKey(a))
                 {
                     _interactionDic.Add(a, button);
