@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7dca9b4f3d6bd341a36f23c6d20df88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footStepObj: {fileID: 7449522239600359466, guid: 7903965d3a924834f80b2d3df9cfe9e4, type: 3}
+  footStepObj: {fileID: 7449522239600359466, guid: 7776dd71736322d4c837a964ddaf1df1, type: 3}
   coolDown: 0.5
   size: {x: 0.4, y: 0.4}
   footTransform: {fileID: 8862545961891665613}
@@ -189,7 +189,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.008140862, y: -0.22413772}
+  m_Offset: {x: 0.028413549, y: -0.30860728}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -199,7 +199,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.82285273, y: 1.1322991}
+  m_Size: {x: 0.7012166, y: 0.96335995}
   m_EdgeRadius: 0
 --- !u!95 &4084337337619031481
 Animator:
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f2d42f2dfe70b44883be5f19aee0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityType: 2
+  entityType: 1
   isElite: 0
   sr: {fileID: 1347717951013576063}
 --- !u!114 &-2770633074554441895

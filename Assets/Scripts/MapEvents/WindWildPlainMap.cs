@@ -43,9 +43,9 @@ public class WindWildPlainMap : AMap,IEvent
                 EventManager.Instance.Invoke(EventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
                 break;
             case 280:
+                TimeManager.Instance.StopGame();
                 EventManager.Instance.Invoke(EventKey.StopSpawning);
                 EventManager.Instance.Invoke(EventKey.KillAllMonsters);
-                TimeManager.Instance.StopGame();
                 PlayerStatus.Instance.gameObject.transform.position = playerBossBattlePos.position;
                 DialogManager.Instance.StartConversation(mapDia[1]);
                 break;
@@ -71,7 +71,10 @@ public class WindWildPlainMap : AMap,IEvent
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(EventKey.OnClocked,new Action<int>(CheckTime));
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RemoveListener(EventKey.OnClocked,new Action<int>(CheckTime));
+        }
     }
 
     public void OnEnable()

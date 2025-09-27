@@ -12,7 +12,7 @@ public abstract class Type
     };
     public void Resistance(EffectType damageType)
     {
-        typeBars[damageType].SetBuff(BuffType.Add,-typeBars[damageType].BaseMaxVal);
+        typeBars[damageType].AddBuff(BuffType.Add,-typeBars[damageType].BaseMaxVal);
         typeBars[damageType].BaseMaxVal += 50;
     }
 

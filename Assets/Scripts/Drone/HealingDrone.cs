@@ -40,7 +40,7 @@ public class HealingDrone : MonoBehaviour,IPoolingObject
     {
         while (true)
         {
-            PlayerStatus.Instance.playerHp.SetBuff(BuffType.Add,Extracter.Instance.ParseFloat(augmentedDatasSO.datas[1]));
+            PlayerStatus.Instance.playerHp.AddBuff(BuffType.Add,Extracter.Instance.ParseFloat(augmentedDatasSO.datas[1]));
             yield return new WaitForSeconds(Extracter.Instance.ParseFloat(augmentedDatasSO.datas[0]));
         }
 

@@ -159,7 +159,7 @@ public class GoblinKnight : AEnemy, IPoolingObject, IFootSteper
             var dir = _enemy.GetComponent<GoblinKnight>().finalDestination;
             _finalDestination =dir*_dashRange+_enemy.rb2D.position;
             _enemy.rb2D.linearVelocity  = dir*_dashSpeed;
-            _enemy.enemyData.baseAttack.SetBuff(BuffType.Mul,2);
+            _enemy.enemyData.baseAttack.AddBuff(BuffType.Mul,2);
         }
 
         public void Execute()
@@ -178,7 +178,7 @@ public class GoblinKnight : AEnemy, IPoolingObject, IFootSteper
 
         public void Exit()
         {
-            _enemy.enemyData.baseAttack.SetBuff(BuffType.Mul,-2);
+            _enemy.enemyData.baseAttack.AddBuff(BuffType.Mul,-2);
             ObjectPoolManager.Instance.Return(_generator.gameObject);
         }
         

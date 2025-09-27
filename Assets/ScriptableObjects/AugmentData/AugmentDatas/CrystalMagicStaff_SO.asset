@@ -15,6 +15,6 @@ MonoBehaviour:
   augmentName: CrystalMagicStaffRuneName
   augmentSprite: {fileID: -1887485374, guid: 3100bce860093cf498c9212c331c707b, type: 3}
   augmentDescription: CrystalMagicStaffRuneDesc
-  augmentBehavior: {fileID: 3162992338501655723, guid: 37eef804d30754b45b1b07792ad6fce7, type: 3}
+  augmentBehavior: {fileID: 4005693027469601840, guid: 478f008e21fad914eb6e02fe72087427, type: 3}
   augmentState: 2
-  maxAugmentedCount: 7
+  maxAugmentedCount: 6

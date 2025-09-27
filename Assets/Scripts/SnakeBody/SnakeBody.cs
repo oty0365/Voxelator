@@ -5,6 +5,7 @@ using UnityEngine;
 public class SnakeBody : MonoBehaviour,IPoolingObject
 {
     [SerializeField] private AugmentedDatasSO augmentedDatasSO;
+    [SerializeField] private WeaponDamager sb;
     public GameObject target;
     public float speed;
     public float rotationSpeed;
@@ -16,6 +17,7 @@ public class SnakeBody : MonoBehaviour,IPoolingObject
     }
     public void OnBirth()
     {
+        sb.parent = PlayerStatus.Instance.gameObject;
         if (parent == null)
         {
             target = PlayerStatus.Instance.gameObject;

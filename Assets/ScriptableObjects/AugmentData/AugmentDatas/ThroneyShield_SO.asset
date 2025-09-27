@@ -15,6 +15,6 @@ MonoBehaviour:
   augmentName: ThorneyShieldRuneName
   augmentSprite: {fileID: -2076768274, guid: 3100bce860093cf498c9212c331c707b, type: 3}
   augmentDescription: ThorneyShieldRuneDesc
-  augmentBehavior: {fileID: 3162992338501655723, guid: 37eef804d30754b45b1b07792ad6fce7, type: 3}
+  augmentBehavior: {fileID: 4005693027469601840, guid: e376c60543d0d1043856739342ae2e96, type: 3}
   augmentState: 2
-  maxAugmentedCount: 7
+  maxAugmentedCount: 5

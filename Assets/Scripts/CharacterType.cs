@@ -49,7 +49,7 @@ public class CharacterType : MonoBehaviour
 
         if (isElite)
         {
-            color = new Color32(255, 141, 255,255);
+            color = Color.white;
         }
         return color;
     }
@@ -62,7 +62,7 @@ public class CharacterType : MonoBehaviour
                 color = Color.white;
                 break;
             case EntityType.Bug:
-                color = new Color32(248, 74, 78,255);
+                color = new Color32(255, 90, 90,255);
                 break;
             case EntityType.Monster:
                 color = new Color32(74, 248, 122, 255);
@@ -73,7 +73,7 @@ public class CharacterType : MonoBehaviour
         }
         if (isElite)
         {
-            color = new Color32(255, 141, 255,255);
+            color = Color.white;
         }
         sr.color = color;
     }

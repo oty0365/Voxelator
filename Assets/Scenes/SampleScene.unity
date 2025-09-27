@@ -1187,6 +1187,7 @@ Transform:
   - {fileID: 1786854464}
   - {fileID: 1815011210}
   - {fileID: 368107491}
+  - {fileID: 1161428999}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &201334883
@@ -1957,6 +1958,35 @@ MonoBehaviour:
     m_RotationOrder: 4
   defaultShakeIntensity: 1
   defaultShakeDuration: 0.5
+  healthVignetteCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  healthVignetteDuration: 0.8
+  healthVignetteIntensity: 0.4
+  decreaseColor: {r: 1, g: 0, b: 0, a: 1}
+  increaseColor: {r: 0, g: 1, b: 0, a: 1}
+  volume: {fileID: 740860684}
 --- !u!1 &580176823
 GameObject:
   m_ObjectHideFlags: 0
@@ -3205,7 +3235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1161428998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3231,12 +3261,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161428997}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.004447291, y: -1.6496539, z: -0.072791986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 192943260}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1161429000
 MonoBehaviour:
@@ -4934,6 +4964,7 @@ MonoBehaviour:
   - {fileID: 1478564937}
   - {fileID: 1609832506}
   - {fileID: 44018984}
+  - {fileID: 1161428997}
   mapBanner: {fileID: 1180163905}
 --- !u!1 &1563382608
 GameObject:
@@ -6285,6 +6316,5 @@ SceneRoots:
   - {fileID: 740860685}
   - {fileID: 79528791}
   - {fileID: 207411641}
-  - {fileID: 1161428999}
   - {fileID: 192943260}
   - {fileID: 619394802}

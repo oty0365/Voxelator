@@ -49,15 +49,24 @@ public class EventManager : SceneSingletonMonoBehaviour<EventManager>
                 {
                     throw new InvalidOperationException($"이벤트 [{actionKey}] 구독 해제 시 형식 불일치. 기대: {existing.GetType()} / 현재: {listener.GetType()}");
                 }
-                var updated = MulticastDelegate.Remove(existing, listener);
+
+                var updated = existing;
+                var invocationList = existing.GetInvocationList();
+        
+                foreach (var del in invocationList)
+                {
+                    if (del.Method == listener.Method && 
+                        ReferenceEquals(del.Target, listener.Target))
+                    {
+                        updated = (MulticastDelegate)MulticastDelegate.Remove(updated, del);
+                        break; 
+                    }
+                }
+        
                 if (updated == null)
-                {
                     _events.Remove(actionKey);
-                }
                 else
-                {
-                    _events[actionKey] = (MulticastDelegate)updated;
-                }
+                    _events[actionKey] = updated;
             }
         }
         

@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7dca9b4f3d6bd341a36f23c6d20df88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footStepObj: {fileID: 7449522239600359466, guid: 7903965d3a924834f80b2d3df9cfe9e4, type: 3}
+  footStepObj: {fileID: 7449522239600359466, guid: 7776dd71736322d4c837a964ddaf1df1, type: 3}
   coolDown: 0.2
   size: {x: 0.25, y: 0.25}
   footTransform: {fileID: 2331721200991413975}
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f2d42f2dfe70b44883be5f19aee0ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityType: 2
+  entityType: 1
   isElite: 1
   sr: {fileID: 6541206134884101487}
 --- !u!114 &912964551100154255

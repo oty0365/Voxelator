@@ -50,7 +50,7 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            AugmentSelection(AugmentState.Stat | AugmentState.Weapon | AugmentState.Util |  AugmentState.Active);
+            AugmentSelection(AugmentState.Stat | AugmentState.Weapon | AugmentState.Util);
         }
     }
     public int GetAugmentedCount(AugmentDataSO key)

@@ -63,16 +63,28 @@ public class LimitedStat : Stat<float>
         }
     }
 
-    public void SetBuff(BuffType type, float value)
+    public void AddBuff(BuffType type, float value)
     {
         _buffs[type] += value;
         Value = _buffs[BuffType.Mul] * (_buffs[BuffType.Add] + BaseVal);
     }
 
-    public void SetMaxBuff(BuffType type, float value)
+    public void SetBuff(BuffType type, float value)
+    {
+        _buffs[type]=value;
+        Value = _buffs[type]*(_buffs[BuffType.Mul] + BaseMaxVal);
+    }
+
+    public void AddMaxBuff(BuffType type, float value)
     {
          _maxBuffs[type] += value;
          MaxValue = _maxBuffs[BuffType.Mul]*(_maxBuffs[BuffType.Add]+BaseMaxVal);
+    }
+
+    public void SetMaxBuff(BuffType type, float value)
+    {
+        _maxBuffs[type]=value;
+        MaxValue = _maxBuffs[BuffType.Mul]*(_maxBuffs[BuffType.Add]+BaseMaxVal);
     }
     
 }

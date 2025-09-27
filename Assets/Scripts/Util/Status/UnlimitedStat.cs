@@ -31,9 +31,15 @@ public class UnlimitedStat : Stat<float>
             }
         }
     }
-    public void SetBuff(BuffType type, float value)
+    public void AddBuff(BuffType type, float value)
     {
         _buffs[type] += value;
+        Value = _buffs[BuffType.Mul]*(_buffs[BuffType.Add]+BaseVal);
+    }
+
+    public void SetBuff(BuffType type, float value)
+    {
+        _buffs[type] = value;
         Value = _buffs[BuffType.Mul]*(_buffs[BuffType.Add]+BaseVal);
     }
 }

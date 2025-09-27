@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LongSword_SO
   m_EditorClassIdentifier: 
   datas:
-  - 3+(ATK*0.3)
+  - 4+(ATK*0.3)

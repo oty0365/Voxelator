@@ -29,6 +29,10 @@ public class PlayerInteractions : MonoBehaviour,IEvent
     {
         var damagerObject = damager.GetComponent<Damager>();
         var damageData =damager.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<StatContainer>().GetStat<UnlimitedStat>(StatusCode.Atk).Value);
+        var hit = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.HitParticle), transform.position, new Vector3(-90, 0, 0)); 
+        var hitObj = hit.GetComponent<ParticleObject>();
+        var hitPrt = hitObj.prt.main;
+        hitPrt.startColor = Color.white;
         if (_currentInfiniteTimeFlow != null)
         {
             StopCoroutine(_currentInfiniteTimeFlow);
@@ -63,9 +67,12 @@ public class PlayerInteractions : MonoBehaviour,IEvent
 
             foreach (var a in added)
             {
+                var pos = a.gameObject.transform.GetChild(0).transform;
                 var button = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.InteractionButton),
-                    a.transform.position, Vector3.zero);
-                button.GetComponent<InteractionButton>().interacter = a.gameObject;
+                    pos.position, Vector3.zero);
+                var btn = button.GetComponent<InteractionButton>();
+                btn.interacter = a.gameObject;
+                btn.SetPosition(pos);
                 if (!_interactionDic.ContainsKey(a))
                 {
                     _interactionDic.Add(a, button);
@@ -83,7 +90,10 @@ public class PlayerInteractions : MonoBehaviour,IEvent
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(EventKey.OnPlayerHit, new Action<GameObject>(OnHit));
+        if (EventManager.Instance != null)
+        {
+            EventManager.Instance.RemoveListener(EventKey.OnPlayerHit, new Action<GameObject>(OnHit));
+        }
     }
 
     private void OnEnable()

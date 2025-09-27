@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Goblin_SO
   m_EditorClassIdentifier: 
   health:
-    maxRange: 5
-    minRange: 10
+    maxRange: 4
+    minRange: 8
   expDrop:
     maxRange: 10
     minRange: 30

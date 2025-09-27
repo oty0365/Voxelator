@@ -1,5 +1,7 @@
 ﻿Key,Type,Priority,Ko,En
 SaintName,1,1,성녀,Holy Maiden
+SaintUI1,1,1,반가워요 용사님!,Greetings{COMMA} hero!
+SaintUI2,1,1,용사님의 여정에 신의 축복이 함께하기를..,Let the bless with you..
 SaintMap1TT1,1,1,용사님!\n들리실까요..?,Hero!\nCan you hear me..?
 SaintMap1TT2,1,1,이건 저의 텔레파시에요..\n전투가 시작되기 전에 도움을 드릴게요,This is my telepathy..\nI'll help you before the battle begins
 SaintMap1TT3,1,1,전투가 시작되고 얼마 지나지 않아 적들이 몰려올 거에요..,Shortly after the battle starts{COMMA} enemies will swarm in..
@@ -9,3 +11,4 @@ SaintMap2TT2,1,1,원래는 작은 동물밖에 없는 한적한 평원이었지�
 SaintMap2TT3,1,1,워그드라실의 숲까지 가려면 이 길을 꼭 지나셔야 해요,You must pass through this path to reach the Forest of Yggdrasil
 SaintMap2TT4,1,1,다행이도 이 지역은 따로 유의하실 부분이 없습니다,Fortunately{COMMA} there are no particular areas to be cautious about in this region
 SaintMap2TT5,1,1,저는 이만 물러갑니다.. 용사님의 강함을 믿습니다!!,I shall withdraw now.. I believe in your strength{COMMA} Hero!!
+
