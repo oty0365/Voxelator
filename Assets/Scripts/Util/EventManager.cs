@@ -18,6 +18,8 @@ public enum EventKey
     OnTalkEnd,
     OnBossBattleStart,
     OnBossBattleEnd,
+    LevelUpPannelActive,
+    LevelUpPannelInactive,
 }
 
 public class EventManager : SceneSingletonMonoBehaviour<EventManager>

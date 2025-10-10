@@ -8,6 +8,10 @@ public class SaveManager : SceneSingletonMonoBehaviour<SaveManager>
 
     [SerializeField] private string saveDirectory = "SaveData";
     private string _savePath => Path.Combine(Application.persistentDataPath, saveDirectory);
+    /*private void Start()
+    {
+        Debug.Log(_savePath);
+    }*/
 
     public void SaveData(string dataKey, ISaveData saveData)
     {

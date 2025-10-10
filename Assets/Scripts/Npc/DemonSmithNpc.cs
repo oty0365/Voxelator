@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class DemonSmithNpc : MonoBehaviour,IInteractable
 {
-    [SerializeField] DialogsSO elfDialogsSO;
+    [SerializeField] DialogsSO dialogsSO;
         
     public void OnInteract()
     {
-        DialogManager.Instance.StartConversation(elfDialogsSO);
+        DialogManager.Instance.StartConversation(dialogsSO);
     }
 
     public void ExitInteract()
