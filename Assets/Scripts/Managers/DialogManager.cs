@@ -101,6 +101,13 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
                 _isPuttingText = false;
                 return;
             }
+            if (currentDialogs.dialogScripts[currentIndex].eventsWhileTalk.Length > 0)
+            {
+                foreach (var i in currentDialogs.dialogScripts[currentIndex].eventsWhileTalk)
+                {
+                    EventManager.Instance.Invoke(i);
+                }
+            }
 
             currentIndex++;
 
@@ -131,16 +138,6 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
     private void PutText()
     {
         var currentDia = currentDialogs.dialogScripts[currentIndex];
-        if (currentDia.eventsWhileTalk.Length > 0)
-        {
-            isEventing = true;
-            foreach(var i in currentDia.eventsWhileTalk)
-            {
-                EventManager.Instance.Invoke(i);
-            }
-        }
-        else
-        {
             _isPuttingText = true;
             talkerPortraitImage.sprite = currentDia.talkersFace;
             if (talkerPortraitImage.sprite != null)
@@ -157,7 +154,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
             }
 
             _putTextFlow = StartCoroutine(PutTextFlow(scripter.scripts[currentDia.dialogue[0]].currentText));
-        }
+        
     }
 
     private IEnumerator PutTextFlow(string dialog)

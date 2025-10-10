@@ -17,4 +17,4 @@ MonoBehaviour:
   talkersFace: {fileID: 21300000, guid: c68d91c0a28c3344fb0b8ce63cf4b17d, type: 3}
   dialogue:
   - SmithUI1
-  eventsWhileTalk: 
+  eventsWhileTalk: 0e000000

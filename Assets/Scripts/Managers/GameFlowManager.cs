@@ -17,7 +17,7 @@ public class GameFlowManager : SceneSingletonMonoBehaviour<GameFlowManager>
         {
             obj.SetActive(true);
         }
-        MapManager.Instance.ChangeMap(MapCode.WindWildPlain);
+        //MapManager.Instance.ChangeMap(MapCode.WindWildPlain);
         PlayerStatus.Instance.ResetStatus();
         Extracter.Instance.UpLoadStats();
         PlayerController.Instance.playerDash.ResetDashCoolDown();

@@ -9,12 +9,13 @@ public class PlayerStatUpgradeInfo : ISaveData
     public int atk;
     public int def;
     public int hp;
+    public int upgradePoint;
     
     public string ToJson() => JsonUtility.ToJson(this);
     public void FromJson(string json) => JsonUtility.FromJsonOverwrite(json, this);
 }
 
-public class PlayerStatUpgrade: MonoBehaviour,ISaveable
+public class PlayerStatUpgrade: MonoBehaviour,ISaveable,IDataGetSetter<PlayerStatUpgradeInfo>
 {
     public PlayerStatUpgradeInfo upgrades;
     public string GetSavePath()=> "PlayerStatUpgrade";
@@ -37,9 +38,23 @@ public class PlayerStatUpgrade: MonoBehaviour,ISaveable
             upgrades.atk = 0;
             upgrades.def = 0;
             upgrades.hp = 0;
-            
+            upgrades.upgradePoint = 0;
             _saveManager.SaveData(GetSavePath(), upgrades);
         }
+    }
+
+    public void Get(PlayerStatUpgradeInfo data)
+    {
+        data.atk = upgrades.atk;
+        data.level = upgrades.level;
+        data.def = upgrades.def;
+        data.hp = upgrades.hp;
+        data.upgradePoint = upgrades.upgradePoint;
+    }
+    
+    public void Set(PlayerStatUpgradeInfo data)
+    {
+        upgrades = data;
     }
 
     public void OnRemove()
