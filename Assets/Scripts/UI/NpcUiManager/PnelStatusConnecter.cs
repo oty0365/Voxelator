@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class LevelingUI : MonoBehaviour,IEvent,IPannelUI
+public class PanelStatusConnecter : MonoBehaviour,IEvent,IPannelUI,IConnecter
 {
     [SerializeField] private GameObject pannel;
     [SerializeField] private PlayerCharacter playerData;
@@ -10,8 +10,7 @@ public class LevelingUI : MonoBehaviour,IEvent,IPannelUI
 
     private void Start()
     {
-        pannel.GetComponent<LevelUpPannel>().Initialize(playerData.GetComponent<IDataGetSetter<PlayerStatUpgradeInfo>>(),playerData.GetComponent<ISaveable>());
-        _ipannel = pannel.GetComponent<IPannel>();
+        OnConnect();
     }
 
     public void OnActiveUI()
@@ -39,6 +38,13 @@ public class LevelingUI : MonoBehaviour,IEvent,IPannelUI
             EventManager.Instance.RemoveListener(EventKey.LevelUpPanelInactive, new Action(OnInactiveUI));
         }
     }
+
+    public void OnConnect()
+    {
+        pannel.GetComponent<LevelUpPannel>().Initialize(playerData.GetComponent<IDataGetSetter<PlayerStatUpgradeInfo>>(),playerData.GetComponent<ISaveable>());
+        _ipannel = pannel.GetComponent<IPannel>();
+    }
+
     private void OnEnable()
     {
         Subscribe();
