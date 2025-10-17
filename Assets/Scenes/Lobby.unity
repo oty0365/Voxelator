@@ -2963,7 +2963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.7043563}
   m_AnchorMax: {x: 1, y: 0.83556163}
-  m_AnchoredPosition: {x: 0.18493652, y: -871.7999}
+  m_AnchoredPosition: {x: 0.18493652, y: -871.79987}
   m_SizeDelta: {x: 0.35999966, y: -2.8799973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &212945141
@@ -4396,7 +4396,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   augmentDatas: {fileID: 11400000, guid: e42a3155e8640ff449ad43c812d9a7fe, type: 2}
-  augmentUI: {fileID: 1161429000}
   augmentedTime: 0
 --- !u!1 &450631793
 GameObject:
@@ -7122,7 +7121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 2
-  augmentUI: {fileID: 1161429000}
   isSelected: 0
 --- !u!1 &858411871
 GameObject:
@@ -8087,7 +8085,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 3
-  augmentUI: {fileID: 1161429000}
   isSelected: 0
 --- !u!1 &1009336509
 GameObject:
@@ -10400,7 +10397,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.7706458}
   m_AnchorMax: {x: 1, y: 0.83556163}
-  m_AnchoredPosition: {x: -1.093811, y: 1.1500244}
+  m_AnchoredPosition: {x: -1.09375, y: 1.1500244}
   m_SizeDelta: {x: 0.3600006, y: 1.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309483222
@@ -13601,7 +13598,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
-  augmentUI: {fileID: 1161429000}
   isSelected: 0
 --- !u!1 &1925338140
 GameObject:
@@ -14693,7 +14689,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 1
-  augmentUI: {fileID: 1161429000}
   isSelected: 0
 --- !u!1 &2144584480
 GameObject:

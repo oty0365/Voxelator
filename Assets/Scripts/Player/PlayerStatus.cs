@@ -80,10 +80,7 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
             float currentMaxExp = PlayerMaxExp;
             _playerExp -= currentMaxExp;
             PlayerLevel++;
-        
             PlayerMaxExp = CalculateExpRequirement(PlayerLevel);
-        
-            
         }
     
         OnExp?.Invoke(_playerExp);
