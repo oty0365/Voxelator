@@ -2,70 +2,90 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public enum FightEventKey
+public enum EventKey
 {
-    OnPlayerHit,        
-}
-
-public enum FieldEventKey
-{
-    OnClocked,        
-    AddToSpawner,      
-    SpawnElite,         
-    StartSpawning,     
-    StopSpawning,      
-    ContinueSpawning,
+    //전투
+    OnPlayerHit,
     OnBossBattleStart,
-    OnBossBattleEnd,    
+    OnBossBattleEnd,
     KillAllMonsters,
-}
-
-public enum UIEventKey
-{
-    ShowMapBanner,        
-    ShowEventBanner,     
-    OnTalkStart,       
-    OnTalkEnd,          
-    LevelUpPanelActive,  
-    LevelUpPanelInactive, 
+    
+    //필드
+    OnClocked,
+    AddToSpawner,
+    SpawnElite,
+    StartSpawning,
+    StopSpawning,
+    ContinueSpawning,
+    SetTimeScale,
+    
+    //카메라
+    ConnectWithCameraPlayerStaus,
+    StopShake,
+    
+    //UI
+    ShowMapBanner,
+    ShowEventBanner,
+    OnTalkStart,
+    OnTalkEnd,
+    LevelUpPanelActive,
+    LevelUpPanelInactive,
 }
 
 public class EventManager : SceneSingletonMonoBehaviour<EventManager>
 {
-    private readonly Dictionary<System.Type, object> _containers = new();
+    private readonly Dictionary<EventKey, MulticastDelegate> _events = new();
     
-    protected override void Awake()
+    public void AddListener(EventKey actionKey, MulticastDelegate listener)
     {
-        base.Awake();
-        
-        _containers[typeof(FightEventKey)] = new EventContainer<FightEventKey>();
-        _containers[typeof(UIEventKey)] = new EventContainer<UIEventKey>();
-        _containers[typeof(FieldEventKey)] = new EventContainer<FieldEventKey>();
-    }
-    
-    private EventContainer<T> GetContainer<T>() where T : Enum
-    {
-        var type = typeof(T);
-        if (_containers.TryGetValue(type, out var container))
+        if (_events.TryGetValue(actionKey, out var existing))
         {
-            return container as EventContainer<T>;
+            if (existing.GetType() != listener.GetType())
+            {
+                throw new InvalidOperationException($"이벤트 [{actionKey}]는 {existing.GetType()} 형식만 받을 수 있음. 현재: {listener.GetType()}");
+            }
+            _events[actionKey] = (MulticastDelegate)MulticastDelegate.Combine(existing, listener);
         }
-        throw new KeyNotFoundException($"이벤트 컨테이너를 찾을 수 없음: {type}");
+        else
+        {
+            _events[actionKey] = listener;
+        }
     }
     
-    public void AddListener<T>(T key, MulticastDelegate listener) where T : Enum
+    public void RemoveListener(EventKey actionKey, MulticastDelegate listener)
     {
-        GetContainer<T>().AddListener(key, listener);
+        if (_events.TryGetValue(actionKey, out var existing))
+        {
+            if (existing.GetType() != listener.GetType())
+            {
+                throw new InvalidOperationException($"이벤트 [{actionKey}] 구독 해제 시 형식 불일치. 기대: {existing.GetType()} / 현재: {listener.GetType()}");
+            }
+
+            var updated = existing;
+            var invocationList = existing.GetInvocationList();
+    
+            foreach (var del in invocationList)
+            {
+                if (del.Method == listener.Method && 
+                    ReferenceEquals(del.Target, listener.Target))
+                {
+                    updated = (MulticastDelegate)MulticastDelegate.Remove(updated, del);
+                    break; 
+                }
+            }
+    
+            if (updated == null)
+                _events.Remove(actionKey);
+            else
+                _events[actionKey] = updated;
+        }
     }
     
-    public void RemoveListener<T>(T key, MulticastDelegate listener) where T : Enum
+    public void Invoke(EventKey actionKey, params object[] args)
     {
-        GetContainer<T>().RemoveListener(key, listener);
-    }
-    
-    public void Invoke<T>(T key, params object[] args) where T : Enum
-    {
-        GetContainer<T>().Invoke(key, args);
+        if (_events.TryGetValue(actionKey, out var del))
+        {
+            del.DynamicInvoke(args);
+        }
     }
 }

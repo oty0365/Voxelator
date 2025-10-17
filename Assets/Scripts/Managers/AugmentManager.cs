@@ -20,12 +20,11 @@ public enum AugmentState
     Active = 1<<3,
 }
 
-public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
+public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>
 {
 
     [SerializeField] AugmentDatasSO augmentDatas;
-    [SerializeField] AugmentUI augmentUI;
-    private event Action<AugmentDataSO[]> setUi;
+    public event Action<AugmentDataSO[]> setUi;
     private List<AugmentDataSO> _augmentList = new();
     private Dictionary<AugmentDataSO, AugmentStatus> _augmentDict = new();
     public int augmentedTime;
@@ -46,13 +45,13 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             AugmentSelection(AugmentState.Stat | AugmentState.Weapon | AugmentState.Util);
         }
-    }
+    }*/
     public int GetAugmentedCount(AugmentDataSO key)
     {
         if (_augmentDict.ContainsKey(key))
@@ -65,8 +64,8 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
     public void AugmentSelection(AugmentState targetStates)
     {
         setUi?.Invoke(GetRandomAugments(targetStates));
-        CameraManager.Instance.StopShake();
-        Time.timeScale = 0;
+        EventManager.Instance?.Invoke(EventKey.StopShake);
+        EventManager.Instance?.Invoke(EventKey.SetTimeScale,0);
     }
 
     public void ConsumedAugment(AugmentDataSO key)
@@ -127,21 +126,5 @@ public class AugmentManager : SceneSingletonMonoBehaviour<AugmentManager>,IEvent
             filteredAugments[2],
             filteredAugments[3]
         };
-    }
-    public void Subscribe()
-    {
-        setUi += augmentUI.UpdateUI;
-    }
-    public void Unsubscribe()
-    {
-        setUi -= augmentUI.UpdateUI;
-    }
-    private void OnEnable()
-    {
-        Subscribe();
-    }
-    private void OnDisable()
-    {
-        Unsubscribe();
     }
 }

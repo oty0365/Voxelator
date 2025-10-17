@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
-public class CameraManager : SceneSingletonMonoBehaviour<CameraManager>
+public class CameraManager : SceneSingletonMonoBehaviour<CameraManager>,IEvent
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float followSpeed = 10f;
@@ -281,8 +281,35 @@ public class CameraManager : SceneSingletonMonoBehaviour<CameraManager>
         }
     }
 
+    public void Subscribe()
+    {
+        EventManager.Instance.AddListener(EventKey.ConnectWithCameraPlayerStaus,new Action(CameraConnectWithUI));
+        EventManager.Instance.AddListener(EventKey.StopShake,new Action(StopShake));
+    }
+
+    public void Unsubscribe()
+    {
+        EventManager.Instance.RemoveListener(EventKey.ConnectWithCameraPlayerStaus,new Action(CameraConnectWithUI));
+        EventManager.Instance.RemoveListener(EventKey.StopShake,new Action(StopShake));
+    }
+
+    public void CameraConnectWithUI()
+    {
+        PlayerStatus.Instance.playerHp.OnChanged+=OnHealthChange;
+    }
+
     public void OnDestroy()
     {
         PlayerStatus.Instance.playerHp.OnChanged -= OnHealthChange;
+    }
+
+    private void OnEnable()
+    {
+        Subscribe();
+    }
+
+    private void OnDisable()
+    {
+        Unsubscribe();
     }
 }

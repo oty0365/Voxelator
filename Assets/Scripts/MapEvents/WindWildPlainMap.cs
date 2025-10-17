@@ -14,8 +14,8 @@ public class WindWildPlainMap : AMap,IEvent
         switch (time)
         {
             case 1:
-                EventManager.Instance.Invoke(UIEventKey.ShowMapBanner);
-                EventManager.Instance.Invoke(FieldEventKey.AddToSpawner,EnemyCode.PlainChopper);
+                EventManager.Instance.Invoke(EventKey.ShowMapBanner);
+                EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.PlainChopper);
                 break;
             case 5:
                 TimeManager.Instance.StopGame();
@@ -25,27 +25,27 @@ public class WindWildPlainMap : AMap,IEvent
                 AugmentManager.Instance.AugmentSelection(AugmentState.Weapon);
                 break;
             case 7:
-                EventManager.Instance.Invoke(FieldEventKey.StartSpawning);
+                EventManager.Instance.Invoke(EventKey.StartSpawning);
                 break;
             case 70:
-                EventManager.Instance.Invoke(FieldEventKey.AddToSpawner,EnemyCode.Goblin);
+                EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.Goblin);
                 break;
             case 110:
-                EventManager.Instance.Invoke(UIEventKey.ShowEventBanner,"EliteSpawn");
-                EventManager.Instance.Invoke(FieldEventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
+                EventManager.Instance.Invoke(EventKey.ShowEventBanner,"EliteSpawn");
+                EventManager.Instance.Invoke(EventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
                 break;
             case 200:
-                EventManager.Instance.Invoke(FieldEventKey.AddToSpawner,EnemyCode.RockGolem);
+                EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.RockGolem);
                 break;
             case 220:
-                EventManager.Instance.Invoke(UIEventKey.ShowEventBanner,"EliteSpawn");
-                EventManager.Instance.Invoke(FieldEventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
-                EventManager.Instance.Invoke(FieldEventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
+                EventManager.Instance.Invoke(EventKey.ShowEventBanner,"EliteSpawn");
+                EventManager.Instance.Invoke(EventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
+                EventManager.Instance.Invoke(EventKey.SpawnElite,EnemyCode.EliteGoblinKnight);
                 break;
             case 280:
                 TimeManager.Instance.StopGame();
-                EventManager.Instance.Invoke(FieldEventKey.StopSpawning);
-                EventManager.Instance.Invoke(FieldEventKey.KillAllMonsters);
+                EventManager.Instance.Invoke(EventKey.StopSpawning);
+                EventManager.Instance.Invoke(EventKey.KillAllMonsters);
                 PlayerStatus.Instance.gameObject.transform.position = playerBossBattlePos.position;
                 DialogManager.Instance.StartConversation(mapDia[1]);
                 break;
@@ -53,7 +53,7 @@ public class WindWildPlainMap : AMap,IEvent
                 var boss=ObjectPoolManager.Instance.Get(EnemySpawn.Instance.GetBoss(EnemyCode.BossGoblinBeastRider),bossSpawnPos.position, Vector3.zero);
                 _currentBoss=boss.GetComponent<AEnemy>();
                 MapManager.Instance.SetBossBattle();
-                EventManager.Instance.Invoke(UIEventKey.ShowMapBanner);
+                EventManager.Instance.Invoke(EventKey.ShowMapBanner);
                 CameraManager.Instance.SetTarget(bossSpawnPos);
                 StartCoroutine(EndCutSceneFlow());
                 //CameraManager.Instance.SetTarget(bossSpawnPos);
@@ -66,14 +66,14 @@ public class WindWildPlainMap : AMap,IEvent
     }
     public void Subscribe()
     {
-        EventManager.Instance.AddListener(FieldEventKey.OnClocked,new Action<int>(CheckTime));
+        EventManager.Instance.AddListener(EventKey.OnClocked,new Action<int>(CheckTime));
     }
 
     public void Unsubscribe()
     {
         if (EventManager.Instance != null)
         {
-            EventManager.Instance.RemoveListener(FieldEventKey.OnClocked,new Action<int>(CheckTime));
+            EventManager.Instance.RemoveListener(EventKey.OnClocked,new Action<int>(CheckTime));
         }
     }
 
@@ -92,6 +92,6 @@ public class WindWildPlainMap : AMap,IEvent
     {
         yield return new WaitForSeconds(3.5f);
         CameraManager.Instance.SetTarget(PlayerStatus.Instance.gameObject.transform);
-        EventManager.Instance.Invoke(FieldEventKey.OnBossBattleStart,"GoblinBeastRiderName",_currentBoss);
+        EventManager.Instance.Invoke(EventKey.OnBossBattleStart,"GoblinBeastRiderName",_currentBoss);
     }
 }

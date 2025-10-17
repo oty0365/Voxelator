@@ -173,13 +173,13 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
     }
     public void Subscribe()
     {
-        EventManager.Instance.AddListener(FightEventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
+        EventManager.Instance.AddListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
     }
     public void Unsubscribe()
     {
         if (EventManager.Instance != null)
         {
-            EventManager.Instance.RemoveListener(FightEventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
+            EventManager.Instance.RemoveListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
         }
     }
 

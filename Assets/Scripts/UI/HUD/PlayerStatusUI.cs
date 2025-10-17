@@ -52,7 +52,6 @@ public class PlayerStatusUI : MonoBehaviour,IEvent
     {
         _playerStatus= PlayerStatus.Instance;
         _playerStatus.playerHp.OnChanged += SetHp;
-        _playerStatus.playerHp.OnChanged += CameraManager.Instance.OnHealthChange;
         _playerStatus.playerAtk.OnChanged += SetAtk;
         _playerStatus.playerDef.OnChanged += SetDef;
         _playerStatus.OnMaxExp += SetMaxExp;
@@ -63,7 +62,6 @@ public class PlayerStatusUI : MonoBehaviour,IEvent
     public void Unsubscribe()
     {
         _playerStatus.playerHp.OnChanged -= SetHp;
-        _playerStatus.playerHp.OnChanged -= CameraManager.Instance.OnHealthChange;
         _playerStatus.playerAtk.OnChanged -= SetAtk;
         _playerStatus.playerDef.OnChanged -= SetDef;
         _playerStatus.OnMaxExp -= SetMaxExp;

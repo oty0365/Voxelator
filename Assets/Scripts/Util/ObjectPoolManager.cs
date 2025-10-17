@@ -44,7 +44,8 @@ public enum PoolObjectType
     ThroneyShieldAugment,
     SoulBullet,
     SoulBulletAugment,
-    SoulBulletGenerator
+    SoulBulletGenerator,
+    SfxObj,
     
     
 }

@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : SceneSingletonMonoBehaviour<TimeManager>
+public class TimeManager : SceneSingletonMonoBehaviour<TimeManager>,IEvent
 {
     public int gameTime;
 
@@ -41,6 +42,10 @@ public class TimeManager : SceneSingletonMonoBehaviour<TimeManager>
         if (_queuedTimes.Add(time)) 
             _eventQueue.Enqueue(time);
     }
+    private void SetTimeScale(float time)
+    {
+        Time.timeScale = time;
+    }
     private void ProcessEventQueue()
     {
         if (_eventQueue.Count == 0) return;
@@ -48,7 +53,7 @@ public class TimeManager : SceneSingletonMonoBehaviour<TimeManager>
         int time = _eventQueue.Dequeue();
         _queuedTimes.Remove(time);
 
-        EventManager.Instance.Invoke(FieldEventKey.OnClocked, time);
+        EventManager.Instance.Invoke(EventKey.OnClocked, time);
     }
     private IEnumerator ClockFlow()
     {
@@ -70,5 +75,25 @@ public class TimeManager : SceneSingletonMonoBehaviour<TimeManager>
     private void Update()
     {
         ProcessEventQueue();
+    }
+
+    public void Subscribe()
+    {
+        EventManager.Instance.AddListener(EventKey.SetTimeScale,new Action<float>(SetTimeScale));
+    }
+
+    public void Unsubscribe()
+    {
+        EventManager.Instance.RemoveListener(EventKey.SetTimeScale,new Action<float>(SetTimeScale));
+    }
+
+    private void OnEnable()
+    {
+        Subscribe();
+    }
+
+    private void OnDisable()
+    {
+        Unsubscribe();
     }
 }

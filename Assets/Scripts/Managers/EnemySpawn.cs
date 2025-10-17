@@ -176,24 +176,24 @@ public class EnemySpawn : SceneSingletonMonoBehaviour<EnemySpawn>,IEvent
 
     public void Subscribe()
     {
-        EventManager.Instance.AddListener(FieldEventKey.KillAllMonsters, new Action(RemoveAllMonstersInMap));
-        EventManager.Instance.AddListener(FieldEventKey.SpawnElite, new Action<EnemyCode>(SpawnElite));
-        EventManager.Instance.AddListener(FieldEventKey.AddToSpawner, new Action<EnemyCode>(TryUnlockEnemy));
-        EventManager.Instance.AddListener(FieldEventKey.StartSpawning,new Action(StartSpawn));
-        EventManager.Instance.AddListener(FieldEventKey.ContinueSpawning,new Action(ContinueSpawn));
-        EventManager.Instance.AddListener(FieldEventKey.StopSpawning,new Action(StopSpawn));
+        EventManager.Instance.AddListener(EventKey.KillAllMonsters, new Action(RemoveAllMonstersInMap));
+        EventManager.Instance.AddListener(EventKey.SpawnElite, new Action<EnemyCode>(SpawnElite));
+        EventManager.Instance.AddListener(EventKey.AddToSpawner, new Action<EnemyCode>(TryUnlockEnemy));
+        EventManager.Instance.AddListener(EventKey.StartSpawning,new Action(StartSpawn));
+        EventManager.Instance.AddListener(EventKey.ContinueSpawning,new Action(ContinueSpawn));
+        EventManager.Instance.AddListener(EventKey.StopSpawning,new Action(StopSpawn));
     }
 
     public void Unsubscribe()
     {
         if (EventManager.Instance != null)
         {
-            EventManager.Instance.RemoveListener(FieldEventKey.KillAllMonsters, new Action(RemoveAllMonstersInMap));
-            EventManager.Instance.RemoveListener(FieldEventKey.SpawnElite, new Action<EnemyCode>(SpawnElite));
-            EventManager.Instance.RemoveListener(FieldEventKey.AddToSpawner, new Action<EnemyCode>(TryUnlockEnemy));
-            EventManager.Instance.RemoveListener(FieldEventKey.StartSpawning,new Action(StartSpawn));
-            EventManager.Instance.RemoveListener(FieldEventKey.ContinueSpawning,new Action(ContinueSpawn));
-            EventManager.Instance.RemoveListener(FieldEventKey.StopSpawning,new Action(StopSpawn));
+            EventManager.Instance.RemoveListener(EventKey.KillAllMonsters, new Action(RemoveAllMonstersInMap));
+            EventManager.Instance.RemoveListener(EventKey.SpawnElite, new Action<EnemyCode>(SpawnElite));
+            EventManager.Instance.RemoveListener(EventKey.AddToSpawner, new Action<EnemyCode>(TryUnlockEnemy));
+            EventManager.Instance.RemoveListener(EventKey.StartSpawning,new Action(StartSpawn));
+            EventManager.Instance.RemoveListener(EventKey.ContinueSpawning,new Action(ContinueSpawn));
+            EventManager.Instance.RemoveListener(EventKey.StopSpawning,new Action(StopSpawn));
         }
 
     }

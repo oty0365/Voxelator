@@ -1778,7 +1778,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   augmentDatas: {fileID: 11400000, guid: e42a3155e8640ff449ad43c812d9a7fe, type: 2}
-  augmentUI: {fileID: 1161429000}
   augmentedTime: 0
 --- !u!1 &519420028
 GameObject:
@@ -2579,7 +2578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 2
-  augmentUI: {fileID: 1161429000}
   isSelected: 0
 --- !u!1 &880818575
 GameObject:
@@ -2845,7 +2843,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 3
-  augmentUI: {fileID: 1161429000}
   isSelected: 0
 --- !u!1 &1037057590
 GameObject:
@@ -3229,6 +3226,8 @@ GameObject:
   - component: {fileID: 1161429003}
   - component: {fileID: 1161429004}
   - component: {fileID: 1161429005}
+  - component: {fileID: 1161429006}
+  - component: {fileID: 1161429007}
   m_Layer: 0
   m_Name: UIManagers
   m_TagString: Untagged
@@ -3379,6 +3378,38 @@ MonoBehaviour:
   bossNameText: {fileID: 284370361}
   bossHpSlider: {fileID: 1741083105}
   speed: 35
+--- !u!114 &1161429006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161428997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137c73824d536e542be83f92885d0b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  augmentManager: {fileID: 432211423}
+  augmentUi: {fileID: 1161429000}
+--- !u!114 &1161429007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161428997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030bc6ed6c172474fbc1629f36ee0139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  augmentUi: {fileID: 1161429000}
+  cardUI:
+  - {fileID: 1892387941}
+  - {fileID: 2126182386}
+  - {fileID: 817440372}
+  - {fileID: 1004091253}
 --- !u!1 &1180163905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5753,7 +5784,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
-  augmentUI: {fileID: 1161429000}
   isSelected: 0
 --- !u!1 &1937087826
 GameObject:
@@ -6230,7 +6260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 1
-  augmentUI: {fileID: 1161429000}
   isSelected: 0
 --- !u!1001 &6621659690506611824
 PrefabInstance:
