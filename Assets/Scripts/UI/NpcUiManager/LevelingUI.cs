@@ -28,15 +28,15 @@ public class LevelingUI : MonoBehaviour,IEvent,IPannelUI
 
     public void Subscribe()
     {
-        EventManager.Instance.AddListener(EventKey.LevelUpPannelActive, new Action(OnActiveUI));
-        EventManager.Instance.AddListener(EventKey.LevelUpPannelInactive, new Action(OnInactiveUI));
+        EventManager.Instance.AddListener(UIEventKey.LevelUpPanelActive, new Action(OnActiveUI));
+        EventManager.Instance.AddListener(UIEventKey.LevelUpPanelInactive, new Action(OnInactiveUI));
     }
     public void Unsubscribe()
     {
         if (EventManager.Instance != null)
         {
-            EventManager.Instance.RemoveListener(EventKey.LevelUpPannelActive, new Action(OnActiveUI));
-            EventManager.Instance.RemoveListener(EventKey.LevelUpPannelInactive, new Action(OnInactiveUI));
+            EventManager.Instance.RemoveListener(UIEventKey.LevelUpPanelActive, new Action(OnActiveUI));
+            EventManager.Instance.RemoveListener(UIEventKey.LevelUpPanelInactive, new Action(OnInactiveUI));
         }
     }
     private void OnEnable()

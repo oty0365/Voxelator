@@ -52,12 +52,12 @@ public class EventAnnouncer : MonoBehaviour,IEvent
     
     public void Subscribe()
     {
-        EventManager.Instance.AddListener(EventKey.ShowEventBanner,new Action<string>(Show));
+        EventManager.Instance.AddListener(UIEventKey.ShowEventBanner,new Action<string>(Show));
     }
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(EventKey.ShowEventBanner,new Action<string>(Show));
+        EventManager.Instance.RemoveListener(UIEventKey.ShowEventBanner,new Action<string>(Show));
     }
 
     private void OnEnable()

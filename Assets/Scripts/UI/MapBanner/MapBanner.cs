@@ -58,12 +58,12 @@ public class MapBanner : MonoBehaviour, IEvent
     }
     public void Subscribe()
     {
-        EventManager.Instance.AddListener(EventKey.ShowMapBanner,new Action(FadeInOutMapBanner));
+        EventManager.Instance.AddListener(UIEventKey.ShowMapBanner,new Action(FadeInOutMapBanner));
     }
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(EventKey.ShowMapBanner,new Action(FadeInOutMapBanner));
+        EventManager.Instance.RemoveListener(UIEventKey.ShowMapBanner,new Action(FadeInOutMapBanner));
     }
 
     private void OnEnable()

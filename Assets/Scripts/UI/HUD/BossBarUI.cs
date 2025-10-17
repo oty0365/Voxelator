@@ -57,14 +57,14 @@ public class BossBarUI : MonoBehaviour,IEvent
 
     public void Subscribe()
     {
-        EventManager.Instance.AddListener(EventKey.OnBossBattleStart,new Action<string,AEnemy>(StartBossBattle));
-        EventManager.Instance.AddListener(EventKey.OnBossBattleEnd,new Action(EndBossBattle));
+        EventManager.Instance.AddListener(FieldEventKey.OnBossBattleStart,new Action<string,AEnemy>(StartBossBattle));
+        EventManager.Instance.AddListener(FieldEventKey.OnBossBattleEnd,new Action(EndBossBattle));
     }
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(EventKey.OnBossBattleStart,new Action<string,AEnemy>(StartBossBattle));
-        EventManager.Instance.RemoveListener(EventKey.OnBossBattleEnd,new Action(EndBossBattle));
+        EventManager.Instance.RemoveListener(FieldEventKey.OnBossBattleStart,new Action<string,AEnemy>(StartBossBattle));
+        EventManager.Instance.RemoveListener(FieldEventKey.OnBossBattleEnd,new Action(EndBossBattle));
     }
 
     private void OnEnable()

@@ -41,7 +41,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
         currentIndex = 0;
         _isPuttingText = false;
         _isEnded = false;
-        EventManager.Instance.Invoke(EventKey.OnTalkStart);
+        EventManager.Instance.Invoke(UIEventKey.OnTalkStart);
         StartCoroutine(FadeInFlow());
     }
 
@@ -126,7 +126,7 @@ public class DialogManager : SceneSingletonMonoBehaviour<DialogManager>
         if (!_isEnded)
         {
             _isEnded = true;
-            EventManager.Instance.Invoke(EventKey.OnTalkEnd);
+            EventManager.Instance.Invoke(UIEventKey.OnTalkEnd);
             if (TimeManager.Instance != null)
             {
                 TimeManager.Instance.ContinueGame();

@@ -48,7 +48,7 @@ public class TimeManager : SceneSingletonMonoBehaviour<TimeManager>
         int time = _eventQueue.Dequeue();
         _queuedTimes.Remove(time);
 
-        EventManager.Instance.Invoke(EventKey.OnClocked, time);
+        EventManager.Instance.Invoke(FieldEventKey.OnClocked, time);
     }
     private IEnumerator ClockFlow()
     {

@@ -2,81 +2,70 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EventKey
+
+public enum FightEventKey
 {
-    OnPlayerHit,
-    OnClocked,
-    AddToSpawner,
-    ShowMapBanner,
-    SpawnElite,
-    StartSpawning,
-    StopSpawning,
+    OnPlayerHit,        
+}
+
+public enum FieldEventKey
+{
+    OnClocked,        
+    AddToSpawner,      
+    SpawnElite,         
+    StartSpawning,     
+    StopSpawning,      
     ContinueSpawning,
-    ShowEventBanner,
-    KillAllMonsters,
-    OnTalkStart,
-    OnTalkEnd,
     OnBossBattleStart,
-    OnBossBattleEnd,
-    LevelUpPannelActive,
-    LevelUpPannelInactive,
+    OnBossBattleEnd,    
+    KillAllMonsters,
+}
+
+public enum UIEventKey
+{
+    ShowMapBanner,        
+    ShowEventBanner,     
+    OnTalkStart,       
+    OnTalkEnd,          
+    LevelUpPanelActive,  
+    LevelUpPanelInactive, 
 }
 
 public class EventManager : SceneSingletonMonoBehaviour<EventManager>
 {
-
-        private readonly Dictionary<EventKey, MulticastDelegate> _events = new();
+    private readonly Dictionary<System.Type, object> _containers = new();
+    
+    protected override void Awake()
+    {
+        base.Awake();
         
-        public void AddListener(EventKey actionKey, MulticastDelegate listener)
+        _containers[typeof(FightEventKey)] = new EventContainer<FightEventKey>();
+        _containers[typeof(UIEventKey)] = new EventContainer<UIEventKey>();
+        _containers[typeof(FieldEventKey)] = new EventContainer<FieldEventKey>();
+    }
+    
+    private EventContainer<T> GetContainer<T>() where T : Enum
+    {
+        var type = typeof(T);
+        if (_containers.TryGetValue(type, out var container))
         {
-            if (_events.TryGetValue(actionKey, out var existing))
-            {
-                if (existing.GetType() != listener.GetType())
-                {
-                    throw new InvalidOperationException($"이벤트 [{actionKey}]는 {existing.GetType()} 형식만 받을 수 있음. 현재: {listener.GetType()}");
-                }
-                _events[actionKey] = (MulticastDelegate)MulticastDelegate.Combine(existing, listener);
-            }
-            else
-            {
-                _events[actionKey] = listener;
-            }
+            return container as EventContainer<T>;
         }
-        
-        public void RemoveListener(EventKey actionKey, MulticastDelegate listener)
-        {
-            if (_events.TryGetValue(actionKey, out var existing))
-            {
-                if (existing.GetType() != listener.GetType())
-                {
-                    throw new InvalidOperationException($"이벤트 [{actionKey}] 구독 해제 시 형식 불일치. 기대: {existing.GetType()} / 현재: {listener.GetType()}");
-                }
-
-                var updated = existing;
-                var invocationList = existing.GetInvocationList();
-        
-                foreach (var del in invocationList)
-                {
-                    if (del.Method == listener.Method && 
-                        ReferenceEquals(del.Target, listener.Target))
-                    {
-                        updated = (MulticastDelegate)MulticastDelegate.Remove(updated, del);
-                        break; 
-                    }
-                }
-        
-                if (updated == null)
-                    _events.Remove(actionKey);
-                else
-                    _events[actionKey] = updated;
-            }
-        }
-        
-        public void Invoke(EventKey actionKey, params object[] args)
-        {
-            if (_events.TryGetValue(actionKey, out var del))
-            {
-                del.DynamicInvoke(args);
-            }
-        }
+        throw new KeyNotFoundException($"이벤트 컨테이너를 찾을 수 없음: {type}");
+    }
+    
+    public void AddListener<T>(T key, MulticastDelegate listener) where T : Enum
+    {
+        GetContainer<T>().AddListener(key, listener);
+    }
+    
+    public void RemoveListener<T>(T key, MulticastDelegate listener) where T : Enum
+    {
+        GetContainer<T>().RemoveListener(key, listener);
+    }
+    
+    public void Invoke<T>(T key, params object[] args) where T : Enum
+    {
+        GetContainer<T>().Invoke(key, args);
+    }
 }

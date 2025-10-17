@@ -17,14 +17,14 @@ public class PlayerableUI : MonoBehaviour,IEvent
 
     public void Subscribe()
     {
-        EventManager.Instance.AddListener(EventKey.OnTalkStart,new Action(Disappear));
-        EventManager.Instance.AddListener(EventKey.OnTalkEnd, new Action(Appear));
+        EventManager.Instance.AddListener(UIEventKey.OnTalkStart,new Action(Disappear));
+        EventManager.Instance.AddListener(UIEventKey.OnTalkEnd, new Action(Appear));
     }
 
     public void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener(EventKey.OnTalkStart,new Action(Disappear));
-        EventManager.Instance.RemoveListener(EventKey.OnTalkEnd, new Action(Appear));
+        EventManager.Instance.RemoveListener(UIEventKey.OnTalkStart,new Action(Disappear));
+        EventManager.Instance.RemoveListener(UIEventKey.OnTalkEnd, new Action(Appear));
     }
 
     private void OnEnable()

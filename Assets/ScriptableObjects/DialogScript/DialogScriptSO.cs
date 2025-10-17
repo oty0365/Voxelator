@@ -7,5 +7,5 @@ public class DialogScriptSO : ScriptableObject
     public bool hasSelection;
     public Sprite talkersFace;
     public string[] dialogue;
-    public EventKey[] eventsWhileTalk;
+    public FieldEventKey[] eventsWhileTalk;
 }
