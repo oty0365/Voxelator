@@ -30,6 +30,8 @@ public enum EventKey
     OnTalkEnd,
     LevelUpPanelActive,
     LevelUpPanelInactive,
+    CharacterSelectPanelActive,
+    CharacterSelectPanelInactive,
 }
 
 public class EventManager : SceneSingletonMonoBehaviour<EventManager>

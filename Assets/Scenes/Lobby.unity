@@ -421,13 +421,14 @@ GameObject:
   - component: {fileID: 43931476}
   - component: {fileID: 43931478}
   - component: {fileID: 43931477}
+  - component: {fileID: 43931479}
   m_Layer: 5
   m_Name: NunPannel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &43931476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -491,6 +492,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43931475}
   m_CullTransparentMesh: 1
+--- !u!114 &43931479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43931475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9ebd6b2a9d13c4b961a7a520652afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &44018984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,7 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80df76c06c7df334bb66f55402d3bf18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogsSO: {fileID: 0}
+  dialogsSO: {fileID: 11400000, guid: fbf0c5edf107edc4981a8df2c043ca74, type: 2}
 --- !u!1 &104325126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,7 +2976,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.7043563}
   m_AnchorMax: {x: 1, y: 0.83556163}
-  m_AnchoredPosition: {x: 0.18493652, y: -871.79987}
+  m_AnchoredPosition: {x: 0.18493652, y: -871.7999}
   m_SizeDelta: {x: 0.35999966, y: -2.8799973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &212945141
