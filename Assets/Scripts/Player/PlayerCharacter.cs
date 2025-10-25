@@ -11,7 +11,7 @@ public class PlayerCharacterInfo : ISaveData
     public void FromJson(string json) => JsonUtility.FromJsonOverwrite(json, this);
 }
 
-public class PlayerCharacter : MonoBehaviour,ISaveable
+public class PlayerCharacter : MonoBehaviour,ISaveable,IDataGetSetter<PlayerCharacterInfo>
 {
     public PlayerCharacterInfo character;
     public string GetSavePath()=> "PlayerCharacter";
@@ -45,4 +45,15 @@ public class PlayerCharacter : MonoBehaviour,ISaveable
         _saveManager = SaveManager.Instance;
         OnLoad();
     }
+
+    public void Get(PlayerCharacterInfo data)
+    {
+        data.characterNames = character.characterNames;
+    }
+    
+    public void Set(PlayerCharacterInfo data)
+    {
+        character.characterNames = data.characterNames;
+    }
+    
 }
