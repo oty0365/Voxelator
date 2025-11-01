@@ -130,6 +130,12 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         playerMoveSpeed.AddBuff(BuffType.Add,playerBasicStatusData.playerMoveSpeed);
         playerAtk.AddBuff(BuffType.Add,playerBasicStatusData.playerAtk);
         playerDef.AddBuff(BuffType.Add,playerBasicStatusData.playerDef);
+        
+        playerAtk.AddBuff(BuffType.Add,RuntimeUpgradeStatManager.Instance.GetAtk());
+        playerDef.AddBuff(BuffType.Add,RuntimeUpgradeStatManager.Instance.GetDef());
+        playerHp.AddMaxBuff(BuffType.Add,RuntimeUpgradeStatManager.Instance.GetHp()); 
+        playerHp.AddBuff(BuffType.Add,RuntimeUpgradeStatManager.Instance.GetHp());
+        
         playerAttackSpeed.AddBuff(BuffType.Add,playerBasicStatusData.playerAttackSpeed);
         PlayerMaxExp = playerBasicStatusData.playerMaxExp;
         PlayerExp = 0;

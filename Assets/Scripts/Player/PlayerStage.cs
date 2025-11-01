@@ -11,7 +11,7 @@ public class PlayerStageInfo : ISaveData
     public void FromJson(string json) => JsonUtility.FromJsonOverwrite(json, this);
 }
 
-public class PlayerStage : MonoBehaviour,ISaveable
+public class PlayerStage : MonoBehaviour,ISaveAble,IDataGetSetter<PlayerStageInfo>
 {
     public PlayerStageInfo stage;
     public string GetSavePath()=> "PlayerStage";
@@ -39,6 +39,17 @@ public class PlayerStage : MonoBehaviour,ISaveable
     public void OnRemove()
     {
         _saveManager.RemoveData(GetSavePath());
+    }
+
+    public void Get(PlayerStageInfo data)
+    {
+        data.limitStage = stage.limitStage;
+        data.limitTutorialStage = stage.limitTutorialStage;
+    }
+
+    public void Set(PlayerStageInfo data)
+    {
+        stage = data;
     }
 
     void Start()

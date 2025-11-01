@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelUpPannel : MonoBehaviour,IPannel
 {
     private IDataGetSetter<PlayerStatUpgradeInfo> _iupgrades;
-    private ISaveable _isaveable;
+    private ISaveAble _isaveable;
     private PlayerStatUpgradeInfo _upgrades = new();
     [SerializeField] private TextMeshProUGUI atkText;
     [SerializeField] private TextMeshProUGUI defText;
@@ -13,7 +13,7 @@ public class LevelUpPannel : MonoBehaviour,IPannel
     [SerializeField] private TextMeshProUGUI currentPoint;
     [SerializeField] private TextMeshProUGUI currentLevel;
 
-    public void Initialize(IDataGetSetter<PlayerStatUpgradeInfo> idata,ISaveable saveable)
+    public void Initialize(IDataGetSetter<PlayerStatUpgradeInfo> idata,ISaveAble saveable)
     {
         _iupgrades = idata;
         _isaveable = saveable;
@@ -42,6 +42,7 @@ public class LevelUpPannel : MonoBehaviour,IPannel
             else if (type == 3)
             {
                 _upgrades.hp++;
+
             }
             _upgrades.upgradePoint -= (_upgrades.level + 1) * 2;
             _upgrades.level++;
@@ -89,6 +90,10 @@ public class LevelUpPannel : MonoBehaviour,IPannel
     {
         _iupgrades.Set(_upgrades);
         _isaveable.OnSave();
+        RuntimeUpgradeStatManager.Instance.SetAtk(_upgrades.atk);
+        RuntimeUpgradeStatManager.Instance.SetDef(_upgrades.def);
+        RuntimeUpgradeStatManager.Instance.SetHp(_upgrades.hp);
+        gameObject.SetActive(false);
     }
 
     private void UpdateUI()

@@ -15,7 +15,7 @@ public class PlayerStatUpgradeInfo : ISaveData
     public void FromJson(string json) => JsonUtility.FromJsonOverwrite(json, this);
 }
 
-public class PlayerStatUpgrade: MonoBehaviour,ISaveable,IDataGetSetter<PlayerStatUpgradeInfo>
+public class PlayerStatUpgrade: MonoBehaviour,ISaveAble,IDataGetSetter<PlayerStatUpgradeInfo>
 {
     public PlayerStatUpgradeInfo upgrades;
     public string GetSavePath()=> "PlayerStatUpgrade";

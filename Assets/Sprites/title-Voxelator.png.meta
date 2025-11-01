@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 7c84e17cf046e73418fc71ac985bc3c4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2267412948769793220
+    second: title-Voxelator_0
+  - first:
+      213: -3538767082753304473
+    second: title-Voxelator_1
+  - first:
+      213: 5129097109107907629
+    second: title-Voxelator_2
+  - first:
+      213: -4172387497084949342
+    second: title-Voxelator_3
+  - first:
+      213: 993054134418040788
+    second: title-Voxelator_4
+  - first:
+      213: 3154035327031520343
+    second: title-Voxelator_5
+  - first:
+      213: -3916558025287211413
+    second: title-Voxelator_6
+  - first:
+      213: 3328662137937795049
+    second: title-Voxelator_7
+  - first:
+      213: 2697123758386293150
+    second: title-Voxelator_8
+  - first:
+      213: 8291782561621185631
+    second: title-Voxelator_9
+  - first:
+      213: -3318684915880944164
+    second: title-Voxelator_10
+  - first:
+      213: -4313615864737452700
+    second: title-Voxelator_11
+  - first:
+      213: -6733451412963481040
+    second: title-Voxelator_12
+  - first:
+      213: 3735705444059485181
+    second: title-Voxelator_13
+  - first:
+      213: -3709896385048678922
+    second: title-Voxelator_14
+  - first:
+      213: 359002549972798342
+    second: title-Voxelator_15
+  - first:
+      213: -3001078876164591120
+    second: title-Voxelator_16
+  - first:
+      213: -1794574587980455823
+    second: title-Voxelator_17
+  - first:
+      213: -2244096304165961829
+    second: title-Voxelator_18
+  - first:
+      213: 842143201260895840
+    second: title-Voxelator_19
+  - first:
+      213: -17469965032352409
+    second: title-Voxelator_20
+  - first:
+      213: 5247903761714724450
+    second: title-Voxelator_21
+  - first:
+      213: -5582324898070257527
+    second: title-Voxelator_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: title-Voxelator_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 209
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3b9475bfe78880e0800000000000000
+      internalID: -2267412948769793220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 209
+        width: 72
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 768d4a16616c3eec0800000000000000
+      internalID: -3538767082753304473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_2
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 209
+        width: 32
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2c1cd645a63e2740800000000000000
+      internalID: 5129097109107907629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_3
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 209
+        width: 42
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ac68fa7da3b816c0800000000000000
+      internalID: -4172387497084949342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_4
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 209
+        width: 32
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d768bc497908cd00800000000000000
+      internalID: 993054134418040788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_5
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 209
+        width: 72
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75c2fbc4b6265cb20800000000000000
+      internalID: 3154035327031520343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_6
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 209
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b66ec801a3795a9c0800000000000000
+      internalID: -3916558025287211413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_7
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 129
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e713151498c13e20800000000000000
+      internalID: 3328662137937795049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_8
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 119
+        width: 32
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e99a1eda4cb1e6520800000000000000
+      internalID: 2697123758386293150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_9
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 109
+        width: 52
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f54953cde44521370800000000000000
+      internalID: 8291782561621185631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_10
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 119
+        width: 32
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdd1873f6a9a1f1d0800000000000000
+      internalID: -3318684915880944164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_11
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 129
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46da5dcb935f224c0800000000000000
+      internalID: -4313615864737452700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_12
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 139
+        width: 12
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03aa5f18d99fd82a0800000000000000
+      internalID: -6733451412963481040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_13
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 149
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df398aa0f44e7d330800000000000000
+      internalID: 3735705444059485181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_14
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 99
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fdeaa7c4ecc38cc0800000000000000
+      internalID: -3709896385048678922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_15
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 59
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68b8698caee6bf400800000000000000
+      internalID: 359002549972798342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_16
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 59
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f1f74b99a60a56d0800000000000000
+      internalID: -3001078876164591120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_17
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 59
+        width: 32
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1706b789be36817e0800000000000000
+      internalID: -1794574587980455823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_18
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 49
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9fbb641d4e5bd0e0800000000000000
+      internalID: -2244096304165961829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_19
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 59
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e7a2997c4efab00800000000000000
+      internalID: 842143201260895840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_20
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 39
+        width: 42
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 765120cc82fe1cff0800000000000000
+      internalID: -17469965032352409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_21
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 79
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26e317caaac44d840800000000000000
+      internalID: 5247903761714724450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: title-Voxelator_22
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 19
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98024b5e4199782b0800000000000000
+      internalID: -5582324898070257527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      title-Voxelator_0: -2267412948769793220
+      title-Voxelator_1: -3538767082753304473
+      title-Voxelator_10: -3318684915880944164
+      title-Voxelator_11: -4313615864737452700
+      title-Voxelator_12: -6733451412963481040
+      title-Voxelator_13: 3735705444059485181
+      title-Voxelator_14: -3709896385048678922
+      title-Voxelator_15: 359002549972798342
+      title-Voxelator_16: -3001078876164591120
+      title-Voxelator_17: -1794574587980455823
+      title-Voxelator_18: -2244096304165961829
+      title-Voxelator_19: 842143201260895840
+      title-Voxelator_2: 5129097109107907629
+      title-Voxelator_20: -17469965032352409
+      title-Voxelator_21: 5247903761714724450
+      title-Voxelator_22: -5582324898070257527
+      title-Voxelator_3: -4172387497084949342
+      title-Voxelator_4: 993054134418040788
+      title-Voxelator_5: 3154035327031520343
+      title-Voxelator_6: -3916558025287211413
+      title-Voxelator_7: 3328662137937795049
+      title-Voxelator_8: 2697123758386293150
+      title-Voxelator_9: 8291782561621185631
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

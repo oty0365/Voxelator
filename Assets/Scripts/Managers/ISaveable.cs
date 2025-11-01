@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface ISaveable
+public interface ISaveAble
 {
     public string GetSavePath();
     public void OnSave();
