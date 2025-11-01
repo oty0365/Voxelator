@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: MapSetsSO
   m_EditorClassIdentifier: 
   set:
-  - code: 0
-    prefab: {fileID: 0}
   - code: 1
     prefab: {fileID: 5823154650940456548, guid: 6fc01837fed4d20499393692b4152b1b, type: 3}

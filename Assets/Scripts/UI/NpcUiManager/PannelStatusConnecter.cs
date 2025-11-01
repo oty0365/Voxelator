@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
 
-public class PannelStatusConnecter : MonoBehaviour,IEvent,IPannelUI,IConnecter
+public class PannelStatusConnecter : MonoBehaviour,IPannelUI,IConnecter
 {
+    [SerializeField] private GameObject button;
     [SerializeField] private GameObject pannel;
-    [SerializeField] private PlayerCharacter playerData;
+    [SerializeField] private GameObject playerData;
+    
+    private PlayerStatUpgradeInfo _upgradeInfo = new();
 
     private IPannel _ipannel;
 
@@ -24,33 +27,14 @@ public class PannelStatusConnecter : MonoBehaviour,IEvent,IPannelUI,IConnecter
         pannel.SetActive(false);
         _ipannel.OnInActive();
     }
-
-    public void Subscribe()
-    {
-        EventManager.Instance.AddListener(EventKey.LevelUpPanelActive, new Action(OnActiveUI));
-        EventManager.Instance.AddListener(EventKey.LevelUpPanelInactive, new Action(OnInactiveUI));
-    }
-    public void Unsubscribe()
-    {
-        if (EventManager.Instance != null)
-        {
-            EventManager.Instance.RemoveListener(EventKey.LevelUpPanelActive, new Action(OnActiveUI));
-            EventManager.Instance.RemoveListener(EventKey.LevelUpPanelInactive, new Action(OnInactiveUI));
-        }
-    }
-
     public void OnConnect()
     {
-        pannel.GetComponent<LevelUpPannel>().Initialize(playerData.GetComponent<IDataGetSetter<PlayerStatUpgradeInfo>>(),playerData.GetComponent<ISaveable>());
+        playerData.GetComponent<IDataGetSetter<PlayerStatUpgradeInfo>>().Get(_upgradeInfo);
+        RuntimeUpgradeStatManager.Instance.SetAtk(_upgradeInfo.atk);
+        RuntimeUpgradeStatManager.Instance.SetDef(_upgradeInfo.def);
+        RuntimeUpgradeStatManager.Instance.SetHp(_upgradeInfo.hp);
+        button.GetComponent<IButton>().onClick+=OnActiveUI;
+        pannel.GetComponent<LevelUpPannel>().Initialize(playerData.GetComponent<IDataGetSetter<PlayerStatUpgradeInfo>>(),playerData.GetComponent<ISaveAble>());
         _ipannel = pannel.GetComponent<IPannel>();
-    }
-
-    private void OnEnable()
-    {
-        Subscribe();
-    }
-    private void OnDisable()
-    {
-        Unsubscribe();
     }
 }

@@ -428,7 +428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &43931476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -504,6 +504,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9ebd6b2a9d13c4b961a7a520652afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterSelectImage: {fileID: 0}
+  characterName: {fileID: 0}
+  description: {fileID: 0}
+  index: 0
 --- !u!1 &44018984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2976,7 +2980,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.7043563}
   m_AnchorMax: {x: 1, y: 0.83556163}
-  m_AnchoredPosition: {x: 0.18493652, y: -871.7999}
+  m_AnchoredPosition: {x: 0.18493652, y: -871.79987}
   m_SizeDelta: {x: 0.35999966, y: -2.8799973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &212945141
@@ -9203,6 +9207,7 @@ GameObject:
   - component: {fileID: 1161428998}
   - component: {fileID: 1161429000}
   - component: {fileID: 1161429001}
+  - component: {fileID: 1161429002}
   m_Layer: 0
   m_Name: UIManagers
   m_TagString: Untagged
@@ -9288,6 +9293,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pannel: {fileID: 1503923967}
+  playerData: {fileID: 29503105}
+--- !u!114 &1161429002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161428997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89cbb13367583df41a6bbd3fc0d10b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pannel: {fileID: 43931475}
   playerData: {fileID: 29503105}
 --- !u!1 &1185760454
 GameObject:
@@ -13075,7 +13094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 26, y: 24.400002}
+  m_AnchoredPosition: {x: 26.000015, y: 24.400002}
   m_SizeDelta: {x: 103.4, y: 98.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1728132027

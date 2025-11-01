@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CharacterSelectPannel : MonoBehaviour,IPannel
 {
     private IDataGetSetter<PlayerCharacterInfo> _icharacters;
-    private ISaveable _isaveable;
+    private ISaveAble _isaveable;
     private PlayerCharacterInfo _character = new();
     [SerializeField] Image characterSelectImage;
     [SerializeField] private TextMeshProUGUI characterName;
@@ -13,7 +13,7 @@ public class CharacterSelectPannel : MonoBehaviour,IPannel
     [SerializeField] private int index = 0; 
 
     
-    public void Initialize(IDataGetSetter<PlayerCharacterInfo> idata,ISaveable saveable)
+    public void Initialize(IDataGetSetter<PlayerCharacterInfo> idata,ISaveAble saveable)
     {
         _icharacters = idata;
         _isaveable = saveable;

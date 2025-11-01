@@ -41,7 +41,7 @@ public class PannelCharacterConnecter : MonoBehaviour,IEvent,IPannelUI,IConnecte
 
     public void OnConnect()
     {
-        pannel.GetComponent<CharacterSelectPannel>().Initialize(playerData.GetComponent<IDataGetSetter<PlayerCharacterInfo>>(),playerData.GetComponent<ISaveable>());
+        pannel.GetComponent<CharacterSelectPannel>().Initialize(playerData.GetComponent<IDataGetSetter<PlayerCharacterInfo>>(),playerData.GetComponent<ISaveAble>());
         _ipannel = pannel.GetComponent<IPannel>();
     }
 
