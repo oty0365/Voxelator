@@ -14,6 +14,7 @@ public class WindWildPlainMap : AMap,IEvent
         switch (time)
         {
             case 1:
+                SoundManager.Instance.PlayBGM("Pixel Odyssey");
                 EventManager.Instance.Invoke(EventKey.ShowMapBanner);
                 EventManager.Instance.Invoke(EventKey.AddToSpawner,EnemyCode.PlainChopper);
                 break;
@@ -54,6 +55,7 @@ public class WindWildPlainMap : AMap,IEvent
                 _currentBoss=boss.GetComponent<AEnemy>();
                 MapManager.Instance.SetBossBattle();
                 EventManager.Instance.Invoke(EventKey.ShowMapBanner);
+                SoundManager.Instance.PlayBGM("Beast Rider Clash");
                 CameraManager.Instance.SetTarget(bossSpawnPos);
                 StartCoroutine(EndCutSceneFlow());
                 //CameraManager.Instance.SetTarget(bossSpawnPos);
