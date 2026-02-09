@@ -25,6 +25,8 @@ public enum EventKey
     StopShake,
     
     //UI
+    OnDisplayMouseDown,
+    OnDisplayMouseUp,
     ShowMapBanner,
     ShowEventBanner,
     OnTalkStart,

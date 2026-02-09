@@ -37,7 +37,6 @@ public class MapSelectUI : MonoBehaviour, IPannel
         if (mapList == null || _limitedIndex == 0) return;
 
         var data = mapList.maps[_currentIndex];
-        Debug.Log(data.name);
         mapNameText.text = data.mapName;
         mapImage.sprite = data.mapImage;
         MapManager.Instance.ChangeMap(data.mapCode);

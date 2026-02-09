@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TouchScreenHandler : MonoBehaviour, IPointerDownHandler
+public class TouchScreenHandler : MonoBehaviour, IPointerDownHandler,IPointerUpHandler
 {
     public Action<Vector2> dashDirInputer;
     public Action<Vector2> rotationInputer;
@@ -25,11 +25,12 @@ public class TouchScreenHandler : MonoBehaviour, IPointerDownHandler
                 interactbtn.OnInteract();
             }
         }
-        Vector2 playerPos = PlayerStatus.Instance.transform.position;
-        Vector2 dashDir = ((Vector2)worldTouchPos - playerPos);
-        dashDir.Normalize();
-
-        dashDirInputer?.Invoke(dashDir);
-        rotationInputer?.Invoke(dashDir);
+        EventManager.Instance.Invoke(EventKey.OnDisplayMouseDown,eventData);
     }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        EventManager.Instance.Invoke(EventKey.OnDisplayMouseUp,eventData);
+    }
+    
 }

@@ -1,19 +1,18 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class JoyStickHandle : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler 
+public class JoyStickHandle : MonoBehaviour ,IPointerDownHandler,IPointerUpHandler
 {
     public Action<Vector2> moveDirInputer;
     public Action<Vector2> rotationInputer;
 
     [SerializeField] private float range = 100f;
     [SerializeField] private float deadZone = 10f;
-    [SerializeField] private float smoothThreshold = 5f; 
     [SerializeField] private float smoothSpeed = 10f; 
     [SerializeField] private RectTransform originJoyTransform;
-    [SerializeField] private bool isDraging;
 
     private RectTransform _joyTransform;
     private Image _originJoyImage;
@@ -22,117 +21,87 @@ public class JoyStickHandle : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
     private Vector2 _targetPosition;
     private Vector2 _smoothedPosition;
-    private Vector2 _lastValidInput;
+    private Coroutine _joystickFlow;
 
     private void Start()
     {
         _joyTransform = GetComponent<RectTransform>();
         _originJoyImage = originJoyTransform.GetComponent<Image>();
         _originJoyImage.enabled = false;
+        
         moveDirInputer += PlayerInput.Instance.OnMove;
         rotationInputer += PlayerInput.Instance.OnFlip;
+        
         _canvas = GetComponentInParent<Canvas>();
         if (_canvas.renderMode == RenderMode.ScreenSpaceCamera)
         {
             _uiCamera = _canvas.worldCamera;
         }
-
-        _targetPosition = Vector2.zero;
-        _smoothedPosition = Vector2.zero;
-        _lastValidInput = Vector2.zero;
-    }
-
-    private void Update()
-    {
-        if (isDraging)
-        {
-            _smoothedPosition = Vector2.Lerp(_smoothedPosition, _targetPosition, Time.deltaTime * smoothSpeed);
-            _joyTransform.localPosition = _smoothedPosition;
-        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        isDraging = true;
-        _originJoyImage.enabled = true;
-
-        Vector2 screenPos = eventData.position;
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            originJoyTransform,
-            screenPos,
-            _uiCamera,
-            out localPoint
-        );
-
-        localPoint = Vector2.ClampMagnitude(localPoint, range);
-        _targetPosition = localPoint;
-        _smoothedPosition = localPoint;
-        _joyTransform.localPosition = localPoint;
+        if (_joystickFlow != null) StopCoroutine(_joystickFlow);
+        _joystickFlow = StartCoroutine(JoystickProcessFlow());
     }
 
-    public void OnDrag(PointerEventData eventData)
+    private IEnumerator JoystickProcessFlow()
     {
-        if (!isDraging) return;
+        _originJoyImage.enabled = true;
 
-        Vector2 screenPos = eventData.position;
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            originJoyTransform,
-            screenPos,
-            _uiCamera,
-            out localPoint
-        );
-
-        localPoint = Vector2.ClampMagnitude(localPoint, range);
-
-        float distanceFromLast = Vector2.Distance(localPoint, _targetPosition);
-        if (distanceFromLast > smoothThreshold)
+        while (true)
         {
-            _targetPosition = localPoint;
-        }
+            Vector2 screenPos = Input.mousePosition; 
+            Vector2 localPoint;
 
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                originJoyTransform,
+                screenPos,
+                _uiCamera,
+                out localPoint
+            );
 
-        Vector2 inputVector = _targetPosition;
+            _targetPosition = Vector2.ClampMagnitude(localPoint, range);
+            _smoothedPosition = Vector2.Lerp(_smoothedPosition, _targetPosition, Time.deltaTime * smoothSpeed);
+            _joyTransform.localPosition = _smoothedPosition;
 
-        if (inputVector.magnitude < deadZone)
-        {
-            moveDirInputer?.Invoke(Vector2.zero);
-            _lastValidInput = Vector2.zero;
-            return;
-        }
-
-        Vector2 dir = inputVector.normalized;
-
-        if (_lastValidInput != Vector2.zero)
-        {
-            float angleDifference = Vector2.Angle(_lastValidInput, dir);
-            if (angleDifference < 5f) 
+            if (_targetPosition.magnitude < deadZone)
             {
-                dir = _lastValidInput;
+                moveDirInputer?.Invoke(Vector2.zero);
             }
-        }
+            else
+            {
+                Vector2 dir = _targetPosition.normalized;
+                moveDirInputer?.Invoke(dir);
+                rotationInputer?.Invoke(dir);
+            }
 
-        _lastValidInput = dir;
-        moveDirInputer?.Invoke(dir);
-        rotationInputer?.Invoke(dir);
+            yield return null;
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        isDraging = false;
-        _originJoyImage.enabled = false;
+        if (_joystickFlow != null)
+        {
+            StopCoroutine(_joystickFlow);
+            _joystickFlow = null;
+        }
 
+        _originJoyImage.enabled = false;
         _targetPosition = Vector2.zero;
         _smoothedPosition = Vector2.zero;
         _joyTransform.localPosition = Vector2.zero;
 
         moveDirInputer?.Invoke(Vector2.zero);
-        _lastValidInput = Vector2.zero;
     }
 
     private void OnDisable()
     {
-        OnPointerUp(null);
+        if (_joystickFlow != null)
+        {
+            StopCoroutine(_joystickFlow);
+            _joystickFlow = null;
+        }
     }
 }

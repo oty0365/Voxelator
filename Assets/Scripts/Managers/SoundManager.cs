@@ -31,11 +31,6 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
             clip.LoadAudioData();
             preloadedClips.Add(clip.name);
         }
-        foreach(var a in soundDict)
-        {
-            Debug.Log(a.Key);
-        }
-
         if (!PlayerPrefs.HasKey("Volume"))
         {
             PlayerPrefs.SetFloat("Volume", 50f);

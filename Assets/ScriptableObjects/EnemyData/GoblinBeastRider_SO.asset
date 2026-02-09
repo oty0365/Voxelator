@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GoblinBeastRider_SO
   m_EditorClassIdentifier: 
   health:
-    maxRange: 1000
-    minRange: 1000
+    maxRange: 1500
+    minRange: 1500
   expDrop:
     maxRange: 0
     minRange: 0
@@ -22,7 +22,7 @@ MonoBehaviour:
     maxRange: 5
     minRange: 5
   baseDefense:
-    maxRange: 4
-    minRange: 4
+    maxRange: 6
+    minRange: 6
   entityType: 1
   moveSpeed: 1.6
