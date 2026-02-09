@@ -17,16 +17,15 @@ public class GameFlowManager : SceneSingletonMonoBehaviour<GameFlowManager>
         {
             obj.SetActive(true);
         }
-//        MapManager.Instance.ChangeMap(MapCode.WindWildPlain);
         EventManager.Instance?.Invoke(EventKey.ConnectWithCameraPlayerStaus);
-        PlayerStatus.Instance.ResetStatus();
-        Extracter.Instance.UpLoadStats();
-        PlayerController.Instance.playerDash.ResetDashCoolDown();
+        PlayerStatus.Instance?.ResetStatus();
+        Extracter.Instance?.UpLoadStats();
+        PlayerController.Instance?.playerDash.ResetDashCoolDown();
         var map = MapManager.Instance.InstantiateMap();
         var mapSetter = map.GetComponent<MapSetter>();
         mapSetter.SetMapBanner(mapBanner);
         MapManager.Instance.SetMapSetter(mapSetter);
-        TimeManager.Instance.StartGame();
+        TimeManager.Instance?.StartGame();
     }
 
 }

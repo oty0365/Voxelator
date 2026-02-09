@@ -44,7 +44,6 @@ public class GameStratQuiterConnecter : MonoBehaviour, IConnecter,IPannelUI
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-        // 빌드된 상태라면 앱 종료
         Application.Quit();
 #endif
     }

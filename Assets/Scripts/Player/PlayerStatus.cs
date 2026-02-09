@@ -160,23 +160,6 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         isInfinite = false;
         col2D.excludeLayers = originMask;
     }
-
-    public void GetDamage(float damage, float infiniteTime)
-    {
-        var realDamage = damage - playerDef.Value;
-        if (realDamage > 0)
-        {
-            //statContainer.SetStat(StatusCode.Hp,playerHp.Value - realDamage);
-        }
-        if (_infiniteTimeFlow != null)
-        {
-            StopCoroutine(_infiniteTimeFlow);
-            isInfinite =  false;
-            col2D.excludeLayers = originMask;
-        }
-
-        _infiniteTimeFlow = StartCoroutine(InfiniteTimeFlow(infiniteTime));
-    }
     public void Subscribe()
     {
         EventManager.Instance.AddListener(EventKey.OnPlayerHit,new Action<GameObject>(OnDamage));
@@ -203,6 +186,12 @@ public class PlayerStatus : SceneSingletonMonoBehaviour<PlayerStatus>,IEvent
         {
             CameraManager.Instance.ShakeCamera(damageData.damage/(9+damageData.damage),0.5f);
             playerHp.AddBuff(BuffType.Add,-realDamage);   
+        }
+
+        if (playerHp.Value <= 0)
+        {
+            Time.timeScale = 0;
+            EventManager.Instance.Invoke(EventKey.StageEnd,false);
         }
     }
     private void OnEnable()

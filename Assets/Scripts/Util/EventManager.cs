@@ -18,6 +18,7 @@ public enum EventKey
     StopSpawning,
     ContinueSpawning,
     SetTimeScale,
+    StageEnd,
     
     //카메라
     ConnectWithCameraPlayerStaus,

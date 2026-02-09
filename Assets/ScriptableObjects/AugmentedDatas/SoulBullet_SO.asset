@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SoulBullet_SO
   m_EditorClassIdentifier: 
   datas:
-  - 8+(ATK*0.6)
+  - 8+(ATK*0.85)
   - 2*(1-(COOL/MAXCOOL))
