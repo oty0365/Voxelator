@@ -2218,7 +2218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.7043563}
   m_AnchorMax: {x: 1, y: 0.83556163}
-  m_AnchoredPosition: {x: 0.18493652, y: -871.7998}
+  m_AnchoredPosition: {x: 0.18493652, y: -871.79987}
   m_SizeDelta: {x: 0.35999966, y: -2.8799973}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &628700027
@@ -5080,7 +5080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm: {fileID: 1706797093}
-  sfx: {fileID: 0}
+  sfx: {fileID: 8607169224964577788, guid: 1bc3b95c516a1ec47b14d47d72e57ff6, type: 3}
 --- !u!82 &1706797093
 AudioSource:
   m_ObjectHideFlags: 0

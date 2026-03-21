@@ -54,6 +54,7 @@ public class AugmentUI : MonoBehaviour
         }
         
         augmentPanel.SetActive(true);
+        SoundManager.Instance.PlaySFX("Random");
         StartCoroutine(AnimateCardsSequentially());
     }
 

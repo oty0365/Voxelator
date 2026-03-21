@@ -23,6 +23,7 @@ public class ExpGiver : MonoBehaviour,IPoolingObject
     public void SetExpColor()
     {
         sr.color=gradient.Evaluate(expAmount/100);
+        trail.startColor = gradient.Evaluate(expAmount/100);
     }
 
     private IEnumerator GotoPlayerFlow()
@@ -45,6 +46,7 @@ public class ExpGiver : MonoBehaviour,IPoolingObject
             }
             yield return new WaitForSeconds(0.05f);
         }
+        SoundManager.Instance.PlaySFX("Pickup");
         PlayerStatus.Instance.SetExp(PlayerStatus.Instance.PlayerExp + expAmount);
         ObjectPoolManager.Instance.Return(gameObject);
 

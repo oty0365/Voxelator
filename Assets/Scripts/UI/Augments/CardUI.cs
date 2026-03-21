@@ -12,6 +12,7 @@ public class CardUI : MonoBehaviour,IPointerDownHandler
     {
         if (!isSelected)
         {
+            SoundManager.Instance.PlaySFX("PowerUp");
             onSelected?.Invoke(index);
             isSelected = true;
         }

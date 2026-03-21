@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameResaultPanel : MonoBehaviour
@@ -18,6 +19,10 @@ public class GameResaultPanel : MonoBehaviour
         backgroundImage.gameObject.SetActive(true);
         resaultText.text = checkWin ? "승리" : "패배";
         subResaultText.text = checkWin ? "스킬포인트를 얻었다!" : "...";
-        
+    }
+    public void AdmitResult()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("TitleScene");
     }
 }

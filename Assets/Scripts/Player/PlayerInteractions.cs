@@ -27,6 +27,7 @@ public class PlayerInteractions : MonoBehaviour,IEvent
 
     public void OnHit(GameObject damager)
     {
+        SoundManager.Instance.PlaySFX("Damaged");
         var damagerObject = damager.GetComponent<Damager>();
         var damageData =damager.GetComponent<IDamager>().GetDamage(damagerObject.parent.GetComponent<StatContainer>().GetStat<UnlimitedStat>(StatusCode.Atk).Value);
         var hit = ObjectPoolManager.Instance.Get(ObjectBankManager.Instance.Get(ObjectCode.HitParticle), transform.position, new Vector3(-90, 0, 0)); 

@@ -27,6 +27,7 @@ public class GoblinBeastRider : AEnemy, IPoolingObject, IFootSteper
 
     public void OnDeathInit()
     {
+        TimeManager.Instance.ContinueGame();
         EndStep();
     }
 

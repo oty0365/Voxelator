@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76ea008c636c1d48af186578b9093de, type: 3}
-  m_Name: WindWildPlain_SO
+  m_Script: {fileID: 11500000, guid: d91d740936759574087bf3ec934a5abe, type: 3}
+  m_Name: SaintTT2-8
   m_EditorClassIdentifier: 
-  set: 050000006e00000001000000c8000000dc00000006000000070000004600000018010000190100001a010000
+  talker: SaintName
+  hasSelection: 0
+  talkersFace: {fileID: 21300000, guid: c08195e2aae8c024fb06b7aa93691871, type: 3}
+  dialogue:
+  - SaintMap2TT8
+  eventsWhileTalk: 
