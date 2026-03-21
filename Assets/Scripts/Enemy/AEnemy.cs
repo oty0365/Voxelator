@@ -113,6 +113,7 @@ public abstract class AEnemy : MonoBehaviour,ILifeSycler
 
     public virtual void OnHit(DamageData damage)
     {
+        SoundManager.Instance.PlaySFX("Hit");
         var defenceValue = 9f;
         var realDamage=damage.damage - damage.damage * (enemyData.baseDefense.Value / (enemyData.baseDefense.Value + defenceValue));
         if (enemyData.baseDefense.Value <= 0)

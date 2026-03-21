@@ -51,6 +51,7 @@ public class WindWildPlainMap : AMap,IEvent
                 DialogManager.Instance.StartConversation(mapDia[1]);
                 break;
             case 281:
+                TimeManager.Instance.StopGame();
                 var boss=ObjectPoolManager.Instance.Get(EnemySpawn.Instance.GetBoss(EnemyCode.BossGoblinBeastRider),bossSpawnPos.position, Vector3.zero);
                 _currentBoss=boss.GetComponent<AEnemy>();
                 MapManager.Instance.SetBossBattle();
@@ -58,7 +59,10 @@ public class WindWildPlainMap : AMap,IEvent
                 SoundManager.Instance.PlayBGM("Beast Rider Clash");
                 CameraManager.Instance.SetTarget(bossSpawnPos);
                 StartCoroutine(EndCutSceneFlow());
-                //CameraManager.Instance.SetTarget(bossSpawnPos);
+                break;
+            case 282:
+                TimeManager.Instance.StopGame();
+                DialogManager.Instance.StartConversation(mapDia[2]);
                 break;
             default:
                 Debug.Log("타임라인 불일치");

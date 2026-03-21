@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa170f2049f62a045b8bbd3a206665d9, type: 3}
+  m_Name: NunWindWildPlainTutorialEnd
+  m_EditorClassIdentifier: 
+  dialogScripts:
+  - {fileID: 11400000, guid: 83f655e4ca7c3f145b9aa86075b42a5d, type: 2}
+  - {fileID: 11400000, guid: ab1f85d4ca3380b40aeadf9ee8fa4ae5, type: 2}
+  - {fileID: 11400000, guid: 44b93a8127a59db489920f8800824e9b, type: 2}
+  - {fileID: 11400000, guid: c44ec6c59548d014d9cd03e796bad1ac, type: 2}

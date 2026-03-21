@@ -223,6 +223,7 @@ MonoBehaviour:
   mapDia:
   - {fileID: 11400000, guid: 75857eb8389ae13439659418e204e74e, type: 2}
   - {fileID: 11400000, guid: bf33e465a9b8f9740a3eb8d38f461fbc, type: 2}
+  - {fileID: 11400000, guid: fbae2586fd4f70e48959c84c3ad4569c, type: 2}
   playerBossBattlePos: {fileID: 1355581110418556126}
   bossSpawnPos: {fileID: 8918678735908191713}
 --- !u!114 &4875801784468543473
@@ -242,6 +243,7 @@ MonoBehaviour:
   normal: {fileID: 11400000, guid: 547a9bb0ee3e16446a17e86f0edc41a3, type: 2}
   elite: {fileID: 11400000, guid: 6b39078f248ad4f4793c82050fe5417b, type: 2}
   boss: {fileID: 11400000, guid: a08b91804b16a684c9b5288b4e9dcfb9, type: 2}
+  _mapMonsters: []
 --- !u!1 &266736855050967462
 GameObject:
   m_ObjectHideFlags: 0
