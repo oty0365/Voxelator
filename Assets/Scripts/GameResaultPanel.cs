@@ -23,6 +23,7 @@ public class GameResaultPanel : MonoBehaviour
     public void AdmitResult()
     {
         Time.timeScale = 1;
+        SoundManager.Instance.StopBGM();
         SceneManager.LoadScene("TitleScene");
     }
 }

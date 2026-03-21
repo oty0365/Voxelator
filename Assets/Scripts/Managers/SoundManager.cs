@@ -121,4 +121,12 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         bgm.volume = soundVolume / 100f;
         bgm.Play();
     }
+    public void StopBGM()
+    {
+        if (bgm != null && bgm.isPlaying)
+        {
+            bgm.Stop();
+            bgm.clip = null;
+        }
+    }
 }

@@ -300,7 +300,7 @@ public class CameraManager : SceneSingletonMonoBehaviour<CameraManager>,IEvent
 
     public void OnDestroy()
     {
-        if (PlayerStatus.Instance.playerHp != null)
+        if (PlayerStatus.Instance != null)
         {
             PlayerStatus.Instance.playerHp.OnChanged -= OnHealthChange;
         }

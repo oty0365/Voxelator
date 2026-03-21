@@ -33,6 +33,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     }
     public GameObject InstantiateMap()
     {
+        SoundManager.Instance.StopBGM();
         if (_currentMap != null)
         {
             Destroy(_currentMap);

@@ -64,6 +64,10 @@ public class WindWildPlainMap : AMap,IEvent
                 TimeManager.Instance.StopGame();
                 DialogManager.Instance.StartConversation(mapDia[2]);
                 break;
+            case 283:
+                TimeManager.Instance.StopGame();
+                EventManager.Instance.Invoke(EventKey.StageEnd,true);
+                break;
             default:
                 Debug.Log("타임라인 불일치");
                 break;
